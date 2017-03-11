@@ -43,7 +43,7 @@ public class SelectCommand extends Command {
 
     @Override
     public boolean isMutating() {
-    	return false;
+        return false;
     }
 
 }

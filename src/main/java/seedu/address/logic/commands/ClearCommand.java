@@ -20,6 +20,6 @@ public class ClearCommand extends Command {
 
     @Override
     public boolean isMutating() {
-    	return true;
+        return true;
     }
 }
