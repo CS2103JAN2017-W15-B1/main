@@ -31,5 +31,4 @@ public class FindCommand extends Command {
     public boolean isMutating() {
     	return false;
     }
-
 }
