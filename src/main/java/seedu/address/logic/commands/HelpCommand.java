@@ -22,7 +22,7 @@ public class HelpCommand extends Command {
         return new CommandResult(SHOWING_HELP_MESSAGE);
     }
     
-    @Override 
+    @Override
     public boolean isMutating() {
     	return false;
     }

@@ -65,8 +65,8 @@ public class EditCommand extends Command {
         model.updateFilteredListToShowAll();
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, personToEdit));
     }
-    
-    @Override 
+
+    @Override
     public boolean isMutating() {
     	return false;
     }

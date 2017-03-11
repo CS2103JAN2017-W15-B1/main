@@ -18,7 +18,7 @@ public class ClearCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
     
-    @Override 
+    @Override
     public boolean isMutating() {
     	return true;
     }
