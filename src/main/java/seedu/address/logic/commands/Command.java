@@ -36,7 +36,7 @@ public abstract class Command {
     public void setData(Model model) {
         this.model = model;
     }
-    
+
     /**
      * Returns true if the data has been changed, false otherwise
      * @return boolean

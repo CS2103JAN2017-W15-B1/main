@@ -40,7 +40,7 @@ public class SelectCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SELECT_PERSON_SUCCESS, targetIndex));
 
     }
-    
+
     @Override
     public boolean isMutating() {
     	return false;
