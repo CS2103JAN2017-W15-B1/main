@@ -1,11 +1,11 @@
-package seedu.address.logic.commands;
+package seedu.todolist.logic.commands;
 
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.ReadOnlyTask;
+import seedu.todolist.commons.core.EventsCenter;
+import seedu.todolist.commons.core.Messages;
+import seedu.todolist.commons.core.UnmodifiableObservableList;
+import seedu.todolist.commons.events.ui.JumpToListRequestEvent;
+import seedu.todolist.logic.commands.exceptions.CommandException;
+import seedu.todolist.model.person.ReadOnlyTask;
 
 /**
  * Selects a person identified using it's last displayed index from the address book.

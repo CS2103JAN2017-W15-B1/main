@@ -1,6 +1,6 @@
-package seedu.address.logic.commands;
+package seedu.todolist.logic.commands;
 
-import seedu.address.model.ToDoList;
+import seedu.todolist.model.ToDoList;
 
 /**
  * Clears the address book.

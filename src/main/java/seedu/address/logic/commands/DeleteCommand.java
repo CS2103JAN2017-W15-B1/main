@@ -1,10 +1,10 @@
-package seedu.address.logic.commands;
+package seedu.todolist.logic.commands;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.model.person.UniqueTaskList.TaskNotFoundException;
+import seedu.todolist.commons.core.Messages;
+import seedu.todolist.commons.core.UnmodifiableObservableList;
+import seedu.todolist.logic.commands.exceptions.CommandException;
+import seedu.todolist.model.person.ReadOnlyTask;
+import seedu.tolodist.model.person.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Deletes a person identified using it's last displayed index from the address book.

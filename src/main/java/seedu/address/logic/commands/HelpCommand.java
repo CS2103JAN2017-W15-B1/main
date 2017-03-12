@@ -1,8 +1,8 @@
-package seedu.address.logic.commands;
+package seedu.todolist.logic.commands;
 
 
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.todolist.commons.core.EventsCenter;
+import seedu.todolist.commons.events.ui.ShowHelpRequestEvent;
 
 /**
  * Format full help instructions for every command for display.
