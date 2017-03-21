@@ -16,7 +16,7 @@ import seedu.todolist.commons.events.ui.ExitAppRequestEvent;
 import seedu.todolist.commons.util.FxViewUtil;
 import seedu.todolist.logic.Logic;
 import seedu.todolist.model.UserPrefs;
-import seedu.todolist.model.task.ReadOnlyTask;
+import seedu.todolist.model.task.Task;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -199,7 +199,7 @@ public class MainWindow extends UiPart<Region> {
         return this.personListPanel;
     }
 
-    void loadPersonPage(ReadOnlyTask person) {
+    void loadPersonPage(Task person) {
         browserPanel.loadPersonPage(person);
     }
 
