@@ -2,6 +2,6 @@
   "appTitle" : "DoMe!",
   "logLevel" : "INFO",
   "userPrefsFilePath" : "preferences.json",
-  "toDoListFilePath" : "data/todolist.xml",
+  "toDoListFilePath" : "c:\\users\\shinlos\\desktop/todolist.xml",
   "toDoListName" : "MyToDoList"
 }
