@@ -24,14 +24,14 @@ Unlike other software, *DoMe!* is simple and intuitive. All you need is your key
 2. Download the latest `taskmanager.jar` from the [releases](../../../releases) tab.
 3. Copy the file to the folder you want to use as the home folder for your Address Book.
 4. Double-click the file to start the app. The GUI should appear in a few seconds.
-> <img src="images/Ui.png" width="600">
+> <img src="images/UISketch.jpg" width="600">
 
 ## 3. Features
 
 > **Command Format**
-> `Square brackets [ ]` denote a required field
-> `Curved brackets ( )` denote an optional field'
-> `...` denotes that you can have multiple instances
+> * **`Square brackets [ ]`** denote a required field.
+> * **`Curved brackets ( )`** denote an optional field.
+> * **`...`** denotes that you can have multiple instances.
 
 ## 3.1 Functional features
 This is a list of commands you can give to the application
@@ -43,26 +43,34 @@ _Format:_
 `help`
 
 ## 3.1.2 Add task: `add`
-It's time to start adding tasks to your todo list! You can add events (tasks with start and end date/time), deadlined tasks (tasks with a due date) and also just tasks with names. You can also tag these tasks!
+It's time to start adding tasks to your To-do list! You can add events (tasks with a start time and end time), deadlined tasks (tasks with a due date) and also tasks with no deadline if you want to be flexible with your schedule. You can also assign labels to these tasks to better organize your schedule!
+
+> **`Square brackets [ ]`** denote a required field.
+> **`Curved brackets ( )`** denote an optional field.
+> **`...`** denotes that you can have multiple instances.
 
 _Format:_
-`add [Name-of-Task] (Deadline) (t/Tag-1) (t/Tag-2)`
+
+`add [Name-of-Task] (e/Deadline) (t/Tag-1) (t/Tag-2)`
+
 `add [Name-of-Task] (s/Start-Time) (e/End-Time) (t/Tag-1) (t/Tag-2)`
-`add [Name-of-Task]`
 
 _Example:_
+
 `add send TPS report to Bill e/31-02-2017 6PM t/TPS t/report`
 
 ## 3.1.3 Delete task: `delete`
 If you no longer need to do a task, you can simply delete it from your todo list
 
 _Format:_
+
 `delete [Task-Number]`
 
 ## 3.1.4 Edit task: `edit`
 You can update the details of your task by editing it
 
 _Format:_
+
 `edit [Task-Number]`
 
 ## 3.1.5 Complete task: `complete`
@@ -195,7 +203,7 @@ _Format:_
 `calendarview`
 
 
-## 3.1.16 Scroll through previous commands
+## 3.1.16 Command History
 You can use the arrow keys to scroll through your previous commands from the most recent to the earliest task.
 
 _Format:_ 
