@@ -66,6 +66,7 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 
+        model.getFilteredTaskList();
         commandResultText = String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask);
         return new CommandResult(commandResultText);
     }
