@@ -277,29 +277,22 @@ public class MainWindow extends UiPart<Region> {
     //@@author A0144240W
     public void indicateButtonChange(String typeOfButton) {
         changeButtonsBackToOriginalState();
-        switch(typeOfButton) {
-
-        case ListCommand.TYPE_INCOMPLETE:
-            incompleteButton.getStyleClass().add(SELECTED);
-            break;
-
-        case ListCommand.TYPE_COMPLETE:
-            completedButton.getStyleClass().add(SELECTED);
-            break;
-
-        case ListCommand.TYPE_OVERDUE:
-            overdueButton.getStyleClass().add(SELECTED);
-            break;
-
-        case ListCommand.TYPE_UPCOMING:
+        if (typeOfButton.equals(ListCommand.TYPE_UPCOMING)) {
+            taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getSortedTaskList());
             upcomingButton.getStyleClass().add(SELECTED);
-            break;
+        } else {
+            taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
 
-        default:
-            allButton.getStyleClass().add(SELECTED);
-
+            if (typeOfButton.equals(ListCommand.TYPE_INCOMPLETE)) {
+                incompleteButton.getStyleClass().add(SELECTED);
+            } else if (typeOfButton.equals(ListCommand.TYPE_COMPLETE)) {
+                completedButton.getStyleClass().add(SELECTED);
+            } else if (typeOfButton.equals(ListCommand.TYPE_OVERDUE)) {
+                overdueButton.getStyleClass().add(SELECTED);
+            } else {
+                allButton.getStyleClass().add(SELECTED);
+            }
         }
     }
-
 
 }
