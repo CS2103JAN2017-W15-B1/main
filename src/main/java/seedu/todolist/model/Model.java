@@ -48,6 +48,9 @@ public interface Model {
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<Task> getFilteredTaskList();
 
+    /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
+    UnmodifiableObservableList<Task> getSortedTaskList();
+
     /** Returns the filtered task list of incomplete tasks as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     //@@author A0139633B
     UnmodifiableObservableList<Task> getFilteredIncompleteTaskList();
@@ -69,5 +72,7 @@ public interface Model {
 
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
+
+
 
 }
