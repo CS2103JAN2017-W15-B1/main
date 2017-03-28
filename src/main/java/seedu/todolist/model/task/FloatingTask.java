@@ -11,7 +11,6 @@ import seedu.todolist.model.tag.UniqueTagList;
  */
 public class FloatingTask extends Task {
 
-    private static final String TYPE = "FloatingTask";
     /**
      * name, tags is guaranteed to be present and not null.
      */
@@ -82,6 +81,6 @@ public class FloatingTask extends Task {
 
     @Override
     public String getType() {
-        return TYPE;
+        return Task.FLOATING_TYPE;
     }
 }
