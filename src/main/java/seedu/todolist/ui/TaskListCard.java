@@ -58,9 +58,9 @@ public class TaskListCard extends UiPart<Region> {
             taskIcon.setImage(end_type);
         } else if (task.getType().equals(Task.START_END_TYPE)) {
             taskIcon.setImage(start_end_type);
-        } else if(task.getType().equals(Task.START_TYPE)) {
+        } else if (task.getType().equals(Task.START_TYPE)) {
             taskIcon.setImage(start_type);
-        } else if(task.getType().equals(Task.FLOATING_TYPE)) {
+        } else if (task.getType().equals(Task.FLOATING_TYPE)) {
             taskIcon.setImage(floating_type);
         }
 
