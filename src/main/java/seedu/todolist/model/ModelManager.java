@@ -16,8 +16,8 @@ import seedu.todolist.commons.core.UnmodifiableObservableList;
 import seedu.todolist.commons.events.model.ToDoListChangedEvent;
 import seedu.todolist.commons.events.model.ViewListChangedEvent;
 import seedu.todolist.commons.util.CollectionUtil;
+import seedu.todolist.commons.util.FindUtil;
 import seedu.todolist.logic.commands.ListCommand;
-import seedu.todolist.model.tag.Tag;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.UniqueTaskList;
 import seedu.todolist.model.task.UniqueTaskList.TaskNotFoundException;
@@ -138,12 +138,11 @@ public class ModelManager extends ComponentManager implements Model {
         return new UnmodifiableObservableList<>(filteredTasks);
     }
 
+    //@@author A0144240W
     @Override
     public UnmodifiableObservableList<Task> getSortedTaskList() {
         return new UnmodifiableObservableList<>(sortedTasks);
     }
-
-
 
 
     @Override
@@ -288,8 +287,8 @@ public class ModelManager extends ComponentManager implements Model {
      * @param keywords
      * @return
      */
-    private Predicate<Task> findInIncomplete(Set<String> keywords) {
-        return p -> !p.isComplete() && containsIgnoreCase(p, keywords);
+    public Predicate<Task> findInIncomplete(Set<String> keywords) {
+        return p -> !p.isComplete() && FindUtil.containsIgnoreCase(p, keywords);
     }
 
     //@@author A0144240W
@@ -298,8 +297,8 @@ public class ModelManager extends ComponentManager implements Model {
      * @param keywords cannot be null
      *
      */
-    private Predicate<Task> findInComplete(Set<String> keywords) {
-        return p -> p.isComplete() && containsIgnoreCase(p, keywords);
+    public Predicate<Task> findInComplete(Set<String> keywords) {
+        return p -> p.isComplete() && FindUtil.containsIgnoreCase(p, keywords);
     }
 
     //@@author A0144240W
@@ -308,8 +307,8 @@ public class ModelManager extends ComponentManager implements Model {
      * @param keywords cannot be null
      *
      */
-    private Predicate<Task> findInOverdue(Set<String> keywords) {
-        return p -> isOverdue(p) && containsIgnoreCase(p, keywords);
+    public Predicate<Task> findInOverdue(Set<String> keywords) {
+        return p -> isOverdue(p) && FindUtil.containsIgnoreCase(p, keywords);
     }
 
     //@@author A0144240W
@@ -318,8 +317,8 @@ public class ModelManager extends ComponentManager implements Model {
      * @param keywords cannot be null
      *
      */
-    private Predicate<Task> findInUpcoming(Set<String> keywords) {
-        return p -> isUpcoming(p) && containsIgnoreCase(p, keywords);
+    public Predicate<Task> findInUpcoming(Set<String> keywords) {
+        return p -> isUpcoming(p) && FindUtil.containsIgnoreCase(p, keywords);
     }
 
     //@@author A0144240W
@@ -328,63 +327,10 @@ public class ModelManager extends ComponentManager implements Model {
      * @param keywords cannot be null
      *
      */
-    private Predicate<Task> findInAll(Set<String> keywords) {
-        return p -> containsIgnoreCase(p, keywords);
+    public Predicate<Task> findInAll(Set<String> keywords) {
+        return p -> FindUtil.containsIgnoreCase(p, keywords);
     }
 
-
-    //@@author A0144240W
-    /**
-     * Returns true if the task has keywords in its tags or name
-     * @param keywords cannot be null
-     *
-     */
-    private boolean containsIgnoreCase(Task task, Set<String> keywords) {
-        for (String word : keywords) {
-            String preppedWord = word.trim();
-            if (preppedWord.startsWith("t/")) {
-                String preppedTag = preppedWord.substring(2);
-                if (matchTag(task.getTags().toSet(), preppedTag)) {
-                    return true;
-                }
-            } else {
-                if (matchName(task.getName().toString(), preppedWord)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    //@@author A0144240W
-    /**
-     * Returns true if the set of tags contain the searchTag
-     * Ignores case, a full tag match is required.
-     * @return
-     */
-    private boolean matchTag(Set<Tag> tags, String searchTag) {
-        for (Tag tag : tags) {
-            if (tag.getTagName().toLowerCase().equals(searchTag.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //@@author A0144240W
-    /**
-     * Returns true if the taskName contains the searchName
-     * Ignores case, a full word match is not required.
-     * @param taskName must not be null
-     * @param searchName must not be null
-     *
-     */
-    private boolean matchName(String taskName, String searchName) {
-        if (taskName.toLowerCase().contains(searchName.toLowerCase())) {
-            return true;
-        }
-        return false;
-    }
 
     //@@author A0144240W
     /**
