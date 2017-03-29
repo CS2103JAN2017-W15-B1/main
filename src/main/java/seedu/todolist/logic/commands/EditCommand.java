@@ -65,8 +65,8 @@ public class EditCommand extends Command {
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
-        model.updateFilteredListToShowAll();
 
+        model.getFilteredIncompleteTaskList();
         commandResultText = String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask);
         return new CommandResult(commandResultText);
     }

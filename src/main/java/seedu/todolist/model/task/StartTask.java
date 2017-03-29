@@ -11,7 +11,6 @@ import seedu.todolist.model.tag.UniqueTagList;
  */
 public class StartTask extends Task {
 
-    private static final String TYPE = "StartTask";
     private StartTime startTime;
 
     /**
@@ -93,6 +92,6 @@ public class StartTask extends Task {
 
     @Override
     public String getType() {
-        return TYPE;
+        return Task.START_TYPE;
     }
 }

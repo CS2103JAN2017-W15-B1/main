@@ -30,7 +30,9 @@ public class TaskListCard extends UiPart<Region> {
     @FXML
     private Label complete;
     @FXML
-    private ImageView imageView;
+    private ImageView statusIcon;
+    @FXML
+    private ImageView taskIcon;
 
 
     public TaskListCard(Task task, int displayedIndex) {
@@ -43,10 +45,26 @@ public class TaskListCard extends UiPart<Region> {
         Image incompleteIcon = new Image("/images/incomplete-icon.png");
         Image completeIcon = new Image("/images/complete-icon.png");
         if (!task.isComplete()) {
-            imageView.setImage(incompleteIcon);
+            statusIcon.setImage(incompleteIcon);
         } else {
-            imageView.setImage(completeIcon);
+            statusIcon.setImage(completeIcon);
         }
+
+        Image end_type = new Image("/images/end-task-icon.png");
+        Image start_end_type = new Image("/images/start-end-task-icon.png");
+        Image start_type = new Image("/images/start-task-icon.png");
+        Image floating_type = new Image("/images/floating-task-icon.png");
+        if (task.getType().equals(Task.END_TYPE)) {
+            taskIcon.setImage(end_type);
+        } else if (task.getType().equals(Task.START_END_TYPE)) {
+            taskIcon.setImage(start_end_type);
+        } else if (task.getType().equals(Task.START_TYPE)) {
+            taskIcon.setImage(start_type);
+        } else if (task.getType().equals(Task.FLOATING_TYPE)) {
+            taskIcon.setImage(floating_type);
+        }
+
+
         initTags(task);
     }
 
