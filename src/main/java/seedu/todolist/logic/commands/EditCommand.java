@@ -83,8 +83,11 @@ public class EditCommand extends Command {
         StartTime updatedStartTime = editTaskDescriptor.getStartTime().orElseGet(taskToEdit::getStartTime);
         EndTime updatedEndTime = editTaskDescriptor.getEndTime().orElseGet(taskToEdit::getEndTime);
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
+        boolean isComplete = taskToEdit.isComplete();
+        String description = taskToEdit.getDescription();
 
-        return TaskParser.parseTask(updatedName, updatedStartTime, updatedEndTime, updatedTags);
+        return TaskParser.parseTask(updatedName, updatedStartTime, updatedEndTime, updatedTags,
+                isComplete, description);
     }
 
     /**
