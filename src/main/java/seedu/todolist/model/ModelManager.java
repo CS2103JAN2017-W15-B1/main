@@ -175,7 +175,7 @@ public class ModelManager extends ComponentManager implements Model {
         resetViews();
         isViewOverdue = true;
         filteredTasks.setPredicate((Predicate<? super Task>) task -> {
-            return isOverdue(task);
+            return isOverdue(task) && !task.isComplete();
         });
         indicateViewListChanged(ListCommand.TYPE_OVERDUE);
         return new UnmodifiableObservableList<>(filteredTasks);
@@ -207,7 +207,7 @@ public class ModelManager extends ComponentManager implements Model {
         isViewUpcoming = true;
         //get tasks that are incomplete and are not overdue
         filteredTasks.setPredicate((Predicate<? super Task>) task -> {
-            return isUpcoming(task);
+            return isUpcoming(task) && !task.isComplete();
         });
         indicateViewListChanged(ListCommand.TYPE_UPCOMING);
         return new UnmodifiableObservableList<>(filteredTasks);
