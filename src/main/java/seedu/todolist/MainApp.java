@@ -182,6 +182,8 @@ public class MainApp extends Application {
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }
+        GoogleIntegration integrator = new GoogleIntegration();
+        logger.info("====================== [ Storing Data Into Google Calendar ] =======================");
         Platform.exit();
         System.exit(0);
     }
