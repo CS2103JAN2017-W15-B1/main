@@ -126,5 +126,9 @@ public class GoogleIntegration {
             }
         }
     }
-
+    
+    public void add(Task taskToAdd) {
+        //Add a new Event into the user's Google Calendar
+        
+    }
 }
