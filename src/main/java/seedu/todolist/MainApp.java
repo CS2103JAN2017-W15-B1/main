@@ -72,6 +72,7 @@ public class MainApp extends Application {
         logger.info("=============================[ try accessing google calendar ]===========================");
         GoogleIntegration integrator = new GoogleIntegration();
         integrator.run();
+        integrator.sync(model);
     }
 
     private String getApplicationParameter(String parameterName) {
