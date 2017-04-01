@@ -15,11 +15,15 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.*;
 
+import seedu.todolist.model.Model;
+import seedu.todolist.model.task.Task;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Iterator;
 
 public class GoogleIntegration {
     /** Application name. */
@@ -129,6 +133,42 @@ public class GoogleIntegration {
     
     public void add(Task taskToAdd) {
         //Add a new Event into the user's Google Calendar
-        
+        ;
+    }
+    
+    /*
+     * Import the current Tasks in storage to Google Calendar.
+     * Meant to be only called once when the application first initiate.
+     */
+    public void sync(Model model) throws IOException {
+        com.google.api.services.calendar.Calendar service = getCalendarService();
+        Iterator<Task> taskIterator = model.getToDoList().getTaskList().iterator();
+        while (taskIterator.hasNext()) {
+            Task taskToSync = taskIterator.next();
+            DateTime startDate = new DateTime(
+                    (taskToSync.getStartTime() != null ?
+                            taskToSync.getStartTime().getStartTime()
+                            : null));
+            DateTime endDate = new DateTime(
+                    (taskToSync.getEndTime() != null ?
+                            taskToSync.getEndTime().getEndTime()
+                            : null));
+            EventDateTime start = new EventDateTime()
+                    .setDate(startDate)
+                    .setTimeZone("Singapore");
+            EventDateTime end = new EventDateTime()
+                    .setDate(endDate)
+                    .setTimeZone("Singapore");
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(true);
+            Event taskEvent = new Event()
+                    .setDescription(taskToSync.getDescription())
+                    .setStart(start)
+                    .setEnd(end)
+                    .setReminders(reminders);
+            String calendarId = "primary"; //why ah?
+            taskEvent = service.events().insert(calendarId, taskEvent).execute();
+            System.out.printf("Event added: %s\n", taskEvent.getHtmlLink());
+        }
     }
 }
