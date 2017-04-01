@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import seedu.todolist.commons.core.Config;
 import seedu.todolist.commons.core.EventsCenter;
+import seedu.todolist.commons.core.GoogleIntegration;
 import seedu.todolist.commons.core.LogsCenter;
 import seedu.todolist.commons.core.Version;
 import seedu.todolist.commons.events.ui.ExitAppRequestEvent;
@@ -66,6 +67,11 @@ public class MainApp extends Application {
         ui = new UiManager(logic, config, userPrefs);
 
         initEventsCenter();
+        
+        //try accessing google calendar
+        logger.info("=============================[ try accessing google calendar ]===========================");
+        GoogleIntegration integrator = new GoogleIntegration();
+        integrator.run();
     }
 
     private String getApplicationParameter(String parameterName) {
