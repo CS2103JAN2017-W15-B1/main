@@ -18,6 +18,7 @@ import seedu.todolist.commons.core.Version;
 import seedu.todolist.commons.events.ui.ExitAppRequestEvent;
 import seedu.todolist.commons.exceptions.DataConversionException;
 import seedu.todolist.commons.util.ConfigUtil;
+import seedu.todolist.commons.util.IntegrationUtil;
 import seedu.todolist.commons.util.StringUtil;
 import seedu.todolist.logic.Logic;
 import seedu.todolist.logic.LogicManager;
@@ -55,7 +56,7 @@ public class MainApp extends Application {
 
         config = initConfig(getApplicationParameter("config"));
         storage = new StorageManager(config.getToDoListFilePath(), config.getUserPrefsFilePath());
-
+        
         userPrefs = initPrefs(config);
 
         initLogging(config);
@@ -72,7 +73,13 @@ public class MainApp extends Application {
         logger.info("=============================[ try accessing google calendar ]===========================");
         GoogleIntegration integrator = new GoogleIntegration();
         integrator.run();
-        integrator.sync(model);
+        if (!IntegrationUtil.isSynced(config.getIntegrationFilePath())) {
+            System.out.println("Attempting syncing for the first time");
+            integrator.sync(model);
+            IntegrationUtil.updateStatus(config.getIntegrationFilePath());
+        } else {
+            System.out.println("Already synced to this account before");
+        }
     }
 
     private String getApplicationParameter(String parameterName) {
@@ -183,8 +190,6 @@ public class MainApp extends Application {
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }
-        GoogleIntegration integrator = new GoogleIntegration();
-        logger.info("====================== [ Storing Data Into Google Calendar ] =======================");
         Platform.exit();
         System.exit(0);
     }
