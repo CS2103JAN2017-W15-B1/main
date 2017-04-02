@@ -39,16 +39,14 @@ public class AddCommand extends Command {
         assert model != null;
         try {
             model.addTask(toAdd);
-            try {
-                GoogleIntegration integrator = new GoogleIntegration();
-                integrator.add(toAdd);
-            } catch (IOException ioe) {
-                System.out.println(ioe.getMessage());
-            }
+            GoogleIntegration integrator = new GoogleIntegration();
+            integrator.add(toAdd);
             commandResultText = String.format(MESSAGE_SUCCESS, toAdd);
             return new CommandResult(commandResultText);
-        } catch (UniqueTaskList.DuplicateTaskException e) {
+        } catch (UniqueTaskList.DuplicateTaskException e) {;
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        } catch (IOException ioe) {
+            throw new CommandException(ioe.getMessage());
         }
     }
 
