@@ -102,6 +102,6 @@ public class StartEndTask extends Task {
 
     @Override
     public String getType() {
-        return Task.START_END_TYPE;
+        return Task.TYPE_START_END;
     }
 }
