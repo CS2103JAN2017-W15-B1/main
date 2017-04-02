@@ -45,8 +45,8 @@ public class AddCommand extends Command {
             return new CommandResult(commandResultText);
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
-        } catch (IOException ioe) {
-            throw new CommandException(ioe.getMessage());
+        } catch (Exception ie) {
+            throw new CommandException(ie.getMessage());
         }
     }
 
