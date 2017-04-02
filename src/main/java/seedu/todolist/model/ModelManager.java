@@ -32,13 +32,15 @@ public class ModelManager extends ComponentManager implements Model {
     private final ToDoList toDoList;
     private final FilteredList<Task> filteredTasks;
     private final SortedList<Task> sortedTasks;
-    private boolean isViewIncomplete, isViewComplete, isViewOverdue, isViewUpcoming, isViewAll;
+    private boolean isViewIncomplete, isViewComplete, isViewOverdue, isViewUpcoming;
     private static final String RESET = "reset";
     private static final String DELETE = "delete";
     private static final String ADD = "add";
     private static final String COMPLETE = "complete";
     private static final String UPDATE = "update";
     private static final String DESCRIBE = "describe";
+
+    private static final int ERROR_VALUE = 0;
 
 
     /**
@@ -58,7 +60,6 @@ public class ModelManager extends ComponentManager implements Model {
 
     public ModelManager() {
         this(new ToDoList(), new UserPrefs());
-        isViewAll = true;
     }
 
     @Override
@@ -107,7 +108,6 @@ public class ModelManager extends ComponentManager implements Model {
         toDoList.addTask(task);
         getFilteredIncompleteTaskList();
         indicateToDoListChanged(ADD);
-       // EventsCenter.getInstance().post(new JumpToListRequestEvent(index - 1));
 
     }
 
@@ -143,7 +143,6 @@ public class ModelManager extends ComponentManager implements Model {
     public UnmodifiableObservableList<Task> getSortedTaskList() {
         return new UnmodifiableObservableList<>(sortedTasks);
     }
-
 
     @Override
     //@@author A0139633B
@@ -181,7 +180,23 @@ public class ModelManager extends ComponentManager implements Model {
         return new UnmodifiableObservableList<>(filteredTasks);
     }
 
+    @Override
     //@@author A0139633B
+    public UnmodifiableObservableList<Task> getFilteredUpcomingTaskList() {
+        resetViews();
+        isViewUpcoming = true;
+        //get tasks that are incomplete and are not overdue
+        filteredTasks.setPredicate((Predicate<? super Task>) task -> {
+            return isUpcoming(task) && !task.isComplete();
+        });
+        indicateViewListChanged(ListCommand.TYPE_UPCOMING);
+        return new UnmodifiableObservableList<>(filteredTasks);
+    }
+
+    //@@author A0139633B
+    /*
+     * Checks if the given task's end date exceeds the current datetime
+     */
     public boolean isOverdue(Task task) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
         Date currentDate = new Date();
@@ -199,20 +214,10 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
-
-    @Override
     //@@author A0139633B
-    public UnmodifiableObservableList<Task> getFilteredUpcomingTaskList() {
-        resetViews();
-        isViewUpcoming = true;
-        //get tasks that are incomplete and are not overdue
-        filteredTasks.setPredicate((Predicate<? super Task>) task -> {
-            return isUpcoming(task);
-        });
-        indicateViewListChanged(ListCommand.TYPE_UPCOMING);
-        return new UnmodifiableObservableList<>(filteredTasks);
-    }
-
+    /*
+     * Checks that the task is not overdue and not completed
+     */
     private boolean isUpcoming(Task task) {
       //get current time and compare with the task's end time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
@@ -231,8 +236,8 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
-    //Comparator for Date
     //@@author A0139633B
+    //Comparator for Date
     Comparator<? super Task> dateComparator = new Comparator<Task>() {
         @Override
         public int compare(Task firstTask, Task secondTask) {
@@ -246,7 +251,7 @@ public class ModelManager extends ComponentManager implements Model {
                     return firstTaskDueDate.compareTo(secondTaskDueDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
-                    return 0; //dummy value
+                    return ERROR_VALUE;
                 }
             } else {
                 return 1;
@@ -257,7 +262,6 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void updateFilteredListToShowAll() {
         resetViews();
-        isViewAll = true;
         indicateViewListChanged(ListCommand.TYPE_ALL);
         filteredTasks.setPredicate(null);
     }
@@ -341,7 +345,6 @@ public class ModelManager extends ComponentManager implements Model {
         isViewIncomplete = false;
         isViewOverdue = false;
         isViewUpcoming = false;
-        isViewAll = false;
     }
 }
 
