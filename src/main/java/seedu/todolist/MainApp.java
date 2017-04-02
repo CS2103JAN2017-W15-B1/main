@@ -56,7 +56,7 @@ public class MainApp extends Application {
 
         config = initConfig(getApplicationParameter("config"));
         storage = new StorageManager(config.getToDoListFilePath(), config.getUserPrefsFilePath());
-        
+
         userPrefs = initPrefs(config);
 
         initLogging(config);
@@ -68,7 +68,7 @@ public class MainApp extends Application {
         ui = new UiManager(logic, config, userPrefs);
 
         initEventsCenter();
-        
+
         if (!IntegrationUtil.isSynced(config.getIntegrationFilePath())) {
             GoogleIntegration integrator = new GoogleIntegration();
             System.out.println("Attempting syncing for the first time");

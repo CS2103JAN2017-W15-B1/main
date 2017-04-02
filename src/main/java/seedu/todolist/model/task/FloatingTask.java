@@ -81,6 +81,6 @@ public class FloatingTask extends Task {
 
     @Override
     public String getType() {
-        return Task.FLOATING_TYPE;
+        return Task.TYPE_FLOATING;
     }
 }

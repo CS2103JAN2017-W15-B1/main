@@ -46,7 +46,7 @@ public class Config {
     public String getToDoListFilePath() {
         return toDoListFilePath;
     }
-    
+
     public String getIntegrationFilePath() {
         return integrationFilePath;
     }

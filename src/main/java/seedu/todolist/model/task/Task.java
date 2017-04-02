@@ -8,10 +8,10 @@ import seedu.todolist.model.tag.UniqueTagList;
  */
 public abstract class Task {
 
-    public static String END_TYPE = "endTask";
-    public static String START_END_TYPE = "startEndTask";
-    public static String START_TYPE = "startTask";
-    public static String FLOATING_TYPE = "floatingTask";
+    public static String TYPE_END = "endTask";
+    public static String TYPE_START_END = "startEndTask";
+    public static String TYPE_START = "startTask";
+    public static String TYPE_FLOATING = "floatingTask";
 
     protected Name name;
     protected UniqueTagList tags;
