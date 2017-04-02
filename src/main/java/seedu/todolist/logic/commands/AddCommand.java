@@ -43,7 +43,7 @@ public class AddCommand extends Command {
             integrator.add(toAdd);
             commandResultText = String.format(MESSAGE_SUCCESS, toAdd);
             return new CommandResult(commandResultText);
-        } catch (UniqueTaskList.DuplicateTaskException e) {;
+        } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         } catch (IOException ioe) {
             throw new CommandException(ioe.getMessage());
