@@ -15,6 +15,7 @@ public class Config {
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.json";
     private String toDoListFilePath = "data/todolist.xml";
+    private String integrationFilePath = "data/integration.txt";
     private String toDoListName = "MyToDoList";
 
 
@@ -44,6 +45,10 @@ public class Config {
 
     public String getToDoListFilePath() {
         return toDoListFilePath;
+    }
+    
+    public String getIntegrationFilePath() {
+        return integrationFilePath;
     }
 
     public void setToDoListFilePath(String toDoListFilePath) {

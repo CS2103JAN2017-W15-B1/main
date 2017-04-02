@@ -52,12 +52,19 @@ public class GoogleIntegration {
      * If modifying these scopes, delete your previously saved credentials
      * at ~/.credentials/calendar-java-quickstart
      */
-    private static final List<String> SCOPES = Arrays.asList(CalendarScopes.CALENDAR_READONLY);
+    private static final List<String> SCOPES = Arrays.asList("https://www.googleapis.com/auth/calendar");
     
+    /**
+     * Represent an authorized calendar client
+     */
+    private final com.google.api.services.calendar.Calendar service;
+
     /**
      * Default constructor
      */
-    public GoogleIntegration() { }
+    public GoogleIntegration() throws IOException { 
+        this.service = getCalendarService();
+    }
 
     static {
         try {
@@ -111,10 +118,10 @@ public class GoogleIntegration {
         // Build a new authorized API client service.
         // Note: Do not confuse this class with the
         //   com.google.api.services.calendar.model.Calendar class.
-        com.google.api.services.calendar.Calendar service = getCalendarService();
-
         // List the next 10 events from the primary calendar.
         DateTime now = new DateTime(System.currentTimeMillis());
+        CalendarListEntry calendarListEntry = service.calendarList().get("primary").execute();
+        System.out.println(calendarListEntry.getSummary());
         Events events = service.events().list("primary")
                 .setMaxResults(10)
                 .setTimeMin(now)
@@ -135,56 +142,60 @@ public class GoogleIntegration {
             }
         }
     }
-    
+
     public void add(Task taskToAdd) {
         //Add a new Event into the user's Google Calendar
         ;
     }
-    
+
     /*
      * Import the current Tasks in storage to Google Calendar.
      * Meant to be only called once when the application first initiate.
      */
     public void sync(Model model) throws IOException {
-        com.google.api.services.calendar.Calendar service = getCalendarService();
         Iterator<Task> taskIterator = model.getToDoList().getTaskList().iterator();
         while (taskIterator.hasNext()) {
-            Task taskToSync = taskConverter(taskIterator.next());
-            DateTime startDate = new DateTime(
-                    (taskToSync.getStartTime() != null ?
-                            taskToSync.getStartTime().getStartTime()
-                            : null));
-            DateTime endDate = new DateTime(
-                    (taskToSync.getEndTime() != null ?
-                            taskToSync.getEndTime().getEndTime()
-                            : null));
-            EventDateTime start = new EventDateTime()
-                    .setDate(startDate)
-                    .setTimeZone("Singapore");
-            EventDateTime end = new EventDateTime()
-                    .setDate(endDate)
-                    .setTimeZone("Singapore");
-            Event.Reminders reminders = new Event.Reminders()
-                    .setUseDefault(true);
-            Event taskEvent = new Event()
-                    .setDescription(taskToSync.getDescription())
-                    .setStart(start)
-                    .setEnd(end)
-                    .setReminders(reminders);
-            String calendarId = "primary"; //why ah?
-            taskEvent = service.events().insert(calendarId, taskEvent).execute();
-            System.out.printf("Event added: %s\n", taskEvent.getHtmlLink());
+            Task taskToSync = taskIterator.next();
+            if (taskToSync.getStartTime() != null || taskToSync.getEndTime() != null) {
+                taskToSync = taskConverter(taskToSync);
+                DateTime startDate = new DateTime(
+                        (taskToSync.getStartTime() != null ?
+                                taskToSync.getStartTime().getStartTime()
+                                : null));
+                DateTime endDate = new DateTime(
+                        (taskToSync.getEndTime() != null ?
+                                taskToSync.getEndTime().getEndTime()
+                                : null));
+                EventDateTime start = new EventDateTime()
+                        .setDateTime(startDate)
+                        .setTimeZone("Singapore");
+                EventDateTime end = new EventDateTime()
+                        .setDateTime(endDate)
+                        .setTimeZone("Singapore");
+                Event.Reminders reminders = new Event.Reminders()
+                        .setUseDefault(true);
+                Event taskEvent = new Event()
+                        .setSummary(taskToSync.getName().toString())
+                        .setDescription(taskToSync.getDescription())
+                        .setStart(start)
+                        .setEnd(end)
+                        .setReminders(reminders);
+                
+                String calendarId = "primary"; //why ah - oh because my app only has write access here
+                taskEvent = service.events().insert(calendarId, taskEvent).execute();
+                System.out.printf("Event added: %s\n", taskEvent.getHtmlLink());
+            }
         }
     }
-    
+
     /*
      * A helper method that pre-process a Task to use Google API
      */
     Task taskConverter(Task task) {
         assert (task.getStartTime() != null || task.getEndTime() != null);
-        
+
         Task processedTask;
-        
+
         if (task.getStartTime() == null) {
             StartTime defaultStart = new StartTime(addHour(task.getEndTime().getEndTime(),
                     false));
@@ -212,7 +223,7 @@ public class GoogleIntegration {
         }
         return processedTask;
     }
-    
+
     /*
      * A helper method that creates a new Date object
      * one hour before the input Date object
