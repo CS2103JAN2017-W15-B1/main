@@ -2,31 +2,29 @@ package seedu.todolist.logic.commands;
 
 import java.io.IOException;
 
-import seedu.todolist.commons.core.Config;
-import seedu.todolist.commons.util.ConfigUtil;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 
 //@@author A0139633B
 /*
- * Changes the save location of save file
+ * Exports the save file of the location
  */
-public class ChangeStoragePathCommand extends Command {
+public class ExportSaveCommand extends Command {
 
-    public static final String COMMAND_WORD = "changestorage";
+    public static final String COMMAND_WORD = "exportsave";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Changes where the to-do list is saved. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exports the saved file for the app. "
             + "Parameters: PATH_TO_FILE\n"
             + "Example: " + COMMAND_WORD
-            + " different_folder";
+            + " some_folder";
 
-    public static final String MESSAGE_SUCCESS = "Storage path changed to: %1$s";
+    public static final String MESSAGE_SUCCESS = "Save file exported to: %1$s";
     public static final String MESSAGE_FAILURE = "Error saving to path: %1$s";
 
     private String commandText;
     private final String path;
 
     //takes in an relative or absolute path
-    public ChangeStoragePathCommand(String path) {
+    public ExportSaveCommand(String path) {
         this.path = path + "/todolist.xml";
     }
 
@@ -34,9 +32,6 @@ public class ChangeStoragePathCommand extends Command {
     public CommandResult execute() throws CommandException {
         assert config != null;
         try {
-            config.setToDoListFilePath(this.path);
-            ConfigUtil.saveConfig(config, Config.DEFAULT_CONFIG_FILE);
-            storage.changeToDoListFilePath(this.path);
             storage.saveToDoList(model.getToDoList(), this.path);
             return new CommandResult(String.format(MESSAGE_SUCCESS, this.path));
         } catch (IOException e) {
