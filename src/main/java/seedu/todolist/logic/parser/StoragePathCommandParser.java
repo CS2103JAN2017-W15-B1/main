@@ -11,7 +11,7 @@ import seedu.todolist.logic.commands.IncorrectCommand;
 /**
  * Parses input arguments and creates a new DeleteCommand object
  */
-public class ChangeStoragePathCommandParser {
+public class StoragePathCommandParser {
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
@@ -20,11 +20,15 @@ public class ChangeStoragePathCommandParser {
     public Command parse(String args) {
         String path = FileUtil.getPath(args.trim().toLowerCase());
 
-        if (path.equals("")) { //need to think of more things to check for
+        if (isEmptyPath(path)) {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ChangeStoragePathCommand.MESSAGE_USAGE));
         }
 
         return new ChangeStoragePathCommand(path);
+    }
+
+    private boolean isEmptyPath(String path) {
+        return path.equals("");
     }
 }
