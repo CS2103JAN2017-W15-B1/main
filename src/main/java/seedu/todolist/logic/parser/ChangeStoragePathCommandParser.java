@@ -29,6 +29,6 @@ public class ChangeStoragePathCommandParser {
     }
 
     private boolean isEmptyPath(String path) {
-        return path.equals("");
+        return "".equals(path);
     }
 }
