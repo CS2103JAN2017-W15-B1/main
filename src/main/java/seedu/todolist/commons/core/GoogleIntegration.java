@@ -114,77 +114,56 @@ public class GoogleIntegration {
                 .build();
     }
 
-    public void run() throws IOException {
-        // Build a new authorized API client service.
-        // Note: Do not confuse this class with the
-        //   com.google.api.services.calendar.model.Calendar class.
-        // List the next 10 events from the primary calendar.
-        DateTime now = new DateTime(System.currentTimeMillis());
-        CalendarListEntry calendarListEntry = service.calendarList().get("primary").execute();
-        System.out.println(calendarListEntry.getSummary());
-        Events events = service.events().list("primary")
-                .setMaxResults(10)
-                .setTimeMin(now)
-                .setOrderBy("startTime")
-                .setSingleEvents(true)
-                .execute();
-        List<Event> items = events.getItems();
-        if (items.size() == 0) {
-            System.out.println("No upcoming events found.");
-        } else {
-            System.out.println("Upcoming events");
-            for (Event event : items) {
-                DateTime start = event.getStart().getDateTime();
-                if (start == null) {
-                    start = event.getStart().getDate();
-                }
-                System.out.printf("%s (%s)\n", event.getSummary(), start);
-            }
-        }
-    }
-
     public void add(Task taskToAdd) {
         //Add a new Event into the user's Google Calendar
-        ;
+        //Does not allow floating Task
+        if (taskToAdd.getStartTime() != null || taskToAdd.getEndTime() != null) {
+            System.out.println("Running add to google calendar ...");
+            taskToAdd = taskConverter(taskToAdd);
+            DateTime startDate = new DateTime(
+                    (taskToAdd.getStartTime() != null ?
+                            taskToAdd.getStartTime().getStartTime()
+                            : null));
+            DateTime endDate = new DateTime(
+                    (taskToAdd.getEndTime() != null ?
+                            taskToAdd.getEndTime().getEndTime()
+                            : null));
+            EventDateTime start = new EventDateTime()
+                    .setDateTime(startDate)
+                    .setTimeZone("Singapore");
+            EventDateTime end = new EventDateTime()
+                    .setDateTime(endDate)
+                    .setTimeZone("Singapore");
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(true);
+            Event taskEvent = new Event()
+                    .setSummary(taskToAdd.getName().toString())
+                    .setDescription(taskToAdd.getDescription())
+                    .setStart(start)
+                    .setEnd(end)
+                    .setReminders(reminders);
+
+            try {
+                String calendarId = "primary";
+                taskEvent = service.events().insert(calendarId, taskEvent).execute();
+                System.out.printf("Event added successfully: %s\n", taskToAdd.toString());
+            } catch (IOException ioe) {
+                System.out.println("Task could not be added to Google Calendar\n"
+                        + ioe.getMessage());
+            }
+        }
     }
 
     /*
      * Import the current Tasks in storage to Google Calendar.
      * Meant to be only called once when the application first initiate.
      */
-    public void sync(Model model) throws IOException {
+    public void sync(Model model) {
+        System.out.println("Running Google Sync...");
         Iterator<Task> taskIterator = model.getToDoList().getTaskList().iterator();
         while (taskIterator.hasNext()) {
             Task taskToSync = taskIterator.next();
-            if (taskToSync.getStartTime() != null || taskToSync.getEndTime() != null) {
-                taskToSync = taskConverter(taskToSync);
-                DateTime startDate = new DateTime(
-                        (taskToSync.getStartTime() != null ?
-                                taskToSync.getStartTime().getStartTime()
-                                : null));
-                DateTime endDate = new DateTime(
-                        (taskToSync.getEndTime() != null ?
-                                taskToSync.getEndTime().getEndTime()
-                                : null));
-                EventDateTime start = new EventDateTime()
-                        .setDateTime(startDate)
-                        .setTimeZone("Singapore");
-                EventDateTime end = new EventDateTime()
-                        .setDateTime(endDate)
-                        .setTimeZone("Singapore");
-                Event.Reminders reminders = new Event.Reminders()
-                        .setUseDefault(true);
-                Event taskEvent = new Event()
-                        .setSummary(taskToSync.getName().toString())
-                        .setDescription(taskToSync.getDescription())
-                        .setStart(start)
-                        .setEnd(end)
-                        .setReminders(reminders);
-                
-                String calendarId = "primary"; //why ah - oh because my app only has write access here
-                taskEvent = service.events().insert(calendarId, taskEvent).execute();
-                System.out.printf("Event added: %s\n", taskEvent.getHtmlLink());
-            }
+            add(taskToSync);
         }
     }
 
