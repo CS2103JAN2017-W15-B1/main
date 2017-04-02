@@ -16,12 +16,17 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.*;
 
 import seedu.todolist.model.Model;
+import seedu.todolist.model.task.EndTime;
+import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
+import seedu.todolist.model.task.parser.TaskParser;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Iterator;
 
@@ -144,7 +149,7 @@ public class GoogleIntegration {
         com.google.api.services.calendar.Calendar service = getCalendarService();
         Iterator<Task> taskIterator = model.getToDoList().getTaskList().iterator();
         while (taskIterator.hasNext()) {
-            Task taskToSync = taskIterator.next();
+            Task taskToSync = taskConverter(taskIterator.next());
             DateTime startDate = new DateTime(
                     (taskToSync.getStartTime() != null ?
                             taskToSync.getStartTime().getStartTime()
@@ -170,5 +175,57 @@ public class GoogleIntegration {
             taskEvent = service.events().insert(calendarId, taskEvent).execute();
             System.out.printf("Event added: %s\n", taskEvent.getHtmlLink());
         }
+    }
+    
+    /*
+     * A helper method that pre-process a Task to use Google API
+     */
+    Task taskConverter(Task task) {
+        assert (task.getStartTime() != null || task.getEndTime() != null);
+        
+        Task processedTask;
+        
+        if (task.getStartTime() == null) {
+            StartTime defaultStart = new StartTime(addHour(task.getEndTime().getEndTime(),
+                    false));
+            processedTask = TaskParser.parseTask(
+                    task.getName(),
+                    defaultStart,
+                    task.getEndTime(),
+                    task.getTags(),
+                    task.isComplete(),
+                    task.getDescription());
+        }
+        else if (task.getEndTime() == null) {
+            EndTime defaultEnd = new EndTime(addHour(task.getStartTime().getStartTime(),
+                    true));
+            processedTask = TaskParser.parseTask(
+                    task.getName(),
+                    task.getStartTime(),
+                    defaultEnd,
+                    task.getTags(),
+                    task.isComplete(),
+                    task.getDescription());
+        }
+        else {
+            processedTask = TaskParser.parseTask(task);
+        }
+        return processedTask;
+    }
+    
+    /*
+     * A helper method that creates a new Date object
+     * one hour before the input Date object
+     */
+    Date addHour(Date date, boolean up) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        if (up) {
+            cal.add(Calendar.HOUR_OF_DAY, 1);
+        }
+        else {
+            cal.add(Calendar.HOUR_OF_DAY, -1);
+        }
+        return cal.getTime();
     }
 }
