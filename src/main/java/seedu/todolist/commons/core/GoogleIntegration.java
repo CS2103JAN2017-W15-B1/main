@@ -38,14 +38,8 @@ public class GoogleIntegration {
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"), ".credentials/dome-java");
 
-    /** Global instance of the {@link FileDataStoreFactory}. */
-    private static FileDataStoreFactory DATA_FACTORY;
-
     /** Global instance of the JSON factory. */
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-
-    /** Global instance of the HTTP transport. */
-    private static HttpTransport HTTP_TRANSPORT;
 
     /**
      * Global instance of the scopes required by this quickstart.
@@ -62,15 +56,7 @@ public class GoogleIntegration {
     /**
      * Default constructor
      */
-    public GoogleIntegration() throws IOException {
-        try {
-            HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            DATA_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
-        } catch (Throwable t) {
-            System.out.println("Some error when initializing google integration object");
-            t.printStackTrace();
-            System.exit(1);
-        }
+    public GoogleIntegration() throws Exception {
         this.service = getCalendarService();
     }
 
@@ -79,12 +65,15 @@ public class GoogleIntegration {
      * @return an authorized Credential object.
      * @throws IOException.
      */
-    public static Credential authorize() throws IOException {
+    public static Credential authorize() throws Exception {
         // Load client secrets.
         InputStream in = GoogleIntegration.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
-
+        
+        FileDataStoreFactory DATA_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+        HttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow =
                 new GoogleAuthorizationCodeFlow.Builder(
@@ -104,8 +93,9 @@ public class GoogleIntegration {
      * @return an authorized Calendar client service.
      * @throws IOException
      */
-    public static com.google.api.services.calendar.Calendar getCalendarService() throws IOException {
+    public static com.google.api.services.calendar.Calendar getCalendarService() throws Exception {
         Credential credential = authorize();
+        HttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         return new com.google.api.services.calendar.Calendar.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
