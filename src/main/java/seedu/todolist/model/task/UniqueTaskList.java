@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.todolist.commons.core.UnmodifiableObservableList;
+import seedu.todolist.commons.core.GoogleIntegration;
 import seedu.todolist.commons.exceptions.DuplicateDataException;
 import seedu.todolist.commons.util.CollectionUtil;
 import seedu.todolist.model.task.parser.TaskParser;
@@ -32,15 +33,18 @@ public class UniqueTaskList implements Iterable<Task> {
 
     /**
      * Adds a task to the list.
-     *
+     * Integrate with Google Calendar.
      * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
-    public void add(Task toAdd) throws DuplicateTaskException {
+    public void add(Task toAdd)
+            throws DuplicateTaskException, IOException {
         assert toAdd != null;
         if (contains(toAdd)) {
             throw new DuplicateTaskException();
         }
         internalList.add(toAdd);
+        GoogleIntegration integrator = new GoogleIntegration();
+        integrator.add(toAdd);
     }
 
     /**
