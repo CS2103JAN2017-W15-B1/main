@@ -1,5 +1,6 @@
 package seedu.todolist.model.task;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,14 +38,12 @@ public class UniqueTaskList implements Iterable<Task> {
      * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
     public void add(Task toAdd)
-            throws DuplicateTaskException, IOException {
+            throws DuplicateTaskException {
         assert toAdd != null;
         if (contains(toAdd)) {
             throw new DuplicateTaskException();
         }
         internalList.add(toAdd);
-        GoogleIntegration integrator = new GoogleIntegration();
-        integrator.add(toAdd);
     }
 
     /**
