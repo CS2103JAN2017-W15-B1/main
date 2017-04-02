@@ -69,11 +69,8 @@ public class MainApp extends Application {
 
         initEventsCenter();
         
-        //try accessing google calendar
-        logger.info("=============================[ try accessing google calendar ]===========================");
-        GoogleIntegration integrator = new GoogleIntegration();
-        integrator.run();
         if (!IntegrationUtil.isSynced(config.getIntegrationFilePath())) {
+            GoogleIntegration integrator = new GoogleIntegration();
             System.out.println("Attempting syncing for the first time");
             integrator.sync(model);
             IntegrationUtil.updateStatus(config.getIntegrationFilePath());
