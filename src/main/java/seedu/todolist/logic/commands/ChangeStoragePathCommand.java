@@ -25,7 +25,7 @@ public class ChangeStoragePathCommand extends Command {
     private String commandText;
     private final String path;
 
-    //takes in an relative path
+    //takes in an relative or absolute path
     public ChangeStoragePathCommand(String path) {
         this.path = path + "/todolist.xml";
     }
@@ -40,7 +40,7 @@ public class ChangeStoragePathCommand extends Command {
             storage.saveToDoList(model.getToDoList(), this.path);
             return new CommandResult(String.format(MESSAGE_SUCCESS, this.path));
         } catch (IOException e) {
-            e.printStackTrace(); //is this necessary?
+            e.printStackTrace();
             return new CommandResult(String.format(MESSAGE_FAILURE, this.path));
         }
     }

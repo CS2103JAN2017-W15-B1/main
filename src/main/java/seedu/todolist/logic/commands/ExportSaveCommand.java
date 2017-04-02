@@ -2,8 +2,6 @@ package seedu.todolist.logic.commands;
 
 import java.io.IOException;
 
-import seedu.todolist.commons.core.Config;
-import seedu.todolist.commons.util.ConfigUtil;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 
 //@@author A0139633B
@@ -25,7 +23,7 @@ public class ExportSaveCommand extends Command {
     private String commandText;
     private final String path;
 
-    //takes in an relative path
+    //takes in an relative or absolute path
     public ExportSaveCommand(String path) {
         this.path = path + "/todolist.xml";
     }
@@ -34,13 +32,10 @@ public class ExportSaveCommand extends Command {
     public CommandResult execute() throws CommandException {
         assert config != null;
         try {
-            config.setToDoListFilePath(this.path);
-            ConfigUtil.saveConfig(config, Config.DEFAULT_CONFIG_FILE);
-            storage.changeToDoListFilePath(this.path);
             storage.saveToDoList(model.getToDoList(), this.path);
             return new CommandResult(String.format(MESSAGE_SUCCESS, this.path));
         } catch (IOException e) {
-            e.printStackTrace(); //is this necessary?
+            e.printStackTrace();
             return new CommandResult(String.format(MESSAGE_FAILURE, this.path));
         }
     }
