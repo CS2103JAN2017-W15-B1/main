@@ -63,17 +63,15 @@ public class GoogleIntegration {
      * Default constructor
      */
     public GoogleIntegration() throws IOException {
-        this.service = getCalendarService();
-    }
-
-    static {
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
             DATA_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
         } catch (Throwable t) {
+            System.out.println("Some error when initializing google integration object");
             t.printStackTrace();
             System.exit(1);
         }
+        this.service = getCalendarService();
     }
 
     /*
