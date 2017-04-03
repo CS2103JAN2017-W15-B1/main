@@ -32,7 +32,7 @@ public class MainWindow extends UiPart<Region> {
     private static final int MIN_HEIGHT = 600;
     private static final int MIN_WIDTH = 600;
     private static final String LIST = "list";
-    private static final String SELECTED = "selected";
+    private static final String SELECTED = ".button:pressed";
 
     private Stage primaryStage;
     private Logic logic;
