@@ -44,7 +44,7 @@
                <HBox>
                <children>
                <Button fx:id="incompleteButton" onAction="#handleIncompleteButton" text="Incomplete"/>
-               <Button fx:id="completedButton"  onAction="#handleCompletedButton" text="Completed"/>
+               <Button fx:id="completedButton"  onAction="#handleCompletedButton" text="Complete"/>
                <Button fx:id="upcomingButton"  onAction="#handleUpcomingButton" text="Upcoming"/>
                <Button fx:id="overdueButton"  onAction="#handleOverdueButton" text="Overdue"/>
                <Button fx:id="allButton"  onAction="#handleAllButton" text="All"/>
