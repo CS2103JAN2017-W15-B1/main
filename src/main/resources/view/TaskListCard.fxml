@@ -57,10 +57,10 @@
                              <right>
                                   <VBox>
                                       <padding>
-                                          <Insets bottom="5" left="5" right="5" top="22" />
+                                          <Insets bottom="5" left="5" right="5" top="26" />
                                       </padding>
                                       <children>
-                                          <ImageView  fx:id="statusIcon" fitHeight="32.0"  fitWidth="32.0" preserveRatio="true">
+                                          <ImageView  fx:id="statusIcon" fitHeight="27.0"  fitWidth="27.0" preserveRatio="true">
                                           </ImageView>
                                       </children>
                                   </VBox>
