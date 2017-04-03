@@ -26,7 +26,7 @@ public class BrowserPanel extends UiPart<Region> {
     private Label tagsheader;
 
     @FXML
-    private FlowPane tagsFlow;
+    private FlowPane tags;
 
     @FXML
     private VBox taskDetails;
@@ -44,15 +44,15 @@ public class BrowserPanel extends UiPart<Region> {
 
     //@@author A0144240W
     public void loadPersonPage(Task task) {
-        tagsFlow.setHgap(10);
+        tags.setHgap(10);
         nameLabel.setText(task.getName().toString());
         tagsheader.setText("Tags:");
-        task.getTags().forEach(tag -> tagsFlow.getChildren().add(new Label(tag.tagName)));
+        task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     //@@author A0144240W
     public void freeResources() {
-        tagsFlow.getChildren().clear();
+        tags.getChildren().clear();
     }
 
 }
