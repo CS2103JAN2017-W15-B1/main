@@ -1,7 +1,5 @@
 package seedu.todolist.logic.commands;
 
-import java.io.IOException;
-
 import seedu.todolist.commons.core.GoogleIntegration;
 import seedu.todolist.commons.exceptions.IllegalValueException;
 import seedu.todolist.logic.commands.exceptions.CommandException;
