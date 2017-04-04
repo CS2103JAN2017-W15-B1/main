@@ -15,7 +15,7 @@ public class Config {
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.json";
     private String toDoListFilePath = "data/todolist.xml";
-    private String integrationFilePath = "data/integration.txt";
+    private String integrationFilePath = "integration.txt";
     private String toDoListName = "MyToDoList";
 
 
