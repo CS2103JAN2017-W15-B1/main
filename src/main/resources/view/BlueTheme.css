@@ -201,7 +201,6 @@
 }
 
 .button:hover {
-	
     -fx-background-color: white;
     -fx-padding: 5 22 5 22;
     -fx-text-fill: #383a68;
