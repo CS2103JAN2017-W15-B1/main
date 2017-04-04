@@ -32,10 +32,11 @@ public class UniqueTaskList implements Iterable<Task> {
 
     /**
      * Adds a task to the list.
-     *
+     * Integrate with Google Calendar.
      * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
-    public void add(Task toAdd) throws DuplicateTaskException {
+    public void add(Task toAdd)
+            throws DuplicateTaskException {
         assert toAdd != null;
         if (contains(toAdd)) {
             throw new DuplicateTaskException();

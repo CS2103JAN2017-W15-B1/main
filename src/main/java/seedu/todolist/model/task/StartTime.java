@@ -32,7 +32,7 @@ public class StartTime implements Comparable<StartTime> {
         this.startTime = startTime;
     }
 
-    protected Date getStartTime() {
+    public Date getStartTime() {
         return this.startTime;
     }
 

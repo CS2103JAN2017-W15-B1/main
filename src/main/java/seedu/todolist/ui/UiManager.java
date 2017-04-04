@@ -103,25 +103,25 @@ public class UiManager extends ComponentManager implements Ui {
     //==================== Event Handling Code ===============================================================
 
     @Subscribe
-    private void handleDataSavingExceptionEvent(DataSavingExceptionEvent event) {
+    public void handleDataSavingExceptionEvent(DataSavingExceptionEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         showFileOperationAlertAndWait("Could not save data", "Could not save data to file", event.exception);
     }
 
     @Subscribe
-    private void handleShowHelpEvent(ShowHelpRequestEvent event) {
+    public void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.handleHelp();
     }
 
     @Subscribe
-    private void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
+    public void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.getTaskListPanel().scrollTo(event.targetIndex);
     }
 
     @Subscribe
-    private void handlePersonPanelSelectionChangedEvent(TaskPanelSelectionChangedEvent event) {
+    public void handlePersonPanelSelectionChangedEvent(TaskPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.releaseResources();
         mainWindow.loadPersonPage(event.getNewSelection());
@@ -129,7 +129,7 @@ public class UiManager extends ComponentManager implements Ui {
 
     //@@author A0144240W
     @Subscribe
-    private void handleViewListChangedEvent(ViewListChangedEvent event) {
+    public void handleViewListChangedEvent(ViewListChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         int firstSpaceIndex = event.toString().indexOf(" ");
         String typeOfList = event.toString().substring(0, firstSpaceIndex);
@@ -138,7 +138,7 @@ public class UiManager extends ComponentManager implements Ui {
 
     //@@author A0144240W
     @Subscribe
-    private void handleToDoListEventChanged(ToDoListChangedEvent event) {
+    public void handleToDoListEventChanged(ToDoListChangedEvent event) {
         if (event.typeOfCommand.equals("update") || event.typeOfCommand.equals("add")) {
             mainWindow.getTaskListPanel().scrollTo(event.index);
         }

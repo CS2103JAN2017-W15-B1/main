@@ -32,7 +32,7 @@ public class EndTime implements Comparable<EndTime> {
         this.endTime = endTime;
     }
 
-    protected Date getEndTime() {
+    public Date getEndTime() {
         return this.endTime;
     }
 
