@@ -12,9 +12,9 @@ import seedu.todolist.model.task.Task;
 /**
  * The Browser Panel of the App.
  */
-public class BrowserPanel extends UiPart<Region> {
+public class TaskDetailsPanel extends UiPart<Region> {
 
-    private static final String FXML = "BrowserPanel.fxml";
+    private static final String FXML = "TaskDetailsPanel.fxml";
 
     @FXML
     private AnchorPane display;
@@ -26,7 +26,7 @@ public class BrowserPanel extends UiPart<Region> {
     private Label tagsheader;
 
     @FXML
-    private FlowPane tagsFlow;
+    private FlowPane tags;
 
     @FXML
     private VBox taskDetails;
@@ -34,9 +34,9 @@ public class BrowserPanel extends UiPart<Region> {
     //@@author A0144240W
 
     /**
-     * @param placeholder The AnchorPane where the BrowserPanel must be inserted
+     * @param placeholder The AnchorPane where the taskDetailsPanel must be inserted
      */
-    public BrowserPanel(AnchorPane placeholder) {
+    public TaskDetailsPanel(AnchorPane placeholder) {
         super(FXML);
         FxViewUtil.applyAnchorBoundaryParameters(display, 0.0, 0.0, 0.0, 0.0);
         placeholder.getChildren().add(display);
@@ -44,15 +44,15 @@ public class BrowserPanel extends UiPart<Region> {
 
     //@@author A0144240W
     public void loadPersonPage(Task task) {
-        tagsFlow.setHgap(10);
+        tags.setHgap(10);
         nameLabel.setText(task.getName().toString());
         tagsheader.setText("Tags:");
-        task.getTags().forEach(tag -> tagsFlow.getChildren().add(new Label(tag.tagName)));
+        task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     //@@author A0144240W
     public void freeResources() {
-        tagsFlow.getChildren().clear();
+        tags.getChildren().clear();
     }
 
 }

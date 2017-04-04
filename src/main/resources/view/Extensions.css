@@ -16,6 +16,9 @@
 }
 
 .selected {
-	-fx-background-color: white;
-	-fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
+    -fx-font-size: 11pt;
+    -fx-border-radius: 7 7 0 0;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
