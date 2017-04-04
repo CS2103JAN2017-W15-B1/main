@@ -37,6 +37,7 @@ public class IntegrationUtil {
         BufferedWriter textWriter = new BufferedWriter(fw);
         String updatedStatus = currentStatus.replaceAll("false", "true");
         textWriter.write(updatedStatus);
+        textWriter.write("\n");
         textReader.close();
         textWriter.close();
     }
