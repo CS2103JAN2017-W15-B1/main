@@ -70,10 +70,10 @@ public class GoogleIntegration {
         InputStream in = GoogleIntegration.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
-        
+
         FileDataStoreFactory DATA_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
         HttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        
+
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow =
                 new GoogleAuthorizationCodeFlow.Builder(
