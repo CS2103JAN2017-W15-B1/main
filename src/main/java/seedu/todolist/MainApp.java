@@ -18,7 +18,6 @@ import seedu.todolist.commons.core.Version;
 import seedu.todolist.commons.events.ui.ExitAppRequestEvent;
 import seedu.todolist.commons.exceptions.DataConversionException;
 import seedu.todolist.commons.util.ConfigUtil;
-import seedu.todolist.commons.util.IntegrationUtil;
 import seedu.todolist.commons.util.StringUtil;
 import seedu.todolist.logic.Logic;
 import seedu.todolist.logic.LogicManager;
@@ -68,15 +67,6 @@ public class MainApp extends Application {
         ui = new UiManager(logic, config, userPrefs);
 
         initEventsCenter();
-
-        if (!IntegrationUtil.isSynced(config.getIntegrationFilePath())) {
-            GoogleIntegration integrator = new GoogleIntegration();
-            System.out.println("Attempting syncing for the first time");
-            integrator.sync(model);
-            IntegrationUtil.updateStatus(config.getIntegrationFilePath());
-        } else {
-            System.out.println("Already synced to this account before");
-        }
     }
 
     private String getApplicationParameter(String parameterName) {
