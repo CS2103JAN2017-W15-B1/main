@@ -25,6 +25,7 @@
             <FlowPane fx:id="tags"></FlowPane>
             <Label fx:id="startLabel"></Label>
             <Label fx:id="endLabel"></Label>
+            <Label fx:id="description"></Label>
         </children>
     </VBox>
 </AnchorPane>

@@ -26,6 +26,15 @@ public class TaskDetailsPanel extends UiPart<Region> {
     private Label tagsheader;
 
     @FXML
+    private Label startLabel;
+
+    @FXML
+    private Label endLabel;
+
+    @FXML
+    private Label description;
+
+    @FXML
     private FlowPane tags;
 
     @FXML
@@ -45,7 +54,10 @@ public class TaskDetailsPanel extends UiPart<Region> {
     //@@author A0144240W
     public void loadPersonPage(Task task) {
         tags.setHgap(10);
-        nameLabel.setText(task.getName().toString());
+        nameLabel.setText("Name of task: " + task.getName().toString());
+        startLabel.setText("From: " + (task.getStartTime() != null ? task.getStartTime().toString() : ""));
+        endLabel.setText("To: " + (task.getEndTime() != null ? task.getEndTime().toString() : ""));
+        description.setText("Description: " + (task.getDescription() != null ? task.getDescription() : ""));
         tagsheader.setText("Tags:");
         task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
