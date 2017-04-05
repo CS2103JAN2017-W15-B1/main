@@ -53,20 +53,6 @@ public class EditCommandTest extends ToDoListGuiTest {
     }
 
     @Test
-    public void edit_findThenEdit_success() throws Exception {
-        commandBox.runCommand("find Elle");
-
-        String detailsToEdit = "Belle";
-        int filteredTaskListIndex = 1;
-        int toDoListIndex = 5;
-
-        TestTask taskToEdit = expectedTasksList[toDoListIndex - 1];
-        TestTask editedTask = new TaskBuilder(taskToEdit).withName("Belle").build();
-
-        assertEditSuccess(filteredTaskListIndex, toDoListIndex, detailsToEdit, editedTask);
-    }
-
-    @Test
     public void edit_missingTaskIndex_failure() {
         commandBox.runCommand("edit Bobby");
         assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));

@@ -3,7 +3,9 @@ package seedu.todolist.logic.commands;
 import java.util.List;
 import java.util.Optional;
 
+import seedu.todolist.commons.core.EventsCenter;
 import seedu.todolist.commons.core.Messages;
+import seedu.todolist.commons.events.ui.JumpToListRequestEvent;
 import seedu.todolist.commons.util.CollectionUtil;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 import seedu.todolist.model.tag.UniqueTagList;
@@ -52,6 +54,9 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         List<Task> lastShownList = model.getFilteredTaskList();
+        if (model.isUpcomingView()) {
+            lastShownList = model.getSortedTaskList();
+        }
 
         if (filteredTaskListIndex >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
@@ -66,7 +71,7 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 
-        model.getFilteredIncompleteTaskList();
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(filteredTaskListIndex));
         commandResultText = String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask);
         return new CommandResult(commandResultText);
     }

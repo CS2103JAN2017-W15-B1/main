@@ -34,6 +34,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Task> filteredTasks;
     private final SortedList<Task> sortedTasks;
     private boolean isViewIncomplete, isViewComplete, isViewOverdue, isViewUpcoming;
+
     private static final String RESET = "reset";
     private static final String DELETE = "delete";
     private static final String ADD = "add";
@@ -44,6 +45,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private static final int ERROR_VALUE = 0;
     private static final int NO_SWAP = 1;
+
 
 
     /**
@@ -76,9 +78,14 @@ public class ModelManager extends ComponentManager implements Model {
         return toDoList;
     }
 
+    @Override
+    public boolean isUpcomingView() {
+        return isViewUpcoming;
+    }
+
     /** Raises an event to indicate the model has changed */
     private void indicateToDoListChanged(String typeOfCommand) {
-        int index = toDoList.getTaskList().toArray().length;
+        int index = filteredTasks.toArray().length;
         raise(new ToDoListChangedEvent(toDoList, index, typeOfCommand));
     }
 
@@ -125,8 +132,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateTask(int filteredTaskListIndex, Task editedTask)
             throws UniqueTaskList.DuplicateTaskException {
         assert editedTask != null;
-
         int toDoListIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
+
+        if (isViewUpcoming) {
+            int sortedIndex = sortedTasks.getSourceIndex(filteredTaskListIndex);
+            toDoListIndex = filteredTasks.getSourceIndex(sortedIndex);
+        }
         toDoList.updateTask(toDoListIndex, editedTask);
         indicateToDoListChanged(UPDATE, toDoListIndex);
     }
@@ -137,6 +148,10 @@ public class ModelManager extends ComponentManager implements Model {
         assert editedTask != null;
 
         int toDoListIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
+        if (isViewUpcoming) {
+            int sortedIndex = sortedTasks.getSourceIndex(filteredTaskListIndex);
+            toDoListIndex = filteredTasks.getSourceIndex(sortedIndex);
+        }
         toDoList.describeTask(toDoListIndex, editedTask);
         indicateToDoListChanged(DESCRIBE);
     }
@@ -153,6 +168,7 @@ public class ModelManager extends ComponentManager implements Model {
     public UnmodifiableObservableList<Task> getSortedTaskList() {
         return new UnmodifiableObservableList<>(sortedTasks);
     }
+
 
     @Override
     //@@author A0139633B

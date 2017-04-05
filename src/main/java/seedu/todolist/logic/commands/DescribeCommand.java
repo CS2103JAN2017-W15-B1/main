@@ -2,7 +2,9 @@ package seedu.todolist.logic.commands;
 
 import java.util.List;
 
+import seedu.todolist.commons.core.EventsCenter;
 import seedu.todolist.commons.core.Messages;
+import seedu.todolist.commons.events.ui.JumpToListRequestEvent;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.parser.TaskParser;
@@ -36,8 +38,12 @@ public class DescribeCommand extends Command {
         this.description = description;
     }
 
+    @Override
     public CommandResult execute() throws CommandException {
         List<Task> lastShownList = model.getFilteredTaskList();
+        if (model.isUpcomingView()) {
+            lastShownList = model.getSortedTaskList();
+        }
 
         if (filteredTaskListIndex >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
@@ -48,8 +54,7 @@ public class DescribeCommand extends Command {
         editedTask.setDescription(description);
 
         model.describeTask(filteredTaskListIndex, editedTask);
-        model.updateFilteredListToShowAll();
-
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(filteredTaskListIndex));
         commandResultText = String.format(MESSAGE_DESCRIBE_TASK_SUCCESS, editedTask);
         return new CommandResult(commandResultText);
     }

@@ -77,6 +77,8 @@ public interface Model {
     //@@author A0139633B
     void changeStoragePath(String newFilePath);
 
+    boolean isUpcomingView();
+
 
 
 }
