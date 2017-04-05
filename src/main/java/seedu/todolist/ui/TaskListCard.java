@@ -54,13 +54,13 @@ public class TaskListCard extends UiPart<Region> {
         Image start_end_type = new Image("/images/start-end-task-icon.png");
         Image start_type = new Image("/images/start-task-icon.png");
         Image floating_type = new Image("/images/floating-task-icon.png");
-        if (task.getType().equals(Task.END_TYPE)) {
+        if (task.getType().equals(Task.TYPE_END)) {
             taskIcon.setImage(end_type);
-        } else if (task.getType().equals(Task.START_END_TYPE)) {
+        } else if (task.getType().equals(Task.TYPE_START_END)) {
             taskIcon.setImage(start_end_type);
-        } else if (task.getType().equals(Task.START_TYPE)) {
+        } else if (task.getType().equals(Task.TYPE_START)) {
             taskIcon.setImage(start_type);
-        } else if (task.getType().equals(Task.FLOATING_TYPE)) {
+        } else if (task.getType().equals(Task.TYPE_FLOATING)) {
             taskIcon.setImage(floating_type);
         }
 

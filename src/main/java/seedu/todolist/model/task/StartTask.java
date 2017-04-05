@@ -92,6 +92,6 @@ public class StartTask extends Task {
 
     @Override
     public String getType() {
-        return Task.START_TYPE;
+        return Task.TYPE_START;
     }
 }

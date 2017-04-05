@@ -93,6 +93,6 @@ public class EndTask extends Task {
 
     @Override
     public String getType() {
-        return Task.END_TYPE;
+        return Task.TYPE_END;
     }
 }

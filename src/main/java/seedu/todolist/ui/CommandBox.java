@@ -39,7 +39,11 @@ public class CommandBox extends UiPart<Region> {
 
     @FXML
     private void handleCommandInputChanged() {
+        if (logic == null) {
+            System.out.println("null");
+        }
         try {
+            System.out.println(commandTextField.getText());
             CommandResult commandResult = logic.execute(commandTextField.getText());
 
             // process result of the command
