@@ -41,6 +41,7 @@ public class MainWindow extends UiPart<Region> {
     private TaskDetailsPanel taskDetailsPanel;
     private TaskListPanel taskListPanel;
     private Config config;
+    private StatusBarFooter statusBarFooter;
 
     @FXML
     private AnchorPane taskDetailsPlaceholder;
@@ -136,8 +137,8 @@ public class MainWindow extends UiPart<Region> {
     void fillInnerParts() {
         taskDetailsPanel = new TaskDetailsPanel(taskDetailsPlaceholder);
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
+        statusBarFooter = new StatusBarFooter(getStatusbarPlaceholder(), config.getToDoListFilePath());
         new ResultDisplay(getResultDisplayPlaceholder());
-        new StatusBarFooter(getStatusbarPlaceholder(), config.getToDoListFilePath());
         new CommandBox(getCommandBoxPlaceholder(), logic);
         incompleteButton.getStyleClass().add(SELECTED);
     }
@@ -238,6 +239,11 @@ public class MainWindow extends UiPart<Region> {
     public void handleUpcomingButton() throws CommandException {
         String command = LIST + " " + ListCommand.TYPE_UPCOMING;
         logic.execute(command);
+    }
+
+    //@@author A0139633B
+    public void updateSaveLocationInFooter(String newPath) {
+        statusBarFooter.setSaveLocation(newPath);
     }
 
     void show() {

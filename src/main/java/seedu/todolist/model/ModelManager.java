@@ -15,6 +15,7 @@ import seedu.todolist.commons.core.LogsCenter;
 import seedu.todolist.commons.core.UnmodifiableObservableList;
 import seedu.todolist.commons.events.model.ToDoListChangedEvent;
 import seedu.todolist.commons.events.model.ViewListChangedEvent;
+import seedu.todolist.commons.events.storage.SaveLocationChangedEvent;
 import seedu.todolist.commons.util.CollectionUtil;
 import seedu.todolist.commons.util.FindUtil;
 import seedu.todolist.logic.commands.ListCommand;
@@ -39,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
     private static final String COMPLETE = "complete";
     private static final String UPDATE = "update";
     private static final String DESCRIBE = "describe";
+    private static final String CHANGESTORAGE = "changestorage";
 
     private static final int ERROR_VALUE = 0;
 
@@ -104,11 +106,18 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    //TODO add error throwing for unwritable save locations
+    //@@author A0139633B
+    public synchronized void changeStoragePath(String newFilePath) {
+        raise(new SaveLocationChangedEvent(newFilePath));
+        indicateToDoListChanged(CHANGESTORAGE);
+    }
+
+    @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         toDoList.addTask(task);
         getFilteredIncompleteTaskList();
         indicateToDoListChanged(ADD);
-
     }
 
     @Override
