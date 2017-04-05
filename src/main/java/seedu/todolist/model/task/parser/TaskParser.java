@@ -137,18 +137,8 @@ public class TaskParser {
         EndTime endTime = taskToCopy.getEndTime();
         UniqueTagList uniqueTagList = taskToCopy.getTags();
         boolean isComplete = taskToCopy.isComplete();
+        String description = taskToCopy.getDescription();
 
-        if (startTime != null && endTime != null) {
-            return new StartEndTask(name, startTime, endTime,
-                    uniqueTagList, isComplete);
-        } else if (startTime != null && endTime == null) {
-            return new StartTask(name, startTime,
-                    uniqueTagList, isComplete);
-        } else if (startTime == null && endTime != null) {
-            return new EndTask(name, endTime,
-                    uniqueTagList, isComplete);
-        } else {
-            return new FloatingTask(name, uniqueTagList, isComplete);
-        }
+        return parseTask(name, startTime, endTime, uniqueTagList, isComplete, description);
     }
 }
