@@ -34,6 +34,12 @@ public class TaskListCard extends UiPart<Region> {
     @FXML
     private ImageView taskIcon;
 
+    private Image end_type = new Image("/images/end-task-icon.png");
+    private Image start_end_type = new Image("/images/start-end-task-icon.png");
+    private Image start_type = new Image("/images/start-task-icon.png");
+    private Image floating_type = new Image("/images/floating-task-icon.png");
+    private Image completeIcon = new Image("/images/complete-icon.png");
+
 
     public TaskListCard(Task task, int displayedIndex) {
         super(FXML);
@@ -41,30 +47,11 @@ public class TaskListCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         startTime.setText(task.getStartTime() != null ? task.getStartTime().toString() : "");
         endTime.setText(task.getEndTime() != null ? task.getEndTime().toString() : "");
-        description.setText(task.getDescription() == null ? "" : task.getDescription());
-        Image incompleteIcon = new Image("/images/incomplete-icon.png");
-        Image completeIcon = new Image("/images/complete-icon.png");
-        if (!task.isComplete()) {
-            statusIcon.setImage(incompleteIcon);
-        } else {
+        if (task.isComplete()) {
             statusIcon.setImage(completeIcon);
         }
 
-        Image end_type = new Image("/images/end-task-icon.png");
-        Image start_end_type = new Image("/images/start-end-task-icon.png");
-        Image start_type = new Image("/images/start-task-icon.png");
-        Image floating_type = new Image("/images/floating-task-icon.png");
-        if (task.getType().equals(Task.END_TYPE)) {
-            taskIcon.setImage(end_type);
-        } else if (task.getType().equals(Task.START_END_TYPE)) {
-            taskIcon.setImage(start_end_type);
-        } else if (task.getType().equals(Task.START_TYPE)) {
-            taskIcon.setImage(start_type);
-        } else if (task.getType().equals(Task.FLOATING_TYPE)) {
-            taskIcon.setImage(floating_type);
-        }
-
-
+        setTaskIcon(task);
         initTags(task);
     }
 
@@ -72,8 +59,25 @@ public class TaskListCard extends UiPart<Region> {
         task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
-    //private void initStartTime(ReadOnlyTask task) {
-    //  startTime.getChildren().add(new Label(task.getStartTime().toString()));
-    //}
+    //@@author A0144240W
+    /**
+     * Sets the task icon based on the type of task
+     */
+    private void setTaskIcon(Task task) {
+        switch(task.getType()) {
+        case Task.END_TYPE:
+            taskIcon.setImage(end_type);
+            break;
+        case Task.START_END_TYPE:
+            taskIcon.setImage(start_end_type);
+            break;
+        case Task.START_TYPE:
+            taskIcon.setImage(start_type);
+            break;
+        case Task.FLOATING_TYPE:
+            taskIcon.setImage(floating_type);
+            break;
+        }
+    }
 
 }

@@ -31,6 +31,12 @@ public class TaskListPanel extends UiPart<Region> {
         addToPlaceholder(taskListPlaceholder);
     }
 
+    public void changeList(AnchorPane taskListPlaceholder, ObservableList<Task> taskList) {
+        setConnections(taskList);
+        taskListPlaceholder.getChildren().clear();
+        addToPlaceholder(taskListPlaceholder);
+    }
+
     private void setConnections(ObservableList<Task> taskList) {
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());

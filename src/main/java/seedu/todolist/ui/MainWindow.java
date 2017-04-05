@@ -68,7 +68,7 @@ public class MainWindow extends UiPart<Region> {
     private Button allButton;
 
     @FXML
-    private Button completedButton;
+    private Button completeButton;
 
     @FXML
     private Button overdueButton;
@@ -274,7 +274,7 @@ public class MainWindow extends UiPart<Region> {
     //@@author A0144240W
     public void changeButtonsBackToOriginalState() {
         incompleteButton.getStyleClass().remove(SELECTED);
-        completedButton.getStyleClass().remove(SELECTED);
+        completeButton.getStyleClass().remove(SELECTED);
         upcomingButton.getStyleClass().remove(SELECTED);
         overdueButton.getStyleClass().remove(SELECTED);
         allButton.getStyleClass().remove(SELECTED);
@@ -283,22 +283,73 @@ public class MainWindow extends UiPart<Region> {
     //@@author A0144240W
     public void indicateButtonChange(String typeOfButton) {
         changeButtonsBackToOriginalState();
-        if (typeOfButton.equals(ListCommand.TYPE_UPCOMING)) {
-            taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getSortedTaskList());
-            upcomingButton.getStyleClass().add(SELECTED);
-        } else {
-            taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
-
-            if (typeOfButton.equals(ListCommand.TYPE_INCOMPLETE)) {
-                incompleteButton.getStyleClass().add(SELECTED);
-            } else if (typeOfButton.equals(ListCommand.TYPE_COMPLETE)) {
-                completedButton.getStyleClass().add(SELECTED);
-            } else if (typeOfButton.equals(ListCommand.TYPE_OVERDUE)) {
-                overdueButton.getStyleClass().add(SELECTED);
-            } else {
-                allButton.getStyleClass().add(SELECTED);
-            }
+        taskListPanel.changeList(getTaskListPlaceholder(), logic.getFilteredTaskList());
+        switch(typeOfButton) {
+        case ListCommand.TYPE_UPCOMING:
+            changeUpcomingButton();
+            break;
+        case ListCommand.TYPE_INCOMPLETE:
+            changeIncompleteButton();
+            break;
+        case ListCommand.TYPE_COMPLETE:
+            changeCompleteButton();
+            break;
+        case ListCommand.TYPE_OVERDUE:
+            changeOverdueButton();
+            break;
+        default:
+            changeAllButton();
         }
     }
+
+    //@@author A0144240W
+    /**
+     * Changes the display of the upcoming button to be selected
+     * and adds the sortedList to the task panel
+     */
+    private void changeUpcomingButton() {
+        taskListPanel.changeList(getTaskListPlaceholder(), logic.getSortedTaskList());
+        upcomingButton.getStyleClass().add(SELECTED);
+    }
+
+    //@@author A0144240W
+    /**
+     * Changes the display of the incomplete button to be selected
+     */
+    private void changeIncompleteButton() {
+        incompleteButton.getStyleClass().add(SELECTED);
+    }
+
+    //@@author A0144240W
+    /**
+     * Changes the display of the complete button to be selected
+     */
+    private void changeCompleteButton() {
+        completeButton.getStyleClass().add(SELECTED);
+    }
+
+    //@@author A0144240W
+    /**
+     * Changes the display of the overdue button to be selected
+     */
+    private void changeOverdueButton() {
+        overdueButton.getStyleClass().add(SELECTED);
+    }
+
+    //@@author A0144240W
+    /**
+     * Changes the display of the all button to be selected
+     */
+    private void changeAllButton() {
+        allButton.getStyleClass().add(SELECTED);
+    }
+
+
+
+
+
+
+
+
 
 }
