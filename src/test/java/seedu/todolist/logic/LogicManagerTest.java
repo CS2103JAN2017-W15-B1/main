@@ -161,7 +161,8 @@ public class LogicManagerTest {
     @Test
     public void execute_unknownCommandWord() {
         String unknownCommand = "uicfhmowqewca";
-        assertCommandFailure(unknownCommand, MESSAGE_UNKNOWN_COMMAND);
+        assertCommandFailure(unknownCommand, MESSAGE_UNKNOWN_COMMAND +
+                "\nDo you mean: complete?");
     }
 
     @Test

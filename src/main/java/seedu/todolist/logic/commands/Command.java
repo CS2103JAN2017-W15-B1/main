@@ -29,8 +29,7 @@ public abstract class Command {
                                                       ChangeStoragePathCommand.COMMAND_WORD,
                                                       ExportSaveCommand.COMMAND_WORD,
                                                       ExitCommand.COMMAND_WORD,
-                                                      HelpCommand.COMMAND_WORD
-                                                      };
+                                                      HelpCommand.COMMAND_WORD};
 
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of tasks.

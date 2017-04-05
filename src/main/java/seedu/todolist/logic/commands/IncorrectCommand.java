@@ -10,7 +10,7 @@ public class IncorrectCommand extends Command {
 
     public String feedbackToUser;
     private String userCommandWord;
-    
+
     public IncorrectCommand(String feedbackToUser) {
         this.feedbackToUser = feedbackToUser;
     }
@@ -26,7 +26,7 @@ public class IncorrectCommand extends Command {
             feedbackToUser = feedbackToUser +
                     "\nDo you mean: " +
                     SuggestUtil.closestCommand(userCommandWord) +
-                    " ?";
+                    "?";
         }
         throw new CommandException(feedbackToUser);
     }

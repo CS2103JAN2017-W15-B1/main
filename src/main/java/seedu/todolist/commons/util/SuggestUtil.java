@@ -8,7 +8,7 @@ import seedu.todolist.logic.commands.Command;
  * if the user key in an unknown command.
  */
 public class SuggestUtil {
-    
+
     //@@author A0141647E
     public static String closestCommand(String userCommandType) {
         int distance = 100;
@@ -24,13 +24,13 @@ public class SuggestUtil {
         }
         return mostRelatedCommandType;
     }
-    
+
     //@@author A0141647E
     public static int levenshteinDistance(String string1, String string2) {
         char[] s1 = string1.toCharArray();
         char[] s2 = string2.toCharArray();
         int n1 = s1.length; int n2 = s2.length;
-        int[][] d = new int[n1+1][n2+1];
+        int[][] d = new int[n1 + 1][n2 + 1];
         for (int i = 1; i < n1 + 1; i++) {
             d[i][0] = i;
         }
@@ -50,6 +50,5 @@ public class SuggestUtil {
         }
         return d[n1][n2];
     }
-    
-}
 
+}
