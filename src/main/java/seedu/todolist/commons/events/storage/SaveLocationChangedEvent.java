@@ -16,7 +16,7 @@ public class SaveLocationChangedEvent extends BaseEvent {
 
     @Override
     public String toString() {
-        return "todolist.xml now saved at " + newSaveLocation;
+        return "todolist.xml is now saved at " + newSaveLocation;
     }
 
 }

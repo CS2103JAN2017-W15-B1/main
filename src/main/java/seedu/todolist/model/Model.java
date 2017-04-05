@@ -73,6 +73,10 @@ public interface Model {
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
 
+    /** Changes the location where the data is being saved*/
+    //@@author A0139633B
+    void changeStoragePath(String newFilePath);
+
 
 
 }

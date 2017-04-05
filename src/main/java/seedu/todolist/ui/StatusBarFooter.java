@@ -31,7 +31,7 @@ public class StatusBarFooter extends UiPart<Region> {
         super(FXML);
         addToPlaceholder(placeHolder);
         setSyncStatus("Not updated yet in this session");
-        setSaveLocation("./" + saveLocation);
+        setSaveLocation(saveLocation);
         registerAsAnEventHandler(this);
     }
 
@@ -40,7 +40,7 @@ public class StatusBarFooter extends UiPart<Region> {
         placeHolder.getChildren().add(getRoot());
     }
 
-    private void setSaveLocation(String location) {
+    public void setSaveLocation(String location) {
         this.saveLocationStatus.setText(location);
     }
 

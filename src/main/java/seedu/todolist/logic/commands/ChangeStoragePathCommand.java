@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import seedu.todolist.commons.core.Config;
 import seedu.todolist.commons.util.ConfigUtil;
+//import seedu.todolist.commons.util.FileUtil;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 
 //@@author A0139633B
@@ -34,10 +35,12 @@ public class ChangeStoragePathCommand extends Command {
     public CommandResult execute() throws CommandException {
         assert config != null;
         try {
+            //TODO check if the file can be written to the path first (with the storage)
             config.setToDoListFilePath(this.path);
             ConfigUtil.saveConfig(config, Config.DEFAULT_CONFIG_FILE);
             storage.changeToDoListFilePath(this.path);
             storage.saveToDoList(model.getToDoList(), this.path);
+            model.changeStoragePath(this.path);
             return new CommandResult(String.format(MESSAGE_SUCCESS, this.path));
         } catch (IOException e) {
             e.printStackTrace();
