@@ -1,5 +1,6 @@
 package seedu.todolist.logic.commands;
 
+import seedu.todolist.commons.util.SuggestUtil;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 
 /**
@@ -7,14 +8,26 @@ import seedu.todolist.logic.commands.exceptions.CommandException;
  */
 public class IncorrectCommand extends Command {
 
-    public final String feedbackToUser;
+    public String feedbackToUser;
+    private String userCommandWord;
 
     public IncorrectCommand(String feedbackToUser) {
         this.feedbackToUser = feedbackToUser;
     }
 
+    public IncorrectCommand(String feedbackToUser, String userCommandWord) {
+        this.feedbackToUser = feedbackToUser;
+        this.userCommandWord = userCommandWord;
+    }
+
     @Override
     public CommandResult execute() throws CommandException {
+        if (userCommandWord != null) {
+            feedbackToUser = feedbackToUser +
+                    "\nDo you mean: " +
+                    SuggestUtil.closestCommand(userCommandWord) +
+                    "?";
+        }
         throw new CommandException(feedbackToUser);
     }
 

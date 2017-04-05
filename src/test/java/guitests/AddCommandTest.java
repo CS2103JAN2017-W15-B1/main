@@ -36,7 +36,8 @@ public class AddCommandTest extends ToDoListGuiTest {
 
         //invalid command
         commandBox.runCommand("adds Johnny");
-        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND +
+                "\nDo you mean: add?");
     }
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {

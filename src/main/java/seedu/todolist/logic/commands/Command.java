@@ -15,6 +15,21 @@ public abstract class Command {
     protected UndoManager undoManager;
     protected Config config;
     protected Storage storage;
+    public static final String[] COMMAND_ALL_TYPES = {AddCommand.COMMAND_WORD,
+                                                      EditCommand.COMMAND_WORD,
+                                                      DescribeCommand.COMMAND_WORD,
+                                                      SelectCommand.COMMAND_WORD,
+                                                      DeleteCommand.COMMAND_WORD,
+                                                      CompleteCommand.COMMAND_WORD,
+                                                      ClearCommand.COMMAND_WORD,
+                                                      UndoCommand.COMMAND_WORD,
+                                                      RedoCommand.COMMAND_WORD,
+                                                      FindCommand.COMMAND_WORD,
+                                                      ListCommand.COMMAND_WORD,
+                                                      ChangeStoragePathCommand.COMMAND_WORD,
+                                                      ExportSaveCommand.COMMAND_WORD,
+                                                      ExitCommand.COMMAND_WORD,
+                                                      HelpCommand.COMMAND_WORD};
 
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of tasks.

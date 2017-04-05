@@ -28,7 +28,8 @@ public class FindCommandTest extends ToDoListGuiTest {
     @Test
     public void find_invalidCommand_fail() {
         commandBox.runCommand("findgeorge");
-        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND +
+                "\nDo you mean: find?");
     }
 
     private void assertFindResult(String command, TestTask... expectedHits) {
