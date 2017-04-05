@@ -1,6 +1,5 @@
 package seedu.todolist.logic.commands;
 
-import seedu.todolist.commons.core.GoogleIntegration;
 import seedu.todolist.commons.exceptions.IllegalValueException;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 import seedu.todolist.model.task.Task;
@@ -37,14 +36,10 @@ public class AddCommand extends Command {
         assert model != null;
         try {
             model.addTask(toAdd);
-            GoogleIntegration integrator = new GoogleIntegration();
-            integrator.add(toAdd);
             commandResultText = String.format(MESSAGE_SUCCESS, toAdd);
             return new CommandResult(commandResultText);
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
-        } catch (Exception ie) {
-            throw new CommandException(ie.getMessage());
         }
     }
 
