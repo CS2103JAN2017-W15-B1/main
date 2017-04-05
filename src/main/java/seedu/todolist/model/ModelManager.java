@@ -41,6 +41,7 @@ public class ModelManager extends ComponentManager implements Model {
     private static final String DESCRIBE = "describe";
 
     private static final int ERROR_VALUE = 0;
+    private static final int NO_SWAP = 1;
 
 
     /**
@@ -222,8 +223,8 @@ public class ModelManager extends ComponentManager implements Model {
       //get current time and compare with the task's end time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
         Date currentDate = new Date();
-        if (task.getEndTime() != null) {
-            String taskDateString = task.getEndTime().toString();
+        if (hasStartTime(task)) {
+            String taskDateString = task.getStartTime().toString();
             try {
                 Date taskDate = dateFormat.parse(taskDateString);
                 return currentDate.compareTo(taskDate) <= 0;
@@ -241,23 +242,33 @@ public class ModelManager extends ComponentManager implements Model {
     Comparator<? super Task> dateComparator = new Comparator<Task>() {
         @Override
         public int compare(Task firstTask, Task secondTask) {
-            if (firstTask.getEndTime() != null && secondTask.getEndTime() != null) {
+            if (hasStartTime(firstTask) && hasStartTime(secondTask)) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
-                String firstTaskDueDateString = firstTask.getEndTime().toString();
-                String secondTaskDueDateString = secondTask.getEndTime().toString();
+                String firstTaskStartDateString = firstTask.getStartTime().toString();
+                String secondTaskStartDateString = secondTask.getStartTime().toString();
                 try {
-                    Date firstTaskDueDate = dateFormat.parse(firstTaskDueDateString);
-                    Date secondTaskDueDate = dateFormat.parse(secondTaskDueDateString);
-                    return firstTaskDueDate.compareTo(secondTaskDueDate);
+                    Date firstTaskStartDate = dateFormat.parse(firstTaskStartDateString);
+                    Date secondTaskStartDate = dateFormat.parse(secondTaskStartDateString);
+                    return firstTaskStartDate.compareTo(secondTaskStartDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
                     return ERROR_VALUE;
                 }
             } else {
-                return 1;
+                return NO_SWAP;
             }
         }
     };
+
+    //@@author A0139633B
+    private boolean hasStartTime(Task task) {
+        return task.getStartTime() != null;
+    }
+
+    //@@author A0139633B
+    private boolean hasEndTime(Task task) {
+        return task.getEndTime() != null;
+    }
 
     @Override
     public void updateFilteredListToShowAll() {
