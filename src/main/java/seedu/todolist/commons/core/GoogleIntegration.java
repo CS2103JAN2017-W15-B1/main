@@ -1,5 +1,14 @@
 package seedu.todolist.commons.core;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -7,28 +16,19 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.json.JsonFactory;
-import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.DateTime;
+import com.google.api.client.util.store.FileDataStoreFactory;
 
-import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.*;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventDateTime;
 
 import seedu.todolist.model.Model;
 import seedu.todolist.model.task.EndTime;
 import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.parser.TaskParser;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Iterator;
 
 public class GoogleIntegration {
     /** Application name. */
@@ -39,7 +39,7 @@ public class GoogleIntegration {
             System.getProperty("user.home"), ".credentials/dome-java");
 
     /** Global instance of the {@link FileDataStoreFactory}. */
-    private static FileDataStoreFactory DATA_STORE_FACTORY;
+    private static FileDataStoreFactory DATA_FACTORY;
 
     /** Global instance of the JSON factory. */
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -53,7 +53,7 @@ public class GoogleIntegration {
      * at ~/.credentials/calendar-java-quickstart
      */
     private static final List<String> SCOPES = Arrays.asList("https://www.googleapis.com/auth/calendar");
-    
+
     /**
      * Represent an authorized calendar client
      */
@@ -62,14 +62,14 @@ public class GoogleIntegration {
     /**
      * Default constructor
      */
-    public GoogleIntegration() throws IOException { 
+    public GoogleIntegration() throws IOException {
         this.service = getCalendarService();
     }
 
     static {
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+            DATA_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
         } catch (Throwable t) {
             t.printStackTrace();
             System.exit(1);
@@ -91,7 +91,7 @@ public class GoogleIntegration {
         GoogleAuthorizationCodeFlow flow =
                 new GoogleAuthorizationCodeFlow.Builder(
                         HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(DATA_STORE_FACTORY)
+                .setDataStoreFactory(DATA_FACTORY)
                 .setAccessType("offline")
                 .build();
         Credential credential = new AuthorizationCodeInstalledApp(
@@ -102,9 +102,9 @@ public class GoogleIntegration {
     }
 
     /**
-     * Build and return an authorized Calendar client service.    
-     * @return an authorized Calendar client service      
-     * @throws IOException      
+     * Build and return an authorized Calendar client service.
+     * @return an authorized Calendar client service.
+     * @throws IOException
      */
     public static com.google.api.services.calendar.Calendar getCalendarService() throws IOException {
         Credential credential = authorize();
@@ -185,8 +185,7 @@ public class GoogleIntegration {
                     task.getTags(),
                     task.isComplete(),
                     task.getDescription());
-        }
-        else if (task.getEndTime() == null) {
+        } else if (task.getEndTime() == null) {
             EndTime defaultEnd = new EndTime(addHour(task.getStartTime().getStartTime(),
                     true));
             processedTask = TaskParser.parseTask(
@@ -196,10 +195,10 @@ public class GoogleIntegration {
                     task.getTags(),
                     task.isComplete(),
                     task.getDescription());
-        }
-        else {
+        } else {
             processedTask = TaskParser.parseTask(task);
         }
+
         return processedTask;
     }
 
@@ -212,10 +211,10 @@ public class GoogleIntegration {
         cal.setTime(date);
         if (up) {
             cal.add(Calendar.HOUR_OF_DAY, 1);
-        }
-        else {
+        } else {
             cal.add(Calendar.HOUR_OF_DAY, -1);
         }
+
         return cal.getTime();
     }
 }

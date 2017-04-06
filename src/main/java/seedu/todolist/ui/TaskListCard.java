@@ -50,7 +50,6 @@ public class TaskListCard extends UiPart<Region> {
         if (task.isComplete()) {
             statusIcon.setImage(completeIcon);
         }
-
         setTaskIcon(task);
         initTags(task);
     }
@@ -65,16 +64,16 @@ public class TaskListCard extends UiPart<Region> {
      */
     private void setTaskIcon(Task task) {
         switch(task.getType()) {
-        case Task.END_TYPE:
+        case Task.TYPE_END:
             taskIcon.setImage(end_type);
             break;
-        case Task.START_END_TYPE:
+        case Task.TYPE_START_END:
             taskIcon.setImage(start_end_type);
             break;
-        case Task.START_TYPE:
+        case Task.TYPE_START:
             taskIcon.setImage(start_type);
             break;
-        case Task.FLOATING_TYPE:
+        case Task.TYPE_FLOATING:
             taskIcon.setImage(floating_type);
             break;
         }

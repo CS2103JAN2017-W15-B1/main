@@ -1,13 +1,11 @@
 package seedu.todolist.model.task;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.todolist.commons.core.UnmodifiableObservableList;
-import seedu.todolist.commons.core.GoogleIntegration;
 import seedu.todolist.commons.exceptions.DuplicateDataException;
 import seedu.todolist.commons.util.CollectionUtil;
 import seedu.todolist.model.task.parser.TaskParser;
