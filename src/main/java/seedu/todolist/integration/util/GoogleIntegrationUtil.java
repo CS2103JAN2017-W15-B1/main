@@ -1,4 +1,4 @@
-package seedu.todolist.commons.core;
+package seedu.todolist.integration.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,7 +7,6 @@ import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -21,24 +20,17 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.DateTime;
 import com.google.api.client.util.store.FileDataStoreFactory;
-
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
-import com.google.api.services.calendar.model.Events;
 
-import seedu.todolist.model.Model;
+import seedu.todolist.integration.GoogleIntegration;
 import seedu.todolist.model.task.EndTime;
 import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.parser.TaskParser;
 
-//@@author A0141647E
-/*
- * A class that represents a connection with Google Calendar Service.
- * The author made some architectural changes and added in 4 methods:
- * sync, add, taskConverter and addHour.
- */
-public class GoogleIntegration {
+public class GoogleIntegrationUtil {
+    
     /** Application name. */
     private static final String APPLICATION_NAME = "dome_java";
 
@@ -56,17 +48,7 @@ public class GoogleIntegration {
      */
     private static final List<String> SCOPES = Arrays.asList("https://www.googleapis.com/auth/calendar");
 
-    /**
-     * Represent an authorized calendar client
-     */
-    private final com.google.api.services.calendar.Calendar service;
-
-    /**
-     * Default constructor
-     */
-    public GoogleIntegration() throws IOException, GeneralSecurityException {
-        this.service = getCalendarService();
-    }
+    //==================== Methods that help to establish a secure connection with Google Calendar Service =======
 
     /*
      * Creates an authorized Credential object.
@@ -110,91 +92,14 @@ public class GoogleIntegration {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
     }
-
-    //@@author A0141647E
-    /*
-     * Add a Task object to the user Google Calendar account.
-     * It is guaranteed that this Task object is NOT a floating task.
-     */
-    public void add(Task taskToAdd) throws IOException {
-        assert (taskToAdd.getStartTime() != null || taskToAdd.getEndTime() != null);
-
-        System.out.println("Running add to google calendar ...");
-        taskToAdd = taskConverter(taskToAdd);
-        DateTime startDate = new DateTime(
-                (taskToAdd.getStartTime() != null ?
-                        taskToAdd.getStartTime().getStartTime()
-                        : null));
-        DateTime endDate = new DateTime(
-                (taskToAdd.getEndTime() != null ?
-                        taskToAdd.getEndTime().getEndTime()
-                        : null));
-        EventDateTime start = new EventDateTime()
-                .setDateTime(startDate)
-                .setTimeZone("Singapore");
-        EventDateTime end = new EventDateTime()
-                .setDateTime(endDate)
-                .setTimeZone("Singapore");
-        Event.Reminders reminders = new Event.Reminders()
-                .setUseDefault(true);
-        Event taskEvent = new Event()
-                .setSummary(taskToAdd.getName().toString())
-                .setDescription(taskToAdd.getDescription())
-                .setStart(start)
-                .setEnd(end)
-                .setReminders(reminders);
-
-        try {
-            String calendarId = "primary";
-            taskEvent = service.events().insert(calendarId, taskEvent).execute();
-            System.out.printf("Event added successfully: %s\n", taskToAdd.toString());
-        } catch (IOException ioe) {
-            throw new IOException("Task could not be added to Google Calendar\n"
-                    + ioe.getMessage());
-        }
-    }
-
-    //@@author A0141647E
-    /*
-     * Import the current Tasks in storage to Google Calendar.
-     * Meant to be only called once when the application first initiate.
-     */
-    public void sync(Model model) throws IOException {
-        Iterator<Task> taskIterator = model.getToDoList().getTaskList().iterator();
-        clearGoogleCalendar();
-        while (taskIterator.hasNext()) {
-            Task taskToSync = taskIterator.next();
-            if (taskToSync.getStartTime() != null || taskToSync.getEndTime() != null) {
-                add(taskToSync);
-            }
-        }
-    }
     
-    //@@author A0141647E
-    /*
-     * A helper method that clears the google calendar
-     */
-    public void clearGoogleCalendar() throws IOException {
-        Events events = service.events().list("primary").execute();
-        List<Event> items = events.getItems();
-        if (items.size() != 0) {
-            String[] eventIds = new String[items.size()];
-            int i = 0;
-            for (Event event : items) {
-                eventIds[i] = event.getId();
-                i++;
-            }
-            for (int j = 0; j < eventIds.length; j++) {
-                service.events().delete("primary", eventIds[j]);
-            }
-        }
-    }
-
+    //=========== Methods that normalize Task objects into the format supported by Google Calendar Service =====
+    
     //@@author A0141647E
     /*
      * A helper method that pre-process a Task to use Google API
      */
-    public Task taskConverter(Task task) {
+    public static Task taskNormalizer(Task task) {
         assert (task.getStartTime() != null || task.getEndTime() != null);
 
         Task processedTask;
@@ -225,13 +130,44 @@ public class GoogleIntegration {
 
         return processedTask;
     }
+    
+    //@@author A0141647E
+    /*
+     * A helper method that converts a Task object into a corresponding Event object
+     * supported by Google Calendar Service.
+     */
+    public static Event taskConverter(Task taskToConvert) {
+        DateTime startDate = new DateTime(
+                (taskToConvert.getStartTime() != null ?
+                        taskToConvert.getStartTime().getStartTime()
+                        : null));
+        DateTime endDate = new DateTime(
+                (taskToConvert.getEndTime() != null ?
+                        taskToConvert.getEndTime().getEndTime()
+                        : null));
+        EventDateTime start = new EventDateTime()
+                .setDateTime(startDate)
+                .setTimeZone("Singapore");
+        EventDateTime end = new EventDateTime()
+                .setDateTime(endDate)
+                .setTimeZone("Singapore");
+        Event.Reminders reminders = new Event.Reminders()
+                .setUseDefault(true);
+        Event taskEvent = new Event()
+                .setSummary(taskToConvert.getName().toString())
+                .setDescription(taskToConvert.getDescription())
+                .setStart(start)
+                .setEnd(end)
+                .setReminders(reminders);
+        return taskEvent;
+    }
 
     //@@author A0141647E
     /*
      * A helper method that creates a new Date object
      * one hour before the input Date object
      */
-    Date addHour(Date date, boolean up) {
+    public static Date addHour(Date date, boolean up) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         if (up) {
