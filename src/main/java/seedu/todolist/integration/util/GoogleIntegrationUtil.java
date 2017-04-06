@@ -30,7 +30,7 @@ import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.parser.TaskParser;
 
 public class GoogleIntegrationUtil {
-    
+
     /** Application name. */
     private static final String APPLICATION_NAME = "dome_java";
 
@@ -92,9 +92,9 @@ public class GoogleIntegrationUtil {
                 .setApplicationName(APPLICATION_NAME)
                 .build();
     }
-    
+
     //=========== Methods that normalize Task objects into the format supported by Google Calendar Service =====
-    
+
     //@@author A0141647E
     /*
      * A helper method that pre-process a Task to use Google API
@@ -130,7 +130,7 @@ public class GoogleIntegrationUtil {
 
         return processedTask;
     }
-    
+
     //@@author A0141647E
     /*
      * A helper method that converts a Task object into a corresponding Event object
