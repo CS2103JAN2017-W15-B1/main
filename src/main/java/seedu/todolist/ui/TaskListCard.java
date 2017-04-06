@@ -41,12 +41,12 @@ public class TaskListCard extends UiPart<Region> {
     private Image completeIcon = new Image("/images/complete-icon.png");
 
 
+    //@@author A0144240W
     public TaskListCard(Task task, int displayedIndex) {
         super(FXML);
         name.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
-        startTime.setText(task.getStartTime() != null ? task.getStartTime().toString() : "");
-        endTime.setText(task.getEndTime() != null ? task.getEndTime().toString() : "");
+        setTaskTimes(task);
         if (task.isComplete()) {
             statusIcon.setImage(completeIcon);
         }
@@ -56,6 +56,28 @@ public class TaskListCard extends UiPart<Region> {
 
     private void initTags(Task task) {
         task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    //@@author A0144240W
+    /**
+     * Sets the text for the timing labels
+     * @param task
+     */
+    private void setTaskTimes(Task task) {
+        switch(task.getType()) {
+        case Task.TYPE_END:
+            endTime.setText("Due by: " + task.getEndTime().toString());
+            break;
+        case Task.TYPE_START_END:
+            startTime.setText("From: " + task.getStartTime().toString());
+            endTime.setText("To: " + task.getEndTime().toString());
+            break;
+        case Task.TYPE_START:
+            startTime.setText("From: " + task.getStartTime().toString());
+            break;
+        default:
+            break;
+        }
     }
 
     //@@author A0144240W
@@ -78,5 +100,7 @@ public class TaskListCard extends UiPart<Region> {
             break;
         }
     }
+
+
 
 }
