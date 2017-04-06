@@ -64,6 +64,8 @@ public class TaskListPanelHandle extends GuiHandle {
             guiRobot.interact(() -> getListView().scrollTo(scrollTo));
             guiRobot.sleep(200);
             if (!TestUtil.compareCardAndTask(getTaskCardHandle(startPosition + i), tasks[i])) {
+                System.out.println(getTaskCardHandle(startPosition + i).getName());
+                System.out.println(tasks[i].getName());
                 return false;
             }
         }
@@ -133,7 +135,7 @@ public class TaskListPanelHandle extends GuiHandle {
     public int getTaskIndex(Task targetTask) {
         List<Task> tasksInList = getListView().getItems();
         for (int i = 0; i < tasksInList.size(); i++) {
-            if (tasksInList.get(i).getName().equals(targetTask.getName())) {
+            if (tasksInList.get(i).equals(targetTask)) {
                 return i;
             }
         }

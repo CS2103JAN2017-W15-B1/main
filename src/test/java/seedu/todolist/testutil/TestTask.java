@@ -13,10 +13,8 @@ import seedu.todolist.model.task.Task;
  */
 public class TestTask extends Task {
 
-    private Name name;
     private StartTime startTime;
     private EndTime endTime;
-    private UniqueTagList tags;
 
     public TestTask() {
         tags = new UniqueTagList();
@@ -30,24 +28,8 @@ public class TestTask extends Task {
         this.startTime = taskToCopy.getStartTime();
         this.endTime = taskToCopy.getEndTime();
         this.tags = taskToCopy.getTags();
-    }
-
-    @Override
-    public void setName(Name name) {
-        this.name = name;
-    }
-
-    public void setStartTime(StartTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(EndTime endTime) {
-        this.endTime = endTime;
-    }
-
-    @Override
-    public void setTags(UniqueTagList tags) {
-        this.tags = tags;
+        this.completed = taskToCopy.isComplete();
+        this.description = taskToCopy.getDescription();
     }
 
     @Override
@@ -56,8 +38,17 @@ public class TestTask extends Task {
     }
 
     @Override
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    @Override
     public StartTime getStartTime() {
         return startTime;
+    }
+
+    public void setStartTime(StartTime startTime) {
+        this.startTime = startTime;
     }
 
     @Override
@@ -65,15 +56,18 @@ public class TestTask extends Task {
         return endTime;
     }
 
+    public void setEndTime(EndTime endTime) {
+        this.endTime = endTime;
+    }
+
     @Override
     public UniqueTagList getTags() {
         return tags;
     }
 
-    // TODO
     @Override
-    public boolean isComplete() {
-        return false;
+    public void setTags(UniqueTagList tags) {
+        this.tags = tags;
     }
 
     @Override
@@ -101,8 +95,12 @@ public class TestTask extends Task {
         return other == this // short circuit if same object
                 || (other instanceof TestTask // instanceof handles nulls
                         && ((TestTask) other).getName().equals(this.getName())
-                        && ((TestTask) other).getStartTime().equals(this.getStartTime())
-                        && ((TestTask) other).getEndTime().equals(this.getEndTime())
+                        && (((TestTask) other).getStartTime() == null ?
+                                this.getStartTime() == null :
+                                    ((TestTask) other).getStartTime().equals(this.getStartTime()))
+                        && (((TestTask) other).getEndTime() == null ?
+                                this.getEndTime() == null :
+                                    ((TestTask) other).getEndTime().equals(this.getEndTime()))
                         && (((TestTask) other).isComplete() == this.isComplete()));
     }
 
@@ -121,6 +119,6 @@ public class TestTask extends Task {
 
     @Override
     public String getType() {
-        return "StartEndTask";
+        return "TestTask";
     }
 }

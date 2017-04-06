@@ -7,6 +7,8 @@ import org.junit.Test;
 import guitests.guihandles.TaskCardHandle;
 import seedu.todolist.commons.core.Messages;
 import seedu.todolist.logic.commands.AddCommand;
+import seedu.todolist.model.task.Task;
+import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.testutil.TestTask;
 import seedu.todolist.testutil.TestUtil;
 
@@ -16,23 +18,33 @@ public class AddCommandTest extends ToDoListGuiTest {
     public void add() {
         //add one task
         TestTask[] currentList = td.getTypicalTasks();
-        TestTask taskToAdd = td.hoon;
+        TestTask taskToAdd = td.changeUi;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         //add another task
-        taskToAdd = td.ida;
+        taskToAdd = td.bookTicket;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         //add duplicate task
-        commandBox.runCommand(td.hoon.getAddCommand());
+        commandBox.runCommand(td.changeUi.getAddCommand());
         assertResultMessage(AddCommand.MESSAGE_DUPLICATE_TASK);
         assertTrue(taskListPanel.isListMatching(currentList));
 
+        //add task with same name but different timing is allowed
+        taskToAdd = td.bookTicketOther;
+        assertAddSuccess(taskToAdd, currentList);
+        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
+
+        //add task with name that contains " ' " is allowed
+        taskToAdd = td.helpJohn;
+        assertAddSuccess(taskToAdd, currentList);
+        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
+
         //add to empty list
         commandBox.runCommand("clear");
-        assertAddSuccess(td.alice);
+        assertAddSuccess(td.goToGym);
 
         //invalid command
         commandBox.runCommand("adds Johnny");
@@ -44,7 +56,11 @@ public class AddCommandTest extends ToDoListGuiTest {
         commandBox.runCommand(taskToAdd.getAddCommand());
 
         //confirm the new card contains the right data
-        TaskCardHandle addedCard = taskListPanel.navigateToTask(taskToAdd.getName().fullName);
+        Task taskAdding = TaskParser.parseTask(taskToAdd);
+        TaskCardHandle addedCard = taskListPanel.navigateToTask(taskAdding);
+        if (addedCard == null) {
+            System.out.println("Navigated card is somehow null ...");
+        }
         assertMatching(taskToAdd, addedCard);
 
         //confirm the list now contains all previous tasks plus the new task
