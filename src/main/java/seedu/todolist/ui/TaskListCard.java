@@ -66,14 +66,14 @@ public class TaskListCard extends UiPart<Region> {
     private void setTaskTimes(Task task) {
         switch(task.getType()) {
         case Task.TYPE_END:
-            endTime.setText("Due by: " + task.getEndTime().toString());
+            startTime.setText("Due: " + task.getEndTime().toString());
             break;
         case Task.TYPE_START_END:
-            startTime.setText("From: " + task.getStartTime().toString());
-            endTime.setText("To: " + task.getEndTime().toString());
+            startTime.setText("Start: " + task.getStartTime().toString());
+            endTime.setText("End: " + task.getEndTime().toString());
             break;
         case Task.TYPE_START:
-            startTime.setText("From: " + task.getStartTime().toString());
+            startTime.setText("Start: " + task.getStartTime().toString());
             break;
         default:
             break;

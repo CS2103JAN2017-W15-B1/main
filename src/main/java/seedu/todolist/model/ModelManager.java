@@ -252,8 +252,8 @@ public class ModelManager extends ComponentManager implements Model {
       //get current time and compare with the task's end time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
         Date currentDate = new Date();
-        if (hasStartTime(task)) {
-            String taskDateString = task.getStartTime().toString();
+        if (hasEndTime(task)) {
+            String taskDateString = task.getEndTime().toString();
             try {
                 Date taskDate = dateFormat.parse(taskDateString);
                 return currentDate.compareTo(taskDate) <= 0;
@@ -271,10 +271,10 @@ public class ModelManager extends ComponentManager implements Model {
     Comparator<? super Task> dateComparator = new Comparator<Task>() {
         @Override
         public int compare(Task firstTask, Task secondTask) {
-            if (hasStartTime(firstTask) && hasStartTime(secondTask)) {
+            if (hasEndTime(firstTask) && hasEndTime(secondTask)) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
-                String firstTaskStartDateString = firstTask.getStartTime().toString();
-                String secondTaskStartDateString = secondTask.getStartTime().toString();
+                String firstTaskStartDateString = firstTask.getEndTime().toString();
+                String secondTaskStartDateString = secondTask.getEndTime().toString();
                 try {
                     Date firstTaskStartDate = dateFormat.parse(firstTaskStartDateString);
                     Date secondTaskStartDate = dateFormat.parse(secondTaskStartDateString);
