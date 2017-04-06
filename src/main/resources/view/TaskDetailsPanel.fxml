@@ -19,13 +19,13 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
         </padding>
         <children>
-            <Label id="textForTaskDetails" text ="Task Details" VBox.vgrow="ALWAYS"></Label>
-            <Label fx:id="nameLabel"></Label>
+            <Label id="textForTaskDetails" text="Task Details" VBox.vgrow="ALWAYS"></Label>
+            <Label fx:id="nameLabel" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
             <Label fx:id="tagsheader"></Label>
             <FlowPane fx:id="tags"></FlowPane>
             <Label fx:id="startLabel"></Label>
             <Label fx:id="endLabel"></Label>
-            <Label fx:id="description"></Label>
+            <Label fx:id="description" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
         </children>
     </VBox>
 </AnchorPane>
