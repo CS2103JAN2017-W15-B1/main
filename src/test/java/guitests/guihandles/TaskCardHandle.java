@@ -68,6 +68,9 @@ public class TaskCardHandle extends GuiHandle {
     }
 
     public boolean isSameTask(Task taskToCompare) {
+        System.out.println(getName() + " and then " + taskToCompare.getName());
+        System.out.println(getStartTime() + " and then " + taskToCompare.getStartTime());
+        System.out.println(getEndTime() + " and then " + taskToCompare.getEndTime());
         return getName().equals(taskToCompare.getName().fullName)
                 && (taskToCompare.getStartTime() == null ?
                         getStartTime().equals("")
