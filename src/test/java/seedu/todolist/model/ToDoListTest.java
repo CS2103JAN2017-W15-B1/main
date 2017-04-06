@@ -49,8 +49,8 @@ public class ToDoListTest {
     public void resetData_withDuplicateTasks_throwsAssertionError() {
         TypicalTestTasks td = new TypicalTestTasks();
         // Repeat td.alice twice
-        List<Task> newTasks = Arrays.asList(TaskParser.parseTask(td.alice), TaskParser.parseTask(td.alice));
-        List<Tag> newTags = td.alice.getTags().asObservableList();
+        List<Task> newTasks = Arrays.asList(TaskParser.parseTask(td.bossEmail), TaskParser.parseTask(td.bossEmail));
+        List<Tag> newTags = td.bossEmail.getTags().asObservableList();
         ToDoListStub newData = new ToDoListStub(newTasks, newTags);
 
         thrown.expect(AssertionError.class);

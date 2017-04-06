@@ -51,7 +51,7 @@ public class DeleteCommand extends Command {
             assert false : "The target task cannot be missing";
         }
 
-        commandResultText = String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete);
+        commandResultText = String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete.getName());
         return new CommandResult(commandResultText);
     }
 

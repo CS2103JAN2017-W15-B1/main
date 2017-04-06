@@ -23,7 +23,7 @@ public class EditCommandTest extends ToDoListGuiTest {
     @Test
     public void edit_allFieldsSpecified_success() throws Exception {
         String detailsToEdit = "Bobby t/husband";
-        int toDoListIndex = 1;
+        int toDoListIndex = 4;
 
         TestTask editedTask = new TaskBuilder().withName("Bobby").withTags("husband").build();
 
@@ -81,7 +81,7 @@ public class EditCommandTest extends ToDoListGuiTest {
 
     @Test
     public void edit_duplicateTask_failure() {
-        commandBox.runCommand("edit 3 Alice Pauline t/friends");
+        commandBox.runCommand("edit 3 Reply Boss's Email s/30-06-2017 10.00 AM e/30-06-2017 3.00 PM");
         assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
     }
 
