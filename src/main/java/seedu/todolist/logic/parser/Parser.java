@@ -22,6 +22,7 @@ import seedu.todolist.logic.commands.IncorrectCommand;
 import seedu.todolist.logic.commands.ListCommand;
 import seedu.todolist.logic.commands.RedoCommand;
 import seedu.todolist.logic.commands.SelectCommand;
+import seedu.todolist.logic.commands.SyncCommand;
 import seedu.todolist.logic.commands.UndoCommand;
 
 /**
@@ -94,6 +95,9 @@ public class Parser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case SyncCommand.COMMAND_WORD:
+            return new SyncCommand();
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND, commandWord);
