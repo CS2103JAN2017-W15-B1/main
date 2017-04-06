@@ -83,8 +83,6 @@ public class GoogleIntegration {
                 i++;
             }
             for (int j = 0; j < eventIds.length; j++) {
-                System.out.printf("Deleting event with id %s\n", eventIds[j]);
-                System.out.printf("%s\n", service.events().get(GoogleIntegration.CALENDAR_ID, eventIds[j]).execute().getSummary());
                 service.events().delete(GoogleIntegration.CALENDAR_ID, eventIds[j]).execute();
             }
         }
