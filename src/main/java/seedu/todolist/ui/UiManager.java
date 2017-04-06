@@ -146,7 +146,7 @@ public class UiManager extends ComponentManager implements Ui {
 
     //@@author A0139633B
     @Subscribe
-    private void handleSaveLocationChangedEvent(ToDoListChangedEvent event) {
+    public void handleSaveLocationChangedEvent(ToDoListChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.updateSaveLocationInFooter(config.getToDoListFilePath());
     }
