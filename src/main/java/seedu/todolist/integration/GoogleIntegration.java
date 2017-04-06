@@ -19,7 +19,7 @@ import seedu.todolist.model.task.Task;
  * sync, add, taskConverter and addHour.
  */
 public class GoogleIntegration {
-    
+
     //Represent the identification of the calendar that the app requests service from
     public static final String CALENDAR_ID = "primary";
 
@@ -30,7 +30,7 @@ public class GoogleIntegration {
     public GoogleIntegration() throws IOException, GeneralSecurityException {
         this.service = GoogleIntegrationUtil.getCalendarService();
     }
-    
+
     //@@author A0141647E
     /*
      * Import the current Tasks in storage to Google Calendar.
@@ -67,7 +67,7 @@ public class GoogleIntegration {
                     + ioe.getMessage());
         }
     }
-    
+
     //@@author A0141647E
     /*
      * Clears the google calendar
