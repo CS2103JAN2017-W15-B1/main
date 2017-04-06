@@ -73,7 +73,7 @@ public class GoogleIntegration {
      * Clears the google calendar
      */
     public void clearGoogleCalendar() throws IOException {
-        Events events = service.events().list("primary").execute();
+        Events events = service.events().list(GoogleIntegration.CALENDAR_ID).execute();
         List<Event> items = events.getItems();
         if (items.size() != 0) {
             String[] eventIds = new String[items.size()];
@@ -83,7 +83,9 @@ public class GoogleIntegration {
                 i++;
             }
             for (int j = 0; j < eventIds.length; j++) {
-                service.events().delete("primary", eventIds[j]);
+                System.out.printf("Deleting event with id %s\n", eventIds[j]);
+                System.out.printf("%s\n", service.events().get(GoogleIntegration.CALENDAR_ID, eventIds[j]).execute().getSummary());
+                service.events().delete(GoogleIntegration.CALENDAR_ID, eventIds[j]).execute();
             }
         }
     }
