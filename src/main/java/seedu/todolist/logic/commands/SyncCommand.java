@@ -3,7 +3,7 @@ package seedu.todolist.logic.commands;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-import seedu.todolist.commons.core.GoogleIntegration;
+import seedu.todolist.integration.GoogleIntegration;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 
 public class SyncCommand extends Command {

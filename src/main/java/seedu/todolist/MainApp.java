@@ -12,7 +12,6 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import seedu.todolist.commons.core.Config;
 import seedu.todolist.commons.core.EventsCenter;
-import seedu.todolist.commons.core.GoogleIntegration;
 import seedu.todolist.commons.core.LogsCenter;
 import seedu.todolist.commons.core.Version;
 import seedu.todolist.commons.events.ui.ExitAppRequestEvent;
