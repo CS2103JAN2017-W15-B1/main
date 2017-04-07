@@ -1,4 +1,4 @@
-# DoMe! Developer Guide
+# *DoMe!* Developer Guide
 
 By : `Team W15-B1`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jan 2017`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 
@@ -6,10 +6,29 @@ By : `Team W15-B1`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jan 2017`  &nbsp;&nbsp;&nbs
 
 1. [Introduction](#1-introduction)
 2. [Setting Up](#2-setting-up)
+2.1 [Prerequisites](#2-1-prerequisites)
+2.2 [Importing into Eclipse](#2-2-importing-the-project-into-eclipse)
+2.3 [Configuring Checkstyle](#2-3-configuring-checkstyle)
+2.4 [Troubleshooting Project Setup](#2-4-troubleshooting-project-setup)
 3. [Design](#3-design)
+3.1 [Architecture](#3-1-architecture)
+3.2 [UI Component](#3-2-ui-component)
+3.3 [Logic Component](#3-3-logic-component)
+3.4 [Model Component](#3-4-model-component)
+3.5 [Storage Component](#3-5-storage-component)
+3.6 [Common classes](#3-6-common-classes)
 4. [Implementation](#4-implementation)
+4.1 [Logging](#4-1-logging)
+4.2 [Configuration](#4-2-configuration)
 5. [Testing](#5-testing)
+5.1 [Troubleshooting Tests](#5-1-troubleshooting-tests)
 6. [Dev Ops](#6-dev-ops)
+6.1 [Build Automation](#6-1-build-automation)
+6.2 [Continuous Integration](#6-2-continuous-integration)
+6.3 [Documentation](#6-3-documentation)
+6.4 [Making a Release](#6-4-making-a-release)
+6.5 [Managing Dependencies](#6-6-managing-dependencies)
+
 7. [Appendices](#7-appendices)
 
 * [Appendix A : User Stories](#appendix-a-:-user-stories)
@@ -20,7 +39,7 @@ By : `Team W15-B1`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jan 2017`  &nbsp;&nbsp;&nbs
 
 ## 1. Introduction
 
-*DoMe!* is a simple todo app for users to manage their daily tasks, such as keeping track of deadlines and scheduling of events. This app is also a Java desktop application that has a GUI.
+*DoMe!* is a simple to-do app for users to manage their daily tasks, such as keeping track of deadlines and scheduling of events. This app is also a Java desktop application that has a GUI.
 
 This guide describes the design and implementation of *DoMe!*. Through this guide, you will gain an understanding of how *DoMe!* works and how you can further contribute to its development.
 
@@ -46,9 +65,12 @@ This guide describes the design and implementation of *DoMe!*. Through this guid
 1. Open Eclipse (Note: Ensure you have installed the **e(fx)clipse** and **buildship** plugins as given
    in the prerequisites above)
 2. Click `File` > `Import`
-3. Click `Gradle` > `Gradle Project` > `Next` > `Next`
+3. Click `Gradle` > `Gradle Project` > `Next` > `Next`<br>
+<img src="images\import-gradle-1.png" width="300"><br>
+<img src="images\import-gradle-2.png" width="300"><br>
 4. Click `Browse`, then locate the project's directory
-5. Click `Finish`
+5. Click `Finish`<br>
+<img src="images\import-gradle-3.png" width="300"><br>
 
   > * If you are asked whether to 'keep' or 'overwrite' config files, choose to 'keep'.
   > * Depending on your connection speed and server load, it can even take up to 30 minutes for the set up to finish
@@ -90,34 +112,31 @@ _Figure 3.1.1 : Architecture Diagram_
 The **_Architecture Diagram_** given above explains the high-level design of the App.
 Given below is a quick overview of each component.
 
-> Tip: The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
-> To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for:
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
+* Launching of application: Initializes the components in the correct sequence, and connects them up with each other.
+* Shutting down of application: Shuts down the components and invokes cleanup method where necessary.
 
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup method where necessary.
-
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#3-6-common-classes) represents a collection of classes used by multiple other components.
 Two of those classes play important roles at the architecture level.
 
 * `EventsCenter` : This class (written using [Google's Event Bus library](https://github.com/google/guava/wiki/EventBusExplained))
   is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design)
 * `LogsCenter` : Used by many classes to write log messages to the App's log file.
 
-The rest of the App consists of four components.
+The rest of the application consists of four components.
 
-* [**`UI`**](#ui-component) : Shows the user interface of the application.
-* [**`Logic`**](#logic-component) : Executes commands.
-* [**`Model`**](#model-component) : Holds the data of the App in-memory.
-* [**`Storage`**](#storage-component) : Reads data from the hard disk, and writes data to the hard disk.
+* [**`UI`**](#3-2-ui-component) : Shows the user interface of the application.
+* [**`Logic`**](#3-3-logic-component) : Executes commands.
+* [**`Model`**](#3-4-model-component) : Holds the data of the application in-memory.
+* [**`Storage`**](#3-5-storage-component) : Reads data from the hard disk, and writes data to the hard disk.
 
 Each of the four components
 
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java`
+For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java`
 interface and exposes its functionality using the `LogicManager.java` class.<br>
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.1.2 : Class Diagram of the Logic Component_
@@ -130,7 +149,7 @@ command `delete 1`.
 <img src="images\SDforDeletePerson1.png" width="800"><br>
 _Figure 3.1.3a : Component interactions for `delete 1` command (part 1)_
 
->Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data are changed,
+>Note how the `Model` simply raises a `ToDoListChangedEvent` when the to-do list data is changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
@@ -144,43 +163,40 @@ _Figure 3.1.3b : Component interactions for `delete 1` command (part 2)_
 
 The sections below give more details of each component.
 
-### 3.2. UI component
+### 3.2. UI Component
 
-Author: Alice Bee
-
-<img src="images/UiClassDiagram1.png" width="800"><br>
+<img src="images/UIClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
 
-**API** : [`Ui.java`](../src/main/java/seedu/
-/ui/U.java)
+**API** : [`Ui.java`](../src/main/java/seedu/todolist/ui/UI.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`,
-`StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
+`StatusBarFooter`, `TaskDetailsPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
- For example, the layout of the [`MainWindow`](../src/main/java/seedu/address/ui/MainWindow.java) is specified in
+ For example, the layout of the [`MainWindow`](../src/main/java/seedu/todolist/ui/MainWindow.java) is specified in
  [`MainWindow.fxml`](../src/main/resources/view/MainWindow.fxml)
 
-The `UI` component,
+The `UI` component
 
 * Executes user commands using the `Logic` component.
 * Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
 * Responds to events raised from various parts of the App and updates the UI accordingly.
 
-### 3.3. Logic component
-
-Author: Bernard Choo
+### 3.3. Logic Component
 
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
-**API** : [`Logic.java`](../src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](../src/main/java/seedu/todolist/logic/Logic.java)
 
-1. `Logic` uses the `Parser` class to parse the user command.
-2. This results in a `Command` object which is executed by the `LogicManager`.
-3. The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
-4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+The `Logic` component
+
+* Uses the `Parser` class to parse the user command.
+* Executes the `Command` object (returned from the `Parser` class) in `LogicManager`.
+* Affects the `Model` (e.g. adding a person) and/or raise events.
+* Returns the result of the command execution encapsulated as a `CommandResult` object, which is passed back to the `Ui`.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
  API call.<br>
@@ -189,14 +205,12 @@ _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Comma
 
 ### 3.4. Model component
 
-Author: Cynthia Dharman
-
 <img src="images/ModelClassDiagram1.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
 
-**API** : [`Model.java`](../src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](../src/main/java/seedu/todolist/model/Model.java)
 
-The `Model` component,
+The `Model` component
 
 * stores a `UserPref` object that represents the user's preferences.
 * stores the Address Book data.
@@ -206,21 +220,19 @@ The `Model` component,
 
 ### 3.5. Storage component
 
-Author: Darius Foong
-
 <img src="images/StorageClassDiagram1.png" width="800"><br>
 _Figure 3.5.1 : Structure of the Storage Component_
 
-**API** : [`Storage.java`](../src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](../src/main/java/seedu/todolist/storage/Storage.java)
 
-The `Storage` component,
+The `Storage` component
 
-* saves `UserPref` objects in json format and read it back.
-* saves the Address Book data in xml format and read it back.
+* saves `UserPref` objects in json format and reads it back.
+* saves the Address Book data in xml format and reads it back.
 
 ### 3.6. Common classes
 
-Classes used by multiple components are in the `seedu.taskmanager.commons` package.
+Classes used by multiple components are in the `seedu.todolist.commons` package.
 
 ## 4. Implementation
 
@@ -269,15 +281,15 @@ We have two types of tests:
 1. **GUI Tests** - These are _System Tests_ that test the entire App by simulating user actions on the GUI.
    These are in the `guitests` package.
 
-2. **Non-GUI Tests** - These are tests not involving the GUI. They include,
+2. **Non-GUI Tests** - These are tests not involving the GUI. They include
    1. _Unit tests_ targeting the lowest level methods/classes. <br>
-      e.g. `seedu.address.commons.UrlUtilTest`
+      e.g. `seedu.todolist.commons.ConfigUtilTest`
    2. _Integration tests_ that are checking the integration of multiple code units
      (those code units are assumed to be working).<br>
-      e.g. `seedu.address.storage.StorageManagerTest`
+      e.g. `seedu.todolist.storage.StorageManagerTest`
    3. Hybrids of unit and integration tests. These test are checking multiple code units as well as
       how the are connected together.<br>
-      e.g. `seedu.address.logic.LogicManagerTest`
+      e.g. `seedu.todolist.logic.LogicManagerTest`
 
 #### Headless GUI Testing
 Thanks to the [TestFX](https://github.com/TestFX/TestFX) library we use,
@@ -307,21 +319,12 @@ See [UsingGradle.md](UsingGradle.md) to learn how to use Gradle for build automa
 We use [Travis CI](https://travis-ci.org/) and [AppVeyor](https://www.appveyor.com/) to perform _Continuous Integration_ on our projects.
 See [UsingTravis.md](UsingTravis.md) and [UsingAppVeyor.md](UsingAppVeyor.md) for more details.
 
-### 6.3. Publishing Documentation
+### 6.3. Documentation
 
 See [UsingGithubPages.md](UsingGithubPages.md) to learn how to use GitHub Pages to publish documentation to the
 project site.
 
-### 6.4. Making a Release
-
-Here are the steps to create a new release.
-
- 1. Generate a JAR file [using Gradle](UsingGradle.md#creating-the-jar-file).
- 2. Tag the repository with the version number. e.g. `v0.1`
- 2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
-    and upload the JAR file you created.
-
-### 6.5. Converting Documentation to PDF format
+##### Converting Documentation to PDF format
 
 We use [Google Chrome](https://www.google.com/chrome/browser/desktop/) for converting documentation to PDF format,
 as Chrome's PDF engine preserves hyperlinks used in webpages.
@@ -338,6 +341,16 @@ Here are the steps to convert the project documentation files to PDF format.
     <img src="images/chrome_save_as_pdf.png" width="300"><br>
     _Figure 5.4.1 : Saving documentation as PDF files in Chrome_
 
+### 6.4. Making a Release
+
+Here are the steps to create a new release.
+
+ 1. Generate a JAR file [using Gradle](UsingGradle.md#creating-the-jar-file).
+ 2. Tag the repository with the version number. e.g. `v0.1`
+ 2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
+    and upload the JAR file you created.
+  
+ 
 ### 6.6. Managing Dependencies
 
 A project often depends on third-party libraries. For example, Address Book depends on the
