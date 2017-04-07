@@ -6,28 +6,28 @@ By : `Team W15-B1`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jan 2017`  &nbsp;&nbsp;&nbs
 
 1. [Introduction](#1-introduction)
 2. [Setting Up](#2-setting-up) <br>
-2.1 [Prerequisites](#2-1-prerequisites)<br>
-2.2 [Importing into Eclipse](#2-2-importing-the-project-into-eclipse)<br>
-2.3 [Configuring Checkstyle](#2-3-configuring-checkstyle)<br>
-2.4 [Troubleshooting Project Setup](#2-4-troubleshooting-project-setup)<br>
+2.1 [Prerequisites](#21-prerequisites)<br>
+2.2 [Importing into Eclipse](#22-importing-the-project-into-eclipse)<br>
+2.3 [Configuring Checkstyle](#23-configuring-checkstyle)<br>
+2.4 [Troubleshooting Project Setup](#24-troubleshooting-project-setup)<br>
 3. [Design](#3-design)<br>
-3.1 [Architecture](#3-1-architecture)<br>
-3.2 [UI Component](#3-2-ui-component)<br>
-3.3 [Logic Component](#3-3-logic-component)<br>
-3.4 [Model Component](#3-4-model-component)<br>
-3.5 [Storage Component](#3-5-storage-component)<br>
-3.6 [Common classes](#3-6-common-classes)<br>
+3.1 [Architecture](#31-architecture)<br>
+3.2 [UI Component](#32-ui-component)<br>
+3.3 [Logic Component](#33-logic-component)<br>
+3.4 [Model Component](#34-model-component)<br>
+3.5 [Storage Component](#35-storage-component)<br>
+3.6 [Common classes](#36-common-classes)<br>
 4. [Implementation](#4-implementation)<br>
-4.1 [Logging](#4-1-logging)<br>
-4.2 [Configuration](#4-2-configuration)<br>
+4.1 [Logging](#41-logging)<br>
+4.2 [Configuration](#42-configuration)<br>
 5. [Testing](#5-testing)<br>
-5.1 [Troubleshooting Tests](#5-1-troubleshooting-tests)<br>
+5.1 [Troubleshooting Tests](#51-troubleshooting-tests)<br>
 6. [Dev Ops](#6-dev-ops)<br>
-6.1 [Build Automation](#6-1-build-automation)<br>
-6.2 [Continuous Integration](#6-2-continuous-integration)<br>
-6.3 [Documentation](#6-3-documentation)<br>
-6.4 [Making a Release](#6-4-making-a-release)<br>
-6.5 [Managing Dependencies](#6-6-managing-dependencies)<br>
+6.1 [Build Automation](#61-build-automation)<br>
+6.2 [Continuous Integration](#62-continuous-integration)<br>
+6.3 [Documentation](#63-documentation)<br>
+6.4 [Making a Release](#64-making-a-release)<br>
+6.5 [Managing Dependencies](#65-managing-dependencies)<br>
 
 7. [Appendices](#7-appendices)
 
@@ -351,7 +351,7 @@ Here are the steps to create a new release.
     and upload the JAR file you created.
   
  
-### 6.6. Managing Dependencies
+### 6.5. Managing Dependencies
 
 A project often depends on third-party libraries. For example, Address Book depends on the
 [Jackson library](http://wiki.fasterxml.com/JacksonHome) for XML parsing. Managing these _dependencies_
