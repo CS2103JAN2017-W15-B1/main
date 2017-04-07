@@ -5,29 +5,29 @@ By : `Team W15-B1`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jan 2017`  &nbsp;&nbsp;&nbs
 ---
 
 1. [Introduction](#1-introduction)
-2. [Setting Up](#2-setting-up)
-2.1 [Prerequisites](#2-1-prerequisites)
-2.2 [Importing into Eclipse](#2-2-importing-the-project-into-eclipse)
-2.3 [Configuring Checkstyle](#2-3-configuring-checkstyle)
-2.4 [Troubleshooting Project Setup](#2-4-troubleshooting-project-setup)
-3. [Design](#3-design)
-3.1 [Architecture](#3-1-architecture)
-3.2 [UI Component](#3-2-ui-component)
-3.3 [Logic Component](#3-3-logic-component)
-3.4 [Model Component](#3-4-model-component)
-3.5 [Storage Component](#3-5-storage-component)
-3.6 [Common classes](#3-6-common-classes)
-4. [Implementation](#4-implementation)
-4.1 [Logging](#4-1-logging)
-4.2 [Configuration](#4-2-configuration)
-5. [Testing](#5-testing)
-5.1 [Troubleshooting Tests](#5-1-troubleshooting-tests)
-6. [Dev Ops](#6-dev-ops)
-6.1 [Build Automation](#6-1-build-automation)
-6.2 [Continuous Integration](#6-2-continuous-integration)
-6.3 [Documentation](#6-3-documentation)
-6.4 [Making a Release](#6-4-making-a-release)
-6.5 [Managing Dependencies](#6-6-managing-dependencies)
+2. [Setting Up](#2-setting-up) <br>
+2.1 [Prerequisites](#2-1-prerequisites)<br>
+2.2 [Importing into Eclipse](#2-2-importing-the-project-into-eclipse)<br>
+2.3 [Configuring Checkstyle](#2-3-configuring-checkstyle)<br>
+2.4 [Troubleshooting Project Setup](#2-4-troubleshooting-project-setup)<br>
+3. [Design](#3-design)<br>
+3.1 [Architecture](#3-1-architecture)<br>
+3.2 [UI Component](#3-2-ui-component)<br>
+3.3 [Logic Component](#3-3-logic-component)<br>
+3.4 [Model Component](#3-4-model-component)<br>
+3.5 [Storage Component](#3-5-storage-component)<br>
+3.6 [Common classes](#3-6-common-classes)<br>
+4. [Implementation](#4-implementation)<br>
+4.1 [Logging](#4-1-logging)<br>
+4.2 [Configuration](#4-2-configuration)<br>
+5. [Testing](#5-testing)<br>
+5.1 [Troubleshooting Tests](#5-1-troubleshooting-tests)<br>
+6. [Dev Ops](#6-dev-ops)<br>
+6.1 [Build Automation](#6-1-build-automation)<br>
+6.2 [Continuous Integration](#6-2-continuous-integration)<br>
+6.3 [Documentation](#6-3-documentation)<br>
+6.4 [Making a Release](#6-4-making-a-release)<br>
+6.5 [Managing Dependencies](#6-6-managing-dependencies)<br>
 
 7. [Appendices](#7-appendices)
 
@@ -324,7 +324,7 @@ See [UsingTravis.md](UsingTravis.md) and [UsingAppVeyor.md](UsingAppVeyor.md) fo
 See [UsingGithubPages.md](UsingGithubPages.md) to learn how to use GitHub Pages to publish documentation to the
 project site.
 
-##### Converting Documentation to PDF format
+#### Converting Documentation to PDF format
 
 We use [Google Chrome](https://www.google.com/chrome/browser/desktop/) for converting documentation to PDF format,
 as Chrome's PDF engine preserves hyperlinks used in webpages.
