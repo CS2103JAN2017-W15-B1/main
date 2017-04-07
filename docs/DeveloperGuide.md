@@ -117,7 +117,7 @@ Given below is a quick overview of each component.
 * Launching of application: Initializes the components in the correct sequence, and connects them up with each other.
 * Shutting down of application: Shuts down the components and invokes cleanup method where necessary.
 
-[**`Commons`**](#3-6-common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#36-common-classes) represents a collection of classes used by multiple other components.
 Two of those classes play important roles at the architecture level.
 
 * `EventsCenter` : This class (written using [Google's Event Bus library](https://github.com/google/guava/wiki/EventBusExplained))
@@ -126,10 +126,10 @@ Two of those classes play important roles at the architecture level.
 
 The rest of the application consists of four components.
 
-* [**`UI`**](#3-2-ui-component) : Shows the user interface of the application.
-* [**`Logic`**](#3-3-logic-component) : Executes commands.
-* [**`Model`**](#3-4-model-component) : Holds the data of the application in-memory.
-* [**`Storage`**](#3-5-storage-component) : Reads data from the hard disk, and writes data to the hard disk.
+* [**`UI`**](#32-ui-component) : Shows the user interface of the application.
+* [**`Logic`**](#33-logic-component) : Executes commands.
+* [**`Model`**](#34-model-component) : Holds the data of the application in-memory.
+* [**`Storage`**](#35-storage-component) : Reads data from the hard disk, and writes data to the hard disk.
 
 Each of the four components
 
