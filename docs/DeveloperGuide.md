@@ -203,7 +203,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <img src="images/DeletePersonSdForLogic.png" width="800"><br>
 _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Command_
 
-### 3.4. Model component
+### 3.4. Model Component
 
 <img src="images/ModelClassDiagram1.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
@@ -218,7 +218,7 @@ The `Model` component
   so that the UI automatically updates when the data in the list change.
 * depends on none of the other three components.
 
-### 3.5. Storage component
+### 3.5. Storage Component
 
 <img src="images/StorageClassDiagram1.png" width="800"><br>
 _Figure 3.5.1 : Structure of the Storage Component_
@@ -230,7 +230,7 @@ The `Storage` component
 * saves `UserPref` objects in json format and reads it back.
 * saves the Address Book data in xml format and reads it back.
 
-### 3.6. Common classes
+### 3.6. Common Classes
 
 Classes used by multiple components are in the `seedu.todolist.commons` package.
 
