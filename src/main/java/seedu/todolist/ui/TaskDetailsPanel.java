@@ -2,8 +2,11 @@ package seedu.todolist.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import seedu.todolist.commons.util.FxViewUtil;
@@ -15,6 +18,7 @@ import seedu.todolist.model.task.Task;
 public class TaskDetailsPanel extends UiPart<Region> {
 
     private static final String FXML = "TaskDetailsPanel.fxml";
+    private Image completeIcon = new Image("/images/complete-icon.png");
 
     @FXML
     private AnchorPane display;
@@ -40,6 +44,10 @@ public class TaskDetailsPanel extends UiPart<Region> {
     @FXML
     private VBox taskDetails;
 
+    @FXML
+    private HBox status;
+
+
     //@@author A0144240W
 
     /**
@@ -53,8 +61,13 @@ public class TaskDetailsPanel extends UiPart<Region> {
 
     //@@author A0144240W
     public void loadPersonPage(Task task) {
-        tags.setHgap(10);
-        nameLabel.setText("Name of task: " + task.getName().toString());
+        nameLabel.setText(task.getName().toString());
+         ImageView image = new ImageView(completeIcon);
+         image.setFitWidth(20);
+         image.setPreserveRatio(true);
+         if (task.isComplete()) {
+             status.getChildren().add(image);
+         }
         startLabel.setText("From: " + (task.getStartTime() != null ? task.getStartTime().toString() : ""));
         endLabel.setText("To: " + (task.getEndTime() != null ? task.getEndTime().toString() : ""));
         description.setText("Description: " + (task.getDescription() != null ? task.getDescription() : ""));
@@ -64,7 +77,14 @@ public class TaskDetailsPanel extends UiPart<Region> {
 
     //@@author A0144240W
     public void freeResources() {
-        tags.getChildren().clear();
+       tags.getChildren().clear();
+       nameLabel.setText("");
+       status.getChildren().clear();
+       startLabel.setText("");
+       endLabel.setText("");
+       tagsheader.setText("");
+       description.setText("");
+
     }
 
 }

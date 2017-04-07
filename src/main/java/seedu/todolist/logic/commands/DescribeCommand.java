@@ -5,6 +5,7 @@ import java.util.List;
 import seedu.todolist.commons.core.EventsCenter;
 import seedu.todolist.commons.core.Messages;
 import seedu.todolist.commons.events.ui.JumpToListRequestEvent;
+import seedu.todolist.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.parser.TaskParser;
@@ -53,8 +54,11 @@ public class DescribeCommand extends Command {
         Task editedTask = TaskParser.parseTask(taskToDescribe);
         editedTask.setDescription(description);
 
+
+
         model.describeTask(filteredTaskListIndex, editedTask);
         EventsCenter.getInstance().post(new JumpToListRequestEvent(filteredTaskListIndex));
+        EventsCenter.getInstance().post(new TaskPanelSelectionChangedEvent (editedTask));
         commandResultText = String.format(MESSAGE_DESCRIBE_TASK_SUCCESS, editedTask);
         return new CommandResult(commandResultText);
     }

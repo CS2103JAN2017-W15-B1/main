@@ -17,7 +17,7 @@
     <children>
         <GridPane HBox.hgrow="ALWAYS">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <children>
                 <VBox alignment="CENTER_LEFT" minHeight="105.0" GridPane.columnIndex="0">
@@ -29,7 +29,7 @@
                         <Insets bottom="5" left="5" right="5" top="5" />
                     </padding>
                     <children>
-                        <BorderPane prefHeight="30" prefWidth="100">
+                        <BorderPane prefHeight="30" prefWidth="80">
                             <left>
                                 <VBox>
                                     <padding>
