@@ -44,7 +44,7 @@ public class AddCommandTest extends ToDoListGuiTest {
 
         //add to empty list
         commandBox.runCommand("clear");
-        assertAddSuccess(td.goToGym);
+        assertAddSuccess(td.helpColleague);
 
         //invalid command
         commandBox.runCommand("adds Johnny");

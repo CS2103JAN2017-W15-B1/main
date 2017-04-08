@@ -23,7 +23,7 @@ public class TestTask extends Task {
     /**
      * Creates a copy of {@code taskToCopy}.
      */
-    public TestTask(TestTask taskToCopy) {
+    public TestTask(Task taskToCopy) {
         this.name = taskToCopy.getName();
         this.startTime = taskToCopy.getStartTime();
         this.endTime = taskToCopy.getEndTime();
@@ -100,8 +100,7 @@ public class TestTask extends Task {
                                     ((TestTask) other).getStartTime().equals(this.getStartTime()))
                         && (((TestTask) other).getEndTime() == null ?
                                 this.getEndTime() == null :
-                                    ((TestTask) other).getEndTime().equals(this.getEndTime()))
-                        && (((TestTask) other).isComplete() == this.isComplete()));
+                                    ((TestTask) other).getEndTime().equals(this.getEndTime())));
     }
 
     public String getAddCommand() {
