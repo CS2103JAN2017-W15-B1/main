@@ -24,7 +24,7 @@ public class DescribeCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) [DESCRIPTION]"
             + "Example: " + COMMAND_WORD + " 1 This is a very important task!";
 
-    public static final String MESSAGE_DESCRIBE_TASK_SUCCESS = "Added description to task: %1$s";
+    public static final String MESSAGE_DESCRIBE_TASK_SUCCESS = "Added description '%1$s' to task: '%2$s'";
     public static final String MESSAGE_NOT_DESCRIBED = "At least one field to edit must be provided.";
 
     private final int filteredTaskListIndex;
@@ -59,7 +59,9 @@ public class DescribeCommand extends Command {
         model.describeTask(filteredTaskListIndex, editedTask);
         EventsCenter.getInstance().post(new JumpToListRequestEvent(filteredTaskListIndex));
         EventsCenter.getInstance().post(new TaskPanelSelectionChangedEvent (editedTask));
-        commandResultText = String.format(MESSAGE_DESCRIBE_TASK_SUCCESS, editedTask);
+        commandResultText = String.format(MESSAGE_DESCRIBE_TASK_SUCCESS,
+                editedTask.getDescription(),
+                editedTask.getName().fullName);
         return new CommandResult(commandResultText);
     }
 

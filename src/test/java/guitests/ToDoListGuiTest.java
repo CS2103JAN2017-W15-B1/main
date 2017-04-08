@@ -68,7 +68,7 @@ public abstract class ToDoListGuiTest {
         FxToolkit.setupStage((stage) -> {
             mainGui = new MainGuiHandle(new GuiRobot(), stage);
             //mainMenu = mainGui.getMainMenu();
-            taskListPanel = mainGui.getPersonListPanel();
+            taskListPanel = mainGui.getTaskListPanel();
             resultDisplay = mainGui.getResultDisplay();
             commandBox = mainGui.getCommandBox();
             browserPanel = mainGui.getBrowserPanel();

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import seedu.todolist.TestApp;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.parser.TaskParser;
+import seedu.todolist.testutil.TestTask;
 import seedu.todolist.testutil.TestUtil;
 
 /**
@@ -118,7 +119,7 @@ public class TaskListPanelHandle extends GuiHandle {
      */
     public TaskCardHandle navigateToTask(Task task) {
         int index = getTaskIndex(task);
-
+        System.out.println(index);
         guiRobot.interact(() -> {
             getListView().scrollTo(index);
             guiRobot.sleep(150);
@@ -133,9 +134,11 @@ public class TaskListPanelHandle extends GuiHandle {
      * Returns the position of the task given, {@code NOT_FOUND} if not found in the list.
      */
     public int getTaskIndex(Task targetTask) {
+        TestTask testTargetTask = new TestTask(targetTask);
         List<Task> tasksInList = getListView().getItems();
         for (int i = 0; i < tasksInList.size(); i++) {
-            if (tasksInList.get(i).equals(targetTask)) {
+            TestTask taskFromList = new TestTask(tasksInList.get(i));
+            if (taskFromList.equals(testTargetTask)) {
                 return i;
             }
         }

@@ -47,6 +47,7 @@ public class TaskListCard extends UiPart<Region> {
         name.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
         setTaskTimes(task);
+        setDescription(task);
         if (task.isComplete()) {
             statusIcon.setImage(completeIcon);
         }
@@ -77,6 +78,17 @@ public class TaskListCard extends UiPart<Region> {
             break;
         default:
             break;
+        }
+    }
+
+    //@@author A0141647E
+    /*
+     * Dynamically sets the text for the description labels
+     * @param task
+     */
+    private void setDescription(Task task) {
+        if (task.getDescription() != null && !task.getDescription().equals("")) {
+            description.setText("Description: " + task.getDescription());
         }
     }
 
