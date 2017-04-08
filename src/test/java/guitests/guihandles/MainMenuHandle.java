@@ -1,3 +1,4 @@
+/** @@A0144240W
 package guitests.guihandles;
 
 import java.util.Arrays;
@@ -8,8 +9,9 @@ import javafx.stage.Stage;
 import seedu.todolist.TestApp;
 
 /**
+/**
  * Provides a handle to the main menu of the app.
- */
+
 public class MainMenuHandle extends GuiHandle {
     public MainMenuHandle(GuiRobot guiRobot, Stage primaryStage) {
         super(guiRobot, primaryStage, TestApp.APP_TITLE);
@@ -35,3 +37,5 @@ public class MainMenuHandle extends GuiHandle {
         guiRobot.sleep(500);
     }
 }
+
+**/

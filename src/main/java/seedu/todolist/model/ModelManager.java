@@ -32,7 +32,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final ToDoList toDoList;
     private final FilteredList<Task> filteredTasks;
-    private final SortedList<Task> sortedTasks;
+    private SortedList<Task> sortedTasks;
     private boolean isViewIncomplete, isViewComplete, isViewOverdue, isViewUpcoming;
 
     private static final String RESET = "reset";
@@ -59,7 +59,6 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.toDoList = new ToDoList(toDoList);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
-        sortedTasks = new SortedList<>(filteredTasks, dateComparator);
         getFilteredIncompleteTaskList();
     }
 
@@ -170,6 +169,7 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author A0144240W
     @Override
     public UnmodifiableObservableList<Task> getSortedTaskList() {
+        sortedTasks = new SortedList<>(filteredTasks, dateComparator);
         return new UnmodifiableObservableList<>(sortedTasks);
     }
 

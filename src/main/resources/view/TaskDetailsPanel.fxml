@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- @@A0144240W -->
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.Insets?>
 <?import java.net.URL?>
@@ -10,7 +11,7 @@
 
 
 <AnchorPane fx:id="display" id="taskselectiondisplay"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox fx:id="taskDetails" prefHeight="50.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml" VBox.vgrow = "ALWAYS">
+    <VBox fx:id="taskDetails" prefHeight="50.0" minWidth="200.0" xmlns:fx="http://javafx.com/fxml" VBox.vgrow = "ALWAYS">
         <stylesheets>
             <URL value="@BlueTheme.css" />
             <URL value="@Extensions.css" />
@@ -20,12 +21,21 @@
         </padding>
         <children>
             <Label id="textForTaskDetails" text="Task Details" VBox.vgrow="ALWAYS"></Label>
-            <Label fx:id="nameLabel" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
-            <Label fx:id="tagsheader"></Label>
+            <HBox>
+                <children>
+                <HBox fx:id="status">
+                <padding>
+                    <Insets right = "5"/>
+                </padding>
+                </HBox>
+                <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
+                </children>
+            </HBox>
+            <Label fx:id="tagsheader" styleClass="cell_big_label"></Label>
             <FlowPane fx:id="tags"></FlowPane>
-            <Label fx:id="startLabel"></Label>
-            <Label fx:id="endLabel"></Label>
-            <Label fx:id="description" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
+            <Label fx:id="startLabel" styleClass="cell_big_label"></Label>
+            <Label fx:id="endLabel" styleClass="cell_big_label"></Label>
+            <Label fx:id="description" styleClass="cell_small_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
         </children>
     </VBox>
 </AnchorPane>

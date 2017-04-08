@@ -9,8 +9,13 @@ import guitests.guihandles.HelpWindowHandle;
 
 public class HelpWindowTest extends ToDoListGuiTest {
 
+    //@@A0144240W
     @Test
     public void openHelpWindow() {
+
+        assertHelpWindowOpen(commandBox.runHelpCommand());
+
+        /**
         //use accelerator
         commandBox.clickOnTextField();
         assertHelpWindowOpen(mainMenu.openHelpWindowUsingAccelerator());
@@ -27,8 +32,8 @@ public class HelpWindowTest extends ToDoListGuiTest {
         //use menu button
         assertHelpWindowOpen(mainMenu.openHelpWindowUsingMenu());
 
-        //use command
-        assertHelpWindowOpen(commandBox.runHelpCommand());
+        **/
+
     }
 
     private void assertHelpWindowOpen(HelpWindowHandle helpWindowHandle) {
@@ -39,5 +44,9 @@ public class HelpWindowTest extends ToDoListGuiTest {
     private void assertHelpWindowNotOpen(HelpWindowHandle helpWindowHandle) {
         assertFalse(helpWindowHandle.isWindowOpen());
     }
+
+
+
+
 
 }
