@@ -21,21 +21,16 @@
         </padding>
         <children>
             <Label id="textForTaskDetails" text="Task Details" VBox.vgrow="ALWAYS"></Label>
-           
-            
             <HBox>
-            
-            <children>
-            <HBox fx:id="status">
-             <padding>
-            <Insets right = "5"/>
-            </padding>
-            </HBox>
+                <children>
+                <HBox fx:id="status">
+                <padding>
+                    <Insets right = "5"/>
+                </padding>
+                </HBox>
                 <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
-              </children>
-              </HBox>
-              
-          
+                </children>
+            </HBox>
             <Label fx:id="tagsheader" styleClass="cell_big_label"></Label>
             <FlowPane fx:id="tags"></FlowPane>
             <Label fx:id="startLabel" styleClass="cell_big_label"></Label>
