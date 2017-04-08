@@ -49,10 +49,6 @@ public class StorageManager extends ComponentManager implements Storage {
 
     // ================ ToDoList methods ==============================
 
-    public void changeToDoListFilePath(String newPath) {
-        this.toDoListStorage.changeXmlToDoListStorage(newPath);
-    }
-
     @Override
     public String getToDoListFilePath() {
         return toDoListStorage.getToDoListFilePath();
@@ -93,9 +89,8 @@ public class StorageManager extends ComponentManager implements Storage {
     }
 
     @Override
-    public void changeXmlToDoListStorage(String newPath) {
-        // TODO Auto-generated method stub
-
+    public void setStoragePath(String newPath) {
+        this.toDoListStorage.setStoragePath(newPath);
     }
 
 }

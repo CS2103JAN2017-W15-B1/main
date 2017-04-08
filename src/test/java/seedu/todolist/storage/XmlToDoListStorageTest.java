@@ -102,5 +102,18 @@ public class XmlToDoListStorageTest {
         saveToDoList(new ToDoList(), null);
     }
 
+    @Test
+    public void saveToDoList_newLocation() throws IOException, DataConversionException {
+        String filePath = testFolder.getRoot().getPath() + "TempToDoList.xml";
+        TypicalTestTasks td = new TypicalTestTasks();
+        ToDoList original = td.getTypicalToDoList();
+        XmlToDoListStorage xmlToDoListStorage = new XmlToDoListStorage(filePath);
+
+        //Save in new file and read back
+        xmlToDoListStorage.saveToDoList(original, filePath);
+        ReadOnlyToDoList readBack = xmlToDoListStorage.readToDoList(filePath).get();
+        assertEquals(original, new ToDoList(readBack));
+    }
+
 
 }
