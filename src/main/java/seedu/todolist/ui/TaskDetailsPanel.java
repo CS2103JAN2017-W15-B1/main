@@ -18,7 +18,7 @@ import seedu.todolist.model.task.Task;
 public class TaskDetailsPanel extends UiPart<Region> {
 
     private static final String FXML = "TaskDetailsPanel.fxml";
-    private Image completeIcon = new Image("/images/complete-icon.png");
+    private Image completeIcon = new Image("/images/blue-theme/complete-icon.png");
 
     @FXML
     private AnchorPane display;
@@ -27,7 +27,13 @@ public class TaskDetailsPanel extends UiPart<Region> {
     private Label nameLabel;
 
     @FXML
-    private Label tagsheader;
+    private Label tagsHeader;
+
+    @FXML
+    private Label startText;
+
+    @FXML
+    private Label endText;
 
     @FXML
     private Label startLabel;
@@ -36,7 +42,10 @@ public class TaskDetailsPanel extends UiPart<Region> {
     private Label endLabel;
 
     @FXML
-    private Label description;
+    private Label descriptionLabel;
+
+    @FXML
+    private Label descriptionText;
 
     @FXML
     private FlowPane tags;
@@ -46,6 +55,9 @@ public class TaskDetailsPanel extends UiPart<Region> {
 
     @FXML
     private HBox status;
+
+
+
 
 
     //@@author A0144240W
@@ -68,10 +80,13 @@ public class TaskDetailsPanel extends UiPart<Region> {
         if (task.isComplete()) {
             status.getChildren().add(image);
         }
-        startLabel.setText("From: " + (task.getStartTime() != null ? task.getStartTime().toString() : ""));
-        endLabel.setText("To: " + (task.getEndTime() != null ? task.getEndTime().toString() : ""));
-        description.setText("Description: " + (task.getDescription() != null ? task.getDescription() : ""));
-        tagsheader.setText("Tags:");
+        startLabel.setText("From:");
+        endLabel.setText("To:");
+        startText.setText((task.getStartTime() != null ? task.getStartTime().toString() : "-"));
+        endText.setText((task.getEndTime() != null ? task.getEndTime().toString() : "-"));
+        descriptionLabel.setText("Description:");
+        descriptionText.setText( (task.getDescription() != null ? task.getDescription() : ""));
+        tagsHeader.setText("Tags:");
         task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
@@ -79,11 +94,14 @@ public class TaskDetailsPanel extends UiPart<Region> {
     public void freeResources() {
         tags.getChildren().clear();
         nameLabel.setText("");
-        status.getChildren().clear();
         startLabel.setText("");
         endLabel.setText("");
-        tagsheader.setText("");
-        description.setText("");
+        status.getChildren().clear();
+        startText.setText("");
+        endText.setText("");
+        tagsHeader.setText("");
+        descriptionLabel.setText("");
+        descriptionText.setText("");
 
     }
 

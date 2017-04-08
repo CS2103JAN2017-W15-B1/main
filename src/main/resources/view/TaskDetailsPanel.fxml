@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Pos?>
 
-
 <AnchorPane fx:id="display" id="taskselectiondisplay"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <VBox fx:id="taskDetails" prefHeight="50.0" minWidth="200.0" xmlns:fx="http://javafx.com/fxml" VBox.vgrow = "ALWAYS">
         <stylesheets>
@@ -30,12 +29,15 @@
                 </HBox>
                 <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
                 </children>
-            </HBox>
-            <Label fx:id="tagsheader" styleClass="cell_big_label"></Label>
+            </HBox>       
+            <Label fx:id="tagsHeader" styleClass="cell_small_label"></Label>
             <FlowPane fx:id="tags"></FlowPane>
-            <Label fx:id="startLabel" styleClass="cell_big_label"></Label>
-            <Label fx:id="endLabel" styleClass="cell_big_label"></Label>
-            <Label fx:id="description" styleClass="cell_small_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
+            <Label fx:id="startLabel" styleClass="cell_small_label"></Label>
+            <Label fx:id="startText" styleClass="cell_big_label"></Label>
+            <Label fx:id="endLabel" styleClass="cell_small_label"></Label>
+            <Label fx:id="endText" styleClass="cell_big_label"></Label>
+            <Label fx:id="descriptionLabel" styleClass="cell_small_label" prefWidth="300.0" > </Label>
+            <Label fx:id="descriptionText" styleClass="cell_big_label" wrapText="true" ></Label>
         </children>
     </VBox>
 </AnchorPane>

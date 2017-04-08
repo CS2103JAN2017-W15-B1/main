@@ -38,7 +38,7 @@ public class TaskListCard extends UiPart<Region> {
     private Image start_end_type = new Image("/images/blue-theme/start-end-task-icon.png");
     private Image start_type = new Image("/images/blue-theme/start-task-icon.png");
     private Image floating_type = new Image("/images/blue-theme/floating-task-icon.png");
-    private Image completeIcon = new Image("/images/complete-icon.png");
+    private Image completeIcon = new Image("/images/blue-theme/complete-icon.png");
 
 
     //@@author A0144240W
