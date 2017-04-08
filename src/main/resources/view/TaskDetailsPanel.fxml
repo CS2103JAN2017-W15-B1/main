@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- @@A0144240W -->
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.Insets?>
 <?import java.net.URL?>
@@ -30,16 +31,16 @@
             <Insets right = "5"/>
             </padding>
             </HBox>
-                <Label fx:id="nameLabel" styleClass="cell_big_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
+                <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
               </children>
               </HBox>
               
           
-            <Label fx:id="tagsheader"></Label>
+            <Label fx:id="tagsheader" styleClass="cell_big_label"></Label>
             <FlowPane fx:id="tags"></FlowPane>
-            <Label fx:id="startLabel"></Label>
-            <Label fx:id="endLabel"></Label>
-            <Label fx:id="description" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
+            <Label fx:id="startLabel" styleClass="cell_big_label"></Label>
+            <Label fx:id="endLabel" styleClass="cell_big_label"></Label>
+            <Label fx:id="description" styleClass="cell_small_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
         </children>
     </VBox>
 </AnchorPane>

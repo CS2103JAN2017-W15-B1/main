@@ -30,6 +30,9 @@ public class UiManager extends ComponentManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/todo_list_filled_32.png";
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
+    private String ADD = "add";
+    private String DELETE = "delete";
+    private String COMPLETE = "complete";
 
     private Logic logic;
     private Config config;
@@ -121,7 +124,7 @@ public class UiManager extends ComponentManager implements Ui {
     }
 
     @Subscribe
-    public void handlePersonPanelSelectionChangedEvent(TaskPanelSelectionChangedEvent event) {
+    public void handleTaskPanelSelectionChangedEvent(TaskPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.releaseResources();
         mainWindow.loadPersonPage(event.getNewSelection());
@@ -139,8 +142,10 @@ public class UiManager extends ComponentManager implements Ui {
     //@@author A0144240W
     @Subscribe
     public void handleToDoListEventChanged(ToDoListChangedEvent event) {
-        if (event.typeOfCommand.equals("update") || event.typeOfCommand.equals("add")) {
+        if (event.typeOfCommand.equals(ADD)) {
             mainWindow.getTaskListPanel().scrollTo(event.index);
+        } else if (event.typeOfCommand.equals(DELETE) || event.typeOfCommand.equals(COMPLETE)) {
+            mainWindow.releaseResources();
         }
     }
 
