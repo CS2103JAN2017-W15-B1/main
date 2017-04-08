@@ -62,12 +62,12 @@ public class TaskDetailsPanel extends UiPart<Region> {
     //@@author A0144240W
     public void loadPersonPage(Task task) {
         nameLabel.setText(task.getName().toString());
-         ImageView image = new ImageView(completeIcon);
-         image.setFitWidth(20);
-         image.setPreserveRatio(true);
-         if (task.isComplete()) {
-             status.getChildren().add(image);
-         }
+        ImageView image = new ImageView(completeIcon);
+        image.setFitWidth(20);
+        image.setPreserveRatio(true);
+        if (task.isComplete()) {
+            status.getChildren().add(image);
+        }
         startLabel.setText("From: " + (task.getStartTime() != null ? task.getStartTime().toString() : ""));
         endLabel.setText("To: " + (task.getEndTime() != null ? task.getEndTime().toString() : ""));
         description.setText("Description: " + (task.getDescription() != null ? task.getDescription() : ""));
@@ -77,13 +77,13 @@ public class TaskDetailsPanel extends UiPart<Region> {
 
     //@@author A0144240W
     public void freeResources() {
-       tags.getChildren().clear();
-       nameLabel.setText("");
-       status.getChildren().clear();
-       startLabel.setText("");
-       endLabel.setText("");
-       tagsheader.setText("");
-       description.setText("");
+        tags.getChildren().clear();
+        nameLabel.setText("");
+        status.getChildren().clear();
+        startLabel.setText("");
+        endLabel.setText("");
+        tagsheader.setText("");
+        description.setText("");
 
     }
 

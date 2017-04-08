@@ -25,6 +25,7 @@ public class TaskListPanel extends UiPart<Region> {
     @FXML
     private ListView<Task> taskListView;
 
+
     public TaskListPanel(AnchorPane taskListPlaceholder, ObservableList<Task> taskList) {
         super(FXML);
         setConnections(taskList);
@@ -32,8 +33,8 @@ public class TaskListPanel extends UiPart<Region> {
     }
 
     public void changeList(AnchorPane taskListPlaceholder, ObservableList<Task> taskList) {
-        setConnections(taskList);
         taskListPlaceholder.getChildren().clear();
+        setConnections(taskList);
         addToPlaceholder(taskListPlaceholder);
     }
 

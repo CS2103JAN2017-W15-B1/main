@@ -1,13 +1,8 @@
 package seedu.todolist.ui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -26,6 +21,7 @@ import seedu.todolist.model.task.Task;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Region> {
+    //@@A01442420W
 
     private static final String ICON = "/images/todo_list_filled_32.png";
     private static final String FXML = "MainWindow.fxml";
@@ -48,9 +44,6 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private AnchorPane commandBoxPlaceholder;
-
-    @FXML
-    private MenuItem helpMenuItem;
 
     @FXML
     private AnchorPane taskListPanelPlaceholder;
@@ -93,21 +86,24 @@ public class MainWindow extends UiPart<Region> {
         Scene scene = new Scene(getRoot());
         primaryStage.setScene(scene);
 
-        setAccelerators();
+        //setAccelerators();
     }
 
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    /**
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
     }
+    **/
 
     /**
      * Sets the accelerator of a MenuItem.
      * @param keyCombination the KeyCombination value of the accelerator
      */
+    /**
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
         menuItem.setAccelerator(keyCombination);
 
@@ -125,7 +121,7 @@ public class MainWindow extends UiPart<Region> {
          * For now, we add following event filter to capture such key events and open
          * help window purposely so to support accelerators even when focus is
          * in CommandBox or ResultDisplay.
-         */
+
         getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
                 menuItem.getOnAction().handle(new ActionEvent());
@@ -133,6 +129,7 @@ public class MainWindow extends UiPart<Region> {
             }
         });
     }
+      **/
 
     void fillInnerParts() {
         taskDetailsPanel = new TaskDetailsPanel(taskDetailsPlaceholder);

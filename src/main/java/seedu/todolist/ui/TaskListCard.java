@@ -34,10 +34,10 @@ public class TaskListCard extends UiPart<Region> {
     @FXML
     private ImageView taskIcon;
 
-    private Image end_type = new Image("/images/end-task-icon.png");
-    private Image start_end_type = new Image("/images/start-end-task-icon.png");
-    private Image start_type = new Image("/images/start-task-icon.png");
-    private Image floating_type = new Image("/images/floating-task-icon.png");
+    private Image end_type = new Image("/images/blue-theme/end-task-icon.png");
+    private Image start_end_type = new Image("/images/blue-theme/start-end-task-icon.png");
+    private Image start_type = new Image("/images/blue-theme/start-task-icon.png");
+    private Image floating_type = new Image("/images/blue-theme/floating-task-icon.png");
     private Image completeIcon = new Image("/images/complete-icon.png");
 
 
@@ -66,7 +66,7 @@ public class TaskListCard extends UiPart<Region> {
     private void setTaskTimes(Task task) {
         switch(task.getType()) {
         case Task.TYPE_END:
-            endTime.setText("Due by: " + task.getEndTime().toString());
+            endTime.setText("Due by:" + task.getEndTime().toString());
             break;
         case Task.TYPE_START_END:
             startTime.setText("From: " + task.getStartTime().toString());
