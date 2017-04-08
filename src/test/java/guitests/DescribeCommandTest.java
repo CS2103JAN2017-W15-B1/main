@@ -13,7 +13,7 @@ import seedu.todolist.testutil.TestTask;
 //@@author A0141647E
 public class DescribeCommandTest extends ToDoListGuiTest {
 
-    TestTask[] expectedTaskList = td.getTypicalTasks();
+    public TestTask[] expectedTaskList = td.getTypicalTasks();
 
     //@@author A0141647E
     @Test
