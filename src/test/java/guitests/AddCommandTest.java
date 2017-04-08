@@ -7,8 +7,8 @@ import org.junit.Test;
 import guitests.guihandles.TaskCardHandle;
 import seedu.todolist.commons.core.Messages;
 import seedu.todolist.logic.commands.AddCommand;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.testutil.TestTask;
 import seedu.todolist.testutil.TestUtil;
 

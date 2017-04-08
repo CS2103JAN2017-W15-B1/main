@@ -37,6 +37,7 @@ import seedu.todolist.logic.commands.HelpCommand;
 import seedu.todolist.logic.commands.ListCommand;
 import seedu.todolist.logic.commands.SelectCommand;
 import seedu.todolist.logic.commands.exceptions.CommandException;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.Model;
 import seedu.todolist.model.ModelManager;
 import seedu.todolist.model.ReadOnlyToDoList;
@@ -47,7 +48,6 @@ import seedu.todolist.model.task.EndTime;
 import seedu.todolist.model.task.Name;
 import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.storage.StorageManager;
 
 

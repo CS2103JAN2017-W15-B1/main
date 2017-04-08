@@ -7,8 +7,8 @@ import seedu.todolist.commons.core.Messages;
 import seedu.todolist.commons.events.ui.JumpToListRequestEvent;
 import seedu.todolist.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.todolist.logic.commands.exceptions.CommandException;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 
 //@@author A0141647E
 /*

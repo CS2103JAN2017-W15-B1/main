@@ -1,13 +1,13 @@
 package seedu.todolist.model.util;
 
 import seedu.todolist.commons.exceptions.IllegalValueException;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.ReadOnlyToDoList;
 import seedu.todolist.model.ToDoList;
 import seedu.todolist.model.tag.UniqueTagList;
 import seedu.todolist.model.task.Name;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.UniqueTaskList.DuplicateTaskException;
-import seedu.todolist.model.task.parser.TaskParser;
 
 public class SampleDataUtil {
     public static Task[] getSampleTasks() {
