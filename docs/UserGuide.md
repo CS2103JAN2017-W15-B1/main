@@ -24,91 +24,137 @@ Unlike other software, *DoMe!* is simple and intuitive. All you need is your key
 2. Download the latest `taskmanager.jar` from the [releases](../../../releases) tab.
 3. Copy the file to the folder you want to use as the home folder for your Address Book.
 4. Double-click the file to start the app. The GUI should appear in a few seconds.
-> <img src="images/UI1.jpg" width="1000">
+> <img src="images/UISketch.jpg" width="600">
 
 ## 3. Features
 
 > **Command Format**
-> `Square brackets [ ]` denote a required field
-> `Curved brackets ( )` denote an optional field'
-> `...` denotes that you can have multiple instances
+> 
+> * Items in `Square brackets [ ]` denote a required field.
+> * Iteams in `Curved brackets ( )` denote an optional field.
+> * `...` denotes that you can have multiple instances.
+> * The `[Task-Number]` refers to the index number shown in the task listing that is currently on the screen.<br>
+    The `[Task-Number]` **must be a positive integer** 1, 2, 3, ...
 
-## 3.1 Functional features
+### 3.1 Functional features
 This is a list of commands you can give to the application
 
-## 3.1.1 View help: `help`
+#### 3.1.1 View help: `help`
 If you are unsure of the command formats, you can simply type `help` and view all the available commands and how to use them.
 
 _Format:_
 `help`
 
-## 3.1.2 Add task: `add`
-It's time to start adding tasks to your todo list! You can add events (tasks with start and end date/time), deadlined tasks (tasks with a due date) and also just tasks with names. You can also tag these tasks!
+#### 3.1.2 Add task: `add`
+It's time to start adding tasks to your todo list! You can add events (tasks with a start time and an end time), kick-start tasks (task with only a start time), deadline tasks (tasks with a date line) and also just tasks with names. You can also organize these tasks using tags.
 
 _Format:_
-`add [Name-of-Task] (Deadline) (t/Tag-1) (t/Tag-2)`
 `add [Name-of-Task] (s/Start-Time) (e/End-Time) (t/Tag-1) (t/Tag-2)`
-`add [Name-of-Task]`
+
+> Name of task can only contains alphanumeric characters and '.<br>
+> Start/End Time can either be in format DD-MM-YYYY H.MM AM/PM  or simply DD-MM-YYYY.<br>
+> For example: 12-08-2016 4.00 PM or simply 12-08-2016.<br>
+> A task can have any number of tags (including 0).<br>
 
 _Example:_
-`add send TPS report to Bill e/31-02-2017 6PM t/TPS t/report`
 
+* `add date with girlfriend s/07-04-2017 6.00 PM e/07-04-2017 10PM t/mylady`
 
-## 3.1.3 Edit task: `edit`
-You can update the details of your task by editing it, for instance:
+* `add Reply Boss's email s/13-04-2017 10.00 AM e/13-04-2017 10.00 PM t/Work t/Urgent t/HighPriority`
+
+* `add Start preparing for conference s/15-06-2017 t/Work t/Conference`
+
+* `add Daily email check`
+
+* `add Help John with Excel before his report due e/20-04-2017 t/Work t/Colleague`
+
+#### 3.1.3 Edit task: `edit`
+You can update the details of your task by editing it. In particular, you can organize your tasks by adding/removing their tags, changing starting and ending time or changing the task's name.
+> Add tags to the task at the specified index. The index refers to the index number shown in the last person listing.
 
 _Format:_
-`edit [Task-Number] [New-Name-of-Task] (s/New-Start-Time) (e/New-End-Time) (t/New-Tag-1) (t/New-Tag-2)`
+`edit [Task-Number] (Name-Of-Task) (s/Start-Time) (e/End-Time)[t/Tag-1] [t/Tag-2] ...`
+
+> * Edits the task at the specified `[Task-Number]`.
+> * **At least one** of the optional fields must be provided.
+> * Existing values will be updated to the input values.
+> * When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.
+> * You can remove all the task's tags by typing `t/` without specifying any tags after it. 
 
 _Example:_
-`edit 1 buy groceries for Bill s/22-03-2017 e/23-03-2017 t/drinks t/vegetables`
+* `edit 1 t/urgent t/for mom`<br>
+  All tags of the task with index `1` on the current list will be removed and replace with `[urgent]` and `[for mom]`
+  
+* `edit 2 meet my mother s/07-04-2017 7.00 PM e/07-04-2017 10.00 PM t/mother`
+  Change the name of the task with index `2` on the current list to `meet my mother`, the start time to
+  `07-04-2017 7.00 PM`, the end time to `07-04-2017 10.00 PM`, and replace all the tags with `[mother]`.
 
-## 3.1.4 Complete task: `complete`
-You can mark a task as completed to update its progress
+#### 3.1.4 Describe task: `describe`
+You can add in a task description for a specific task and the description will be reflected in the task details.
+
+_Format:_
+`describe 1 [desired description]`
+
+_Example:_
+* `describe 1 this determines my promotion`<br>
+  Reminds yourself that the task with index `1` on the current list will determine your promotion and thus should be<br>
+  attend to immediately.
+
+#### 3.1.5 Complete task: `complete`
+You can mark a task as completed to check it off your list of incomplete tasks.
 
 _Format:_
 `complete [Task-Number]`
 
 _Example:_
-`complete 2`
+* `complete 2`<br>
+  Check off the task with index number `2` on your incomplete list to avoid mixing up tasks that you've done and tasks
+  that you've not done. 
 
-## 3.1.5 Delete task: `delete`
-If you no longer need to do a task, you can simply delete it from your todo list
+#### 3.1.6 Delete task: `delete`
+If you no longer need to do a task, you can simply delete it from your to-do list. However, if you mistakenly delete something, you can retrieve it back using the `undo` command that is explained further down the guide.
 
 _Format:_
 `delete [Task-Number]`
 
-## 3.1.6 List: `list`
-You can view a specific type of the tasks you want to view in your todo list
+_Example:_
+* `delete 2`<br>
+  Remove the task with index number `2` for good and never see it again! Maybe your meeting was cancelled, or adding the
+  task is simply a mistake.
+
+#### 3.1.7 List: `list`
+You can view a specific type of the tasks you want to view in your to-do list.
 
 _Format:_
-`list`
+`list all`
 > Lists all tasks
 
-`list completed`
+`list complete`
 > Lists tasks marked as completed
 
 `list incomplete`
 > Lists tasks marked as incomplete
 
+`list upcoming`
+> Lists all upcoming tasks
+
 `list overdue`
 > Lists incomplete tasks with deadlines that have already passed
 
-## 3.1.7 Search: `search`
-
+#### 3.1.8 Find: `find`
 You can find a task to by simply searching for tasks with matching keywords in their names and/or tags
 
 > The search is case insensitive.
 
 _Format:_
-`search (name) (t/tag)`
+`find (name) (t/tag)`
 
 _Example:_
-`search report t/report`
+`find report t/report`
 Returns a list of tasks (if any) with the phrase report in its name or tag
 
 
-## 3.1.8 Undo previous command: `undo`
+#### 3.1.9 Undo previous command: `undo`
 
 You can easily undo your last command given
 
@@ -121,7 +167,20 @@ _Example:_
 `undo`
 Returns the undoing of the previous command that mutated the data, e.g. Undone: add send TPS report to Bill by Friday 6pm.
 
-## 3.1.9 Select a task: `select`
+#### 3.1.10 Redo previous command: `redo`
+
+You can easily redo your last command undone
+
+> This will redo the most previous command that was undone.
+
+_Format:_
+`redo`
+
+_Example:_
+`redo`
+Redoes the previous command that mutated the data, e.g. Redone: add send TPS report to Bill by Friday 6pm.
+
+#### 3.1.11 Select a task: `select`
 You can select a task to view more details about it
 
 _Format:_
@@ -130,77 +189,43 @@ _Format:_
 _Example:_
 `select 1`
 
-## 3.1.10 Repeat tasks: `repeat`
-
-You can also put a task on repeat, by setting a task at a fixed periodic time
-> Add tags to the task at the specified index. The index refers to the index number shown in the last person listing.
-> The periodic time specified must start with the word "every" and must be followed by one of the seven days of the week.
+#### 3.1.12 Google Integration: `sync`
+You can sync your current to-do list to your Google Calendar.
 
 _Format:_
-`repeat [Task-Number] [periodic time]`
+`sync`
+The current data in the to-do list has been synced to the Google Calendar
 
-_Example:_
-`repeat 2 every friday`
-Returns the task name that was put on repeat
-
-
-## 3.1.11 Attach links: `addlink`
-You can attach relevant link(s) to your task so you can retrieve the link easily and can immediately start on your task!
-
-> The Task-Number refers to the index number shown in the most recent listing of the task.
-> This command works for all types of tasks: completed, uncompleted, overdue, etc.
-
-_Format:_
-`addlink [Relevant_Link] [Task_Number]`
-
-_Examples:_
-`addlink https://www.google.com/drive/presentation-to-boss 5`
-Attach the link `https://www.google.com/drive/presentation-to-boss` to task number 5 in the list of task.
-
-`addlink https://mail.google.com/my-mail-box/important-email 10`
-Attach the link `https://mail.google.com/my-mail-box/important-email` to task number 10 in the list of tasks.
-
-## 3.1.12 Progress report: `report`
-You can see all your completed tasks and overdue tasks in the past week, and incomplete tasks for the coming week
-
-_Format:_
-`report`
-
-
-## 3.1.13 Clear the data : `clear`
+#### 3.1.13 Clear the data : `clear`
 You can clear your entire to-do list
 
 _Format:_
 `clear`
 
-## 3.1.14 Add tags to task : `tag`
-You can organise your tasks by adding tags to your them
-> Add tags to the task at the specified index. The index refers to the index number shown in the last person listing.
-
-_Format:_
-`tag [Task-Number] [t/Tag-1] (t/Tag-2) ...`
-
-_Example:_
-`tag 1 t/urgent t/for mom`
-Returns the task name with the changed tags
-
-## 3.1.15 Customize file storing: `store`
+#### 3.1.14 Customize file storing: `changestorage`
 You can change the storage location of the data to transfer your current todo list to your own storage system with ease
 > Store all the data of the task manager in the file located at PATH_TO_STORAGE_FILE. It is required that this file be a .txt file located in StorageFile/a folder rooted at StorageFile, and that it is created before the command is called.
-#### Saving the data
-Data is saved in the hard disk automatically after any command that changes the data.
-There is no need to save manually.
 
 _Format:_
-`store PATH_TO_STORAGE_FILE`
+`changestorage PATH_TO_STORAGE_FILE`
 
 Examples:
-`store StorageFile/StoreHereInstead/MyStorage.txt`
+`changestorage StorageFile/StoreHereInstead/MyStorage.txt`
 The task manager will store its data in MyStorage.txt located at StorageFile/StoreHereInstead/MyStorage.txt, provided that this file exists before calling the command.
 
-`store StorageFile/AnotherStorage.txt`
+`changestorage StorageFile/AnotherStorage.txt`
 The task manager will store its data in AnotherStorage.txt located under StorageFile instead of the default storage location, provided that this file exists before calling the command.
 
+#### 3.1.15 Copy data to new storage location: `exportsave`
+You can copy the data in the current to-do list to your own storage system with ease.
+> Store all the data of the task manager in the file located at PATH_TO_STORAGE_FILE. It is required that this file be a .txt file located in StorageFile/a folder rooted at StorageFile, and that it is created before the command is called.
+
+_Format:_
+`exportsave PATH_TO_STORAGE_FILE`
+
+Examples:
+`exportsave StorageFile/StoreHereInstead/MyStorage.txt`
+The task manager will copy its data in MyStorage.txt located at StorageFile/StoreHereInstead/MyStorage.txt, provided that this file exists before calling the command.
 
 ## 4. FAQ
 
@@ -212,24 +237,24 @@ The task manager will store its data in AnotherStorage.txt located under Storage
 
 ## 5. Command Summary
 
-* **Help** : `help`
+* **Help** : `help` 
 
-* **Add**  `add [Name-of-Task] s/(Start-Time) e/(End-Time) t/[Tag]...`
+* **Add**  `add [Name-of-Task] s/(Start-Time) e/(End-Time) t/[Tag]...` 
   e.g. `add attend seminar s/21-03-2017 9.00 AM e/23-03-2017 9.00 PM t/work`
   
 * **Edit** : `edit [Task-Number] [Edited-Details] (t/Edited-Tag)`
 
 * **Delete** : `delete [Task-Number]`
    e.g. `delete 3`
-
+   
 * **Undo** : `undo`
-
+   
 * **Search** : `search [Keyword] (t/TagKeyword)...`
   e.g. `find email t/urgent`
-
+  
 * **List** : `list`,`list incomplete`,`list complete`,`list overdue`
 
-* **Select** : `select [Task-Number]`
+* **Select** : `select [Task-Number]` 
   e.g.`select 2`
 
 * **Tag** : `tag [Task-Number] [t/newTag]`
@@ -237,7 +262,7 @@ The task manager will store its data in AnotherStorage.txt located under Storage
 
 * **Repeat** : `repeat [Task-Number] [periodic-time]`
  e.g. `repeat 1 every friday`
-
+ 
 * **Report** : `report`
 
 * **Clear** : `clear`
@@ -245,11 +270,12 @@ The task manager will store its data in AnotherStorage.txt located under Storage
 * **Store** : `store [PATH_TO_STORAGE_FILE]`
  e.g. `store StorageFile/StoreHereInstead/MyStorage.txt`
 
+
 ---
-
+  
 ## 6. Appendix
-
-| Word | Definition |
+  
+  | Word | Definition |
 |-----|-----|
-|[GUI](#GUI)|Graphic User Interface. The interface presented to users to interact with *DoMe!*.|
-|[Storage Path](#storage-path)|This is the directory where your data will be saved.|
+|[GUI]|Graphic User Interface. The interface presented to users to interact with *DoMe!*.|
+|[Storage Path]|This is the directory where your data will be saved.|

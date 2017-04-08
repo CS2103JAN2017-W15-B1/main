@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/CS2103JAN2017-W15-B1/main/badge.svg?branch=master)](https://coveralls.io/github/CS2103JAN2017-W15-B1/main?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9467b8288bd94bffad35d9961c0e16f7)](https://www.codacy.com/app/shinlos/main?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CS2103JAN2017-W15-B1/main&amp;utm_campaign=Badge_Grade)
 
-<img src="docs/images/UISketch.jpg" width="600"><br>
+<img src="docs/images/UI.png" width="600"><br>
 
 * This is a desktop To-do List application. It has a GUI but most of the user interactions happen using
   a CLI (Command Line Interface).
