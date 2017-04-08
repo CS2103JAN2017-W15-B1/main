@@ -13,9 +13,9 @@ import org.junit.rules.TemporaryFolder;
 
 import seedu.todolist.commons.exceptions.DataConversionException;
 import seedu.todolist.commons.util.FileUtil;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.ReadOnlyToDoList;
 import seedu.todolist.model.ToDoList;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.testutil.TypicalTestTasks;
 
 public class XmlToDoListStorageTest {

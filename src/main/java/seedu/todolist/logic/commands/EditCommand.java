@@ -8,13 +8,13 @@ import seedu.todolist.commons.core.Messages;
 import seedu.todolist.commons.events.ui.JumpToListRequestEvent;
 import seedu.todolist.commons.util.CollectionUtil;
 import seedu.todolist.logic.commands.exceptions.CommandException;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.tag.UniqueTagList;
 import seedu.todolist.model.task.EndTime;
 import seedu.todolist.model.task.Name;
 import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.UniqueTaskList;
-import seedu.todolist.model.task.parser.TaskParser;
 
 /**
  * Edits the details of an existing task in the to-do list.

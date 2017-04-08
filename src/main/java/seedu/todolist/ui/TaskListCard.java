@@ -13,6 +13,16 @@ public class TaskListCard extends UiPart<Region> {
 
     private static final String FXML = "TaskListCard.fxml";
 
+    private static final Image ICON_END_TYPE = new Image("/images/blue-theme/end-task-icon.png");
+
+    private static final Image ICON_START_END_TYPE = new Image("/images/blue-theme/start-end-task-icon.png");
+
+    private static final Image ICON_START_TYPE = new Image("/images/blue-theme/start-task-icon.png");
+
+    private static final Image ICON_FLOATING_TYPE = new Image("/images/blue-theme/floating-task-icon.png");
+
+    private static final Image ICON_COMPLETE = new Image("/images/complete-icon.png");
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -34,13 +44,6 @@ public class TaskListCard extends UiPart<Region> {
     @FXML
     private ImageView taskIcon;
 
-    private Image end_type = new Image("/images/blue-theme/end-task-icon.png");
-    private Image start_end_type = new Image("/images/blue-theme/start-end-task-icon.png");
-    private Image start_type = new Image("/images/blue-theme/start-task-icon.png");
-    private Image floating_type = new Image("/images/blue-theme/floating-task-icon.png");
-    private Image completeIcon = new Image("/images/complete-icon.png");
-
-
     //@@author A0144240W
     public TaskListCard(Task task, int displayedIndex) {
         super(FXML);
@@ -49,7 +52,7 @@ public class TaskListCard extends UiPart<Region> {
         setTaskTimes(task);
         setDescription(task);
         if (task.isComplete()) {
-            statusIcon.setImage(completeIcon);
+            statusIcon.setImage(ICON_COMPLETE);
         }
         setTaskIcon(task);
         initTags(task);
@@ -99,16 +102,16 @@ public class TaskListCard extends UiPart<Region> {
     private void setTaskIcon(Task task) {
         switch(task.getType()) {
         case Task.TYPE_END:
-            taskIcon.setImage(end_type);
+            taskIcon.setImage(ICON_END_TYPE);
             break;
         case Task.TYPE_START_END:
-            taskIcon.setImage(start_end_type);
+            taskIcon.setImage(ICON_START_END_TYPE);
             break;
         case Task.TYPE_START:
-            taskIcon.setImage(start_type);
+            taskIcon.setImage(ICON_START_TYPE);
             break;
         case Task.TYPE_FLOATING:
-            taskIcon.setImage(floating_type);
+            taskIcon.setImage(ICON_FLOATING_TYPE);
             break;
         }
     }

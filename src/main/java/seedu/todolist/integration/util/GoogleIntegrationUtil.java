@@ -24,10 +24,10 @@ import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
 
 import seedu.todolist.integration.GoogleIntegration;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.task.EndTime;
 import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 
 public class GoogleIntegrationUtil {
 

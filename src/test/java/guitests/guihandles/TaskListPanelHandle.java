@@ -13,8 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import seedu.todolist.TestApp;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.testutil.TestTask;
 import seedu.todolist.testutil.TestUtil;
 
