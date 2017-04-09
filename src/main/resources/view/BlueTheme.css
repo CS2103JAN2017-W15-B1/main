@@ -156,11 +156,12 @@
 
 .result-display .content {
     -fx-background-color: #112236;
-    -fx-text-fill: white;
-    -fx-font-family: "Gill Sans";
 }
+
 .result-display {
     -fx-text-fill: white;
+    -fx-font-family: "Gill Sans";
+    -fx-font-size: 16px;
 }
 
 .result-display .label {
@@ -184,6 +185,7 @@
 .command-box {
 	  -fx-background-color: #112236;
 	  -fx-text-fill: white;
+	  -fx-font-size: 15px;
 }
 
 .grid-pane {
