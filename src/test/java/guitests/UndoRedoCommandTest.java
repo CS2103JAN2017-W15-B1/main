@@ -76,7 +76,7 @@ public class UndoRedoCommandTest extends ToDoListGuiTest {
     public void edit_undo_redo() throws Exception {
         TestTask[] beforeList = td.getTypicalTasks();
         TestTask[] expectedTasksList = td.getTypicalTasks();
-        int filteredTaskListIndex = expectedTasksList.length / 2;
+        int filteredTaskListIndex = 3;
         //TestTask taskToDelete = expectedTasksList[filteredTaskListIndex - 1];
 
         //still keeps the time when editing the name and tags
