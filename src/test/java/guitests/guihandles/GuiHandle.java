@@ -59,6 +59,11 @@ public class GuiHandle {
         return textField.getText();
     }
 
+    public String getLabelText(String filedName) {
+        Label labelText = getNode(filedName);
+        return labelText.getText();
+    }
+
     protected void setTextField(String textFieldId, String newText) {
         guiRobot.clickOn(textFieldId);
         TextField textField = getNode(textFieldId);
