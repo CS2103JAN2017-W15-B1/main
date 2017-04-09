@@ -29,10 +29,6 @@ public class StartTimeTest {
 
     public boolean isValidStartTime(String startTime) {
         Date temp = TimeUtil.parseTime(startTime);
-        if (temp == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return (temp == null ? false : true);
     }
 }

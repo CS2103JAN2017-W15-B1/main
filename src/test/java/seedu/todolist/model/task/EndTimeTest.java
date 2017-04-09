@@ -29,10 +29,6 @@ public class EndTimeTest {
 
     public boolean isValidEndTime(String endTime) {
         Date temp = TimeUtil.parseTime(endTime);
-        if (temp == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return (temp == null ? false : true);
     }
 }
