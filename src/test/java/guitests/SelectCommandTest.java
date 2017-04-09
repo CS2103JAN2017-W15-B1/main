@@ -12,7 +12,7 @@ public class SelectCommandTest extends ToDoListGuiTest {
     @Test
     public void selectTask_nonEmptyList() {
 
-        assertSelectionInvalid(10); // invalid index
+        assertSelectionInvalid(11); // invalid index
         assertNoTaskSelected();
 
         assertSelectionSuccess(1); // first task in the list
