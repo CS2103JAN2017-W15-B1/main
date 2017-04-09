@@ -14,19 +14,19 @@ The app is then ready for manual testing.
 * Expected output: GitHub user guide page for DoMe shows up.
 
 ### Add command
-* Input: add project meeting s/20-8-2017 12.00 PM e/20-8-2017 2.00 PM t/Work
+* Input: `add project meeting s/20-8-2017 12.00 PM e/20-8-2017 2.00 PM t/Work`
 * Expected output: a task with title "project meeting" is added to the end of the `incomplete` panel. Under the title, the following will appear in order: tag `Work`, start time `20-8-2017 12.00 PM`, end time `20-8-2017 2.00 PM`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
-* Input: add Dinner with family s/11-02-2017 6.00 PM
+* Input: `add Dinner with family s/11-02-2017 6.00 PM`
 * Expected output: a task with title "Dinner with family" is added to the end of the `incomplete` panel. Under the title, the start time is indicated as `11-02-2017 6.00 PM`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
-* Input: add Read report e/20-04-2017 5.00 PM t/HighPriority t/Urgent
+* Input: `add Read report e/20-04-2017 5.00 PM t/HighPriority t/Urgent`
 * Expected output: a task with title "Read report" is added to the end of the `incomplete` panel. Under the title, the following will appear in order: tags `HighPriority` and `Urgent`, the end time`20-04-2017 5.00 PM`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
-* Input: add Traveling with Julia s/14-6-2017 e/30-6-2017 t/Travel t/Wife t/Vietnam
+* Input: `add Traveling with Julia s/14-6-2017 e/30-6-2017 t/Travel t/Wife t/Vietnam`
 * Expected output: a task with title "Traveling with Julia" is added to the end of the `incomplete` panel. Under the title, the following will appear in order: tags `Travel`, `Wife` and `Vietnam`, start time `14-6-2017 12.00 AM`, end time `30-6-2017 12.00 AM`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
-* Input: add Daily jog t/Health t/Daily
+* Input: `add Daily jog t/Health t/Daily`
 * Expected output: a task with title "Daily jog" is added to the end of the `incomplete` panel. Under the title, the following will appear in order: tags `Health`, `Daily`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
 ### Edit command
