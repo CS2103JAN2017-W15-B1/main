@@ -33,6 +33,41 @@ public class FindCommandTest extends ToDoListGuiTest {
                 "\nDo you mean: find?");
     }
 
+    @Test
+    public void find_substring() {
+        commandBox.runCommand("list all");
+        assertFindResult("find se", td.presentation, td.dentistAppointment);
+    }
+
+    @Test
+    public void find_by_either_substring_or_tags() {
+        commandBox.runCommand("list all");
+        assertFindResult("find se t/Health", td.presentation, td.goToGym, td.dentistAppointment);
+    }
+
+    @Test
+    public void find_incorrect_tag_fail() {
+        commandBox.runCommand("list all");
+        assertFindResult("find t/Heal");
+        commandBox.runCommand("list all");
+        assertFindResult("find t/Wok");
+    }
+
+    @Test
+    public void find_most_recent_list() {
+        commandBox.runCommand("list all");
+        assertFindResult("find t/Dentist", td.dentistAppointment);
+        commandBox.runCommand("list upcoming");
+        assertFindResult("find t/Dentist");
+        commandBox.runCommand("list overdue");
+        assertFindResult("find t/Dentist", td.dentistAppointment);
+        
+        commandBox.runCommand("list incomplete");
+        assertFindResult("find t/Work t/Difficult", td.bossEmail, td.homework, td.handleCustomerComplaints);
+        commandBox.runCommand("list complete");
+        assertFindResult("find t/Work t/Difficult", td.doAlgebraHomework, td.updateDigitalSignature);
+    }
+
     private void assertFindResult(String command, TestTask... expectedHits) {
         commandBox.runCommand(command);
         assertListSize(expectedHits.length);
