@@ -29,7 +29,7 @@
                 </HBox>
                 <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
                 </children>
-            </HBox>       
+            </HBox>
             <Label fx:id="tagsHeader" styleClass="cell_small_label"></Label>
             <FlowPane fx:id="tags"></FlowPane>
             <Label fx:id="startLabel" styleClass="cell_small_label"></Label>
