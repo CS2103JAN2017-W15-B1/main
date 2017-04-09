@@ -34,19 +34,19 @@ public class FindCommandTest extends ToDoListGuiTest {
     }
 
     @Test
-    public void find_substring() {
+    public void findSubstring() {
         commandBox.runCommand("list all");
         assertFindResult("find se", td.presentation, td.dentistAppointment);
     }
 
     @Test
-    public void find_by_either_substring_or_tags() {
+    public void findByEitherSubstringOrTags() {
         commandBox.runCommand("list all");
         assertFindResult("find se t/Health", td.presentation, td.goToGym, td.dentistAppointment);
     }
 
     @Test
-    public void find_incorrect_tag_fail() {
+    public void findIncorrectTagFail() {
         commandBox.runCommand("list all");
         assertFindResult("find t/Heal");
         commandBox.runCommand("list all");
@@ -54,7 +54,7 @@ public class FindCommandTest extends ToDoListGuiTest {
     }
 
     @Test
-    public void find_most_recent_list() {
+    public void findMostRecentList() {
         commandBox.runCommand("list all");
         assertFindResult("find t/Dentist", td.dentistAppointment);
         commandBox.runCommand("list upcoming");
