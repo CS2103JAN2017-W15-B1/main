@@ -215,9 +215,10 @@ public class ModelManager extends ComponentManager implements Model {
     public UnmodifiableObservableList<Task> getFilteredUpcomingTaskList() {
         resetViews();
         isViewUpcoming = true;
-        //get tasks that are incomplete and are not overdue
+        //get tasks that are not overdue and are incomplete
+        //and arrange them in ascending order by start then end time
         filteredTasks.setPredicate((Predicate<? super Task>) task -> {
-            return isUpcoming(task) && !task.isComplete();
+            return !isOverdue(task);
         });
         indicateViewListChanged(ListCommand.TYPE_UPCOMING);
         return new UnmodifiableObservableList<>(filteredTasks);
@@ -271,14 +272,26 @@ public class ModelManager extends ComponentManager implements Model {
     Comparator<? super Task> dateComparator = new Comparator<Task>() {
         @Override
         public int compare(Task firstTask, Task secondTask) {
-            if (hasEndTime(firstTask) && hasEndTime(secondTask)) {
+            if (hasStartTime(firstTask) && hasStartTime(secondTask)) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
-                String firstTaskStartDateString = firstTask.getEndTime().toString();
-                String secondTaskStartDateString = secondTask.getEndTime().toString();
+                String firstTaskStartDateString = firstTask.getStartTime().toString();
+                String secondTaskStartDateString = secondTask.getStartTime().toString();
                 try {
                     Date firstTaskStartDate = dateFormat.parse(firstTaskStartDateString);
                     Date secondTaskStartDate = dateFormat.parse(secondTaskStartDateString);
                     return firstTaskStartDate.compareTo(secondTaskStartDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    return ERROR_VALUE;
+                }
+            } else if (hasEndTime(firstTask) && hasEndTime(secondTask)) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
+                String firstTaskEndDateString = firstTask.getEndTime().toString();
+                String secondTaskEndDateString = secondTask.getEndTime().toString();
+                try {
+                    Date firstTaskEndDate = dateFormat.parse(firstTaskEndDateString);
+                    Date secondTaskEndDate = dateFormat.parse(secondTaskEndDateString);
+                    return firstTaskEndDate.compareTo(secondTaskEndDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
                     return ERROR_VALUE;
