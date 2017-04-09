@@ -61,7 +61,7 @@ public class FindCommandTest extends ToDoListGuiTest {
         assertFindResult("find t/Dentist");
         commandBox.runCommand("list overdue");
         assertFindResult("find t/Dentist", td.dentistAppointment);
-        
+
         commandBox.runCommand("list incomplete");
         assertFindResult("find t/Work t/Difficult", td.bossEmail, td.homework, td.handleCustomerComplaints);
         commandBox.runCommand("list complete");

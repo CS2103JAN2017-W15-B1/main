@@ -94,9 +94,9 @@ public class TypicalTestTasks {
     }
 
     public TestTask[] getTypicalTasks() {
-        return new TestTask[]{bossEmail, presentation, dinner, homework, goToGym, helpColleague,
-                dating, doAlgebraHomework, dentistAppointment, bookAirBnbHousing, updateDigitalSignature,
-                handleCustomerComplaints};
+        return new TestTask[] { bossEmail, presentation, dinner, homework, goToGym, helpColleague, dating,
+            doAlgebraHomework, dentistAppointment, bookAirBnbHousing, updateDigitalSignature,
+            handleCustomerComplaints };
     }
 
     public ToDoList getTypicalToDoList() {
