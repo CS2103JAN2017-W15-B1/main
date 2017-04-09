@@ -27,7 +27,7 @@
 }
 
 .text-field {
-    -fx-font-size: 12pt;
+    -fx-font-size: 13pt;
     -fx-font-family: "Gill Sans";
 }
 
@@ -185,7 +185,6 @@
 .command-box {
 	  -fx-background-color: #112236;
 	  -fx-text-fill: white;
-	  -fx-font-size: 15px;
 }
 
 .grid-pane {
