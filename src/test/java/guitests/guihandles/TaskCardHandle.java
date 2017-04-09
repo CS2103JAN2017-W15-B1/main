@@ -106,10 +106,7 @@ public class TaskCardHandle extends GuiHandle {
                         : getStartTime().equals("Start: " + taskToCompare.getStartTime().toString()))
                 && (taskToCompare.getEndTime() == null ?
                         getEndTime().equals("")
-                        : getEndTime().equals("End: " + taskToCompare.getEndTime().toString()))
-                && (taskToCompare.getDescription() == null ?
-                        getDescription().equals("")
-                        : getDescription().equals("Description: " + taskToCompare.getDescription()));
+                        : getEndTime().equals("End: " + taskToCompare.getEndTime().toString()));
     }
 
     @Override

@@ -31,8 +31,8 @@ public class MainGuiHandle extends GuiHandle {
     }
     **/
 
-    public BrowserPanelHandle getBrowserPanel() {
-        return new BrowserPanelHandle(guiRobot, primaryStage);
+    public TaskDetailsPanelHandle getTaskDetailsPanel() {
+        return new TaskDetailsPanelHandle(guiRobot, primaryStage);
     }
 
     public AlertDialogHandle getAlertDialog(String title) {
