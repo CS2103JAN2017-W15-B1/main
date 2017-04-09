@@ -45,6 +45,7 @@ public class DescribeCommandTest extends ToDoListGuiTest {
         assertDescribeSuccess(toDoListIndex, toDoListIndex, description, describedTask);
     }
 
+    //@@author A0141647E
     /**
      * Checks whether the described task has the correct updated description.
      *

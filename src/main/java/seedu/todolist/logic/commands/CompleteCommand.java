@@ -50,7 +50,7 @@ public class CompleteCommand extends Command {
         } catch (TaskNotFoundException pnfe) {
             assert false : "The target task cannot be missing";
         }
-        commandText = String.format(MESSAGE_COMPLETE_TASK_SUCCESS, taskToComplete);
+        commandText = String.format(MESSAGE_COMPLETE_TASK_SUCCESS, taskToComplete.getName().fullName);
         return new CommandResult(commandText);
     }
 
