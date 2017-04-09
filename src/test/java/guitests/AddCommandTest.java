@@ -32,11 +32,13 @@ public class AddCommandTest extends ToDoListGuiTest {
         assertResultMessage(AddCommand.MESSAGE_DUPLICATE_TASK);
         assertTrue(taskListPanel.isListMatching(currentList));
 
+        //@@author A0141647E
         //add task with same name but different timing is allowed
         taskToAdd = td.bookTicketOther;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
+        //@@author A0141647E
         //add task with name that contains " ' " is allowed
         taskToAdd = td.helpJohn;
         assertAddSuccess(taskToAdd, currentList);
@@ -58,9 +60,6 @@ public class AddCommandTest extends ToDoListGuiTest {
         //confirm the new card contains the right data
         Task taskAdding = TaskParser.parseTask(taskToAdd);
         TaskCardHandle addedCard = taskListPanel.navigateToTask(taskAdding);
-        if (addedCard == null) {
-            System.out.println("Navigated card is somehow null ...");
-        }
         assertMatching(taskToAdd, addedCard);
 
         //confirm the list now contains all previous tasks plus the new task

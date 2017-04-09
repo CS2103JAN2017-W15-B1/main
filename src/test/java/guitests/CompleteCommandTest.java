@@ -9,7 +9,7 @@ import seedu.todolist.commons.core.Messages;
 import seedu.todolist.testutil.TestTask;
 import seedu.todolist.testutil.TestUtil;
 
-//@@author A0139329X
+//@@author A0139329X, A0141647E
 //modified by A0141647E
 public class CompleteCommandTest extends ToDoListGuiTest {
 
@@ -42,7 +42,7 @@ public class CompleteCommandTest extends ToDoListGuiTest {
      * @param targetIndexOneIndexed e.g. index 1 to complete the first task in the list,
      */
     private void assertCompleteSuccess(int targetIndexOneIndexed) {
-        TestTask taskToComplete = incompleteList[targetIndexOneIndexed - 1]; // -1 as array uses zero indexing
+        TestTask taskToComplete = incompleteList[targetIndexOneIndexed - 1];
         incompleteList = TestUtil.removeTaskFromList(incompleteList, targetIndexOneIndexed);
         completeList = TestUtil.addTasksToList(completeList, taskToComplete);
 

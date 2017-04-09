@@ -9,6 +9,7 @@ import seedu.todolist.testutil.TestTask;
 
 public class FindCommandTest extends ToDoListGuiTest {
 
+    //@@author A0141647E
     @Test
     public void find_nonEmptyList() {
         assertFindResult("find Mark"); // no results
@@ -33,18 +34,21 @@ public class FindCommandTest extends ToDoListGuiTest {
                 "\nDo you mean: find?");
     }
 
+    //@@author A0141647E
     @Test
     public void findSubstring() {
         commandBox.runCommand("list all");
         assertFindResult("find se", td.presentation, td.dentistAppointment);
     }
 
+    //@@author A0141647E
     @Test
     public void findByEitherSubstringOrTags() {
         commandBox.runCommand("list all");
         assertFindResult("find se t/Health", td.presentation, td.goToGym, td.dentistAppointment);
     }
 
+    //@@author A0141647E
     @Test
     public void findIncorrectTagFail() {
         commandBox.runCommand("list all");
@@ -53,6 +57,7 @@ public class FindCommandTest extends ToDoListGuiTest {
         assertFindResult("find t/Wok");
     }
 
+    //@@author A0141647E
     @Test
     public void findMostRecentList() {
         commandBox.runCommand("list all");

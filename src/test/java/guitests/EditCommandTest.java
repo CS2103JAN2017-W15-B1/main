@@ -79,6 +79,7 @@ public class EditCommandTest extends ToDoListGuiTest {
         assertResultMessage(Tag.MESSAGE_TAG_CONSTRAINTS);
     }
 
+    //@@author A0141647E
     @Test
     public void edit_duplicateTask_failure() {
         commandBox.runCommand("edit 3 Reply Boss's Email s/30-06-2017 10.00 AM e/30-06-2017 3.00 PM");
