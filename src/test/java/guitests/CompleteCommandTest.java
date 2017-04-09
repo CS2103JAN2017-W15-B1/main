@@ -13,8 +13,8 @@ import seedu.todolist.testutil.TestUtil;
 //modified by A0141647E
 public class CompleteCommandTest extends ToDoListGuiTest {
 
-    TestTask[] incompleteList = td.getTypicalTasks();
-    TestTask[] completeList = new TestTask[0];
+    public TestTask[] incompleteList = td.getTypicalTasks();
+    public TestTask[] completeList = new TestTask[0];
 
     @Test
     public void complete() {
