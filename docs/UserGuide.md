@@ -58,15 +58,22 @@ _Format:_
 
 _Example:_
 
-* `add date with girlfriend s/07-04-2017 6.00 PM e/07-04-2017 10PM t/mylady`
+* `add date with girlfriend s/07-04-2017 6.00 PM e/07-04-2017 10.00 PM t/mylady`<br>
+  If you're on a tight schedule, you can add a task with a specific start time and a specific end time, along with a<br>
+  tag to feel organized.
 
-* `add Reply Boss's email s/13-04-2017 10.00 AM e/13-04-2017 10.00 PM t/Work t/Urgent t/HighPriority`
+* `add Reply Boss's email s/13-04-2017 10.00 AM e/13-04-2017 10.00 PM t/Work t/Urgent t/HighPriority`<br>
+  You can also be more organized by adding more tags - this will make finding the task easier as you will see when <br>
+  you reach the `find` command.
+  
+* `add Start preparing for conference s/15-06-2017 t/Work t/Conference`<br>
+  If you are not sure about the end time or want to be flexible with it, you can choose not to specify the end time. <br>
 
-* `add Start preparing for conference s/15-06-2017 t/Work t/Conference`
-
-* `add Daily email check`
-
-* `add Help John with Excel before his report due e/20-04-2017 t/Work t/Colleague`
+* `add Help John with Excel before his report due e/20-04-2017 t/Work t/Colleague`<br>
+  And the same goes for the start time.
+  
+* `add Daily email check`<br>
+  You can also do away with the time and the tags for your daily habits.
 
 #### 3.1.3 Edit task: `edit`
 You can update the details of your task by editing it. In particular, you can organize your tasks by adding/removing their tags, changing starting and ending time or changing the task's name.
@@ -85,7 +92,7 @@ _Example:_
 * `edit 1 t/urgent t/for mom`<br>
   All tags of the task with index `1` on the current list will be removed and replace with `[urgent]` and `[for mom]`
   
-* `edit 2 meet my mother s/07-04-2017 7.00 PM e/07-04-2017 10.00 PM t/mother`
+* `edit 2 meet my mother s/07-04-2017 7.00 PM e/07-04-2017 10.00 PM t/mother`<br>
   Change the name of the task with index `2` on the current list to `meet my mother`, the start time to
   `07-04-2017 7.00 PM`, the end time to `07-04-2017 10.00 PM`, and replace all the tags with `[mother]`.
 
@@ -127,19 +134,19 @@ You can view a specific type of the tasks you want to view in your to-do list.
 
 _Format:_
 `list all`
-> Lists all tasks
+> Lists all tasks that are currently in your to-do list.
 
 `list complete`
-> Lists tasks marked as completed
+> Lists tasks marked as completed.
 
 `list incomplete`
-> Lists tasks marked as incomplete
+> Lists tasks marked as incomplete.
 
 `list upcoming`
-> Lists all upcoming tasks
+> Lists all upcoming tasks.
 
 `list overdue`
-> Lists incomplete tasks with deadlines that have already passed
+> Lists incomplete tasks with deadlines that have already passed.
 
 #### 3.1.8 Find: `find`
 You can find a task to by simply searching for tasks with matching keywords in their names and/or tags
@@ -147,11 +154,11 @@ You can find a task to by simply searching for tasks with matching keywords in t
 > The search is case insensitive.
 
 _Format:_
-`find (name) (t/tag)`
+`find (name) (t/Tag1) (t/Tag2) ...`
 
 _Example:_
-`find report t/report`
-Returns a list of tasks (if any) with the phrase report in its name or tag
+* `find report`<br>
+  Returns a list of tasks (if any) with the phrase `report` in its name or tag.
 
 
 #### 3.1.9 Undo previous command: `undo`
