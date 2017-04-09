@@ -65,7 +65,7 @@ public class FindCommandTest extends ToDoListGuiTest {
         commandBox.runCommand("list incomplete");
         assertFindResult("find t/Work t/Difficult", td.bossEmail, td.homework, td.handleCustomerComplaints);
         commandBox.runCommand("list complete");
-        assertFindResult("find t/Work t/Difficult", td.doAlgebraHomework, td.updateDigitalSignature);
+        assertFindResult("find t/Work t/Difficult");
     }
 
     private void assertFindResult(String command, TestTask... expectedHits) {

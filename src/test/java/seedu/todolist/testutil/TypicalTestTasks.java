@@ -44,10 +44,6 @@ public class TypicalTestTasks {
                     .withStartTime("10-10-2017 3.00 PM")
                     .withDescription("Remember to book restaurant and buy roses")
                     .build();
-            doAlgebraHomework = new TaskBuilder().withName("Field Embedding Theorem")
-                    .withTags("Algebra", "Difficult", "NumberTheory")
-                    .withCompletion(true)
-                    .build();
             dentistAppointment = new TaskBuilder().withName("See dentist")
                     .withStartTime("3-4-2016 9 AM")
                     .withEndTime("3-4-2016 10 AM")
@@ -57,11 +53,6 @@ public class TypicalTestTasks {
                     .withEndTime("1-3-2017 10 PM")
                     .withTags("Important", "Housing", "Travel")
                     .withDescription("Book housing on AirBnB to save money")
-                    .build();
-            updateDigitalSignature = new TaskBuilder().withName("Update expired email digital signature")
-                    .withEndTime("1-2-2017")
-                    .withTags("Work", "Email", "Signature")
-                    .withCompletion(true)
                     .build();
             handleCustomerComplaints = new TaskBuilder().withName("Handle complaints from customer on products")
                     .withStartTime("24-4-2017 10 AM")
@@ -77,6 +68,15 @@ public class TypicalTestTasks {
                     .withEndTime("14-04-2017 10.00 PM")
                     .build();
             helpJohn = new TaskBuilder().withName("Help do John's report").build();
+            updateDigitalSignature = new TaskBuilder().withName("Update expired email digital signature")
+                    .withEndTime("1-2-2017")
+                    .withTags("Work", "Email", "Signature")
+                    .withCompletion(true)
+                    .build();
+            doAlgebraHomework = new TaskBuilder().withName("Field Embedding Theorem")
+                    .withTags("Algebra", "Difficult", "NumberTheory")
+                    .withCompletion(true)
+                    .build();
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
@@ -95,8 +95,7 @@ public class TypicalTestTasks {
 
     public TestTask[] getTypicalTasks() {
         return new TestTask[] { bossEmail, presentation, dinner, homework, goToGym, helpColleague, dating,
-            doAlgebraHomework, dentistAppointment, bookAirBnbHousing, updateDigitalSignature,
-            handleCustomerComplaints };
+            dentistAppointment, bookAirBnbHousing, handleCustomerComplaints };
     }
 
     public ToDoList getTypicalToDoList() {
