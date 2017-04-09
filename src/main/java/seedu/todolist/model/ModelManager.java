@@ -230,11 +230,11 @@ public class ModelManager extends ComponentManager implements Model {
     public boolean isOverdue(Task task) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
         Date currentDate = new Date();
-        if (task.getEndTime() != null) {
+        if (hasEndTime(task)) {
             String taskDateString = task.getEndTime().toString();
             try {
                 Date taskDate = dateFormat.parse(taskDateString);
-                return currentDate.compareTo(taskDate) > 0;
+                return !task.isComplete() && currentDate.compareTo(taskDate) > 0;
             } catch (ParseException e) {
                 e.printStackTrace();
                 return false;
@@ -249,7 +249,7 @@ public class ModelManager extends ComponentManager implements Model {
      * Checks that the task is not overdue and not completed
      */
     private boolean isUpcoming(Task task) {
-      //get current time and compare with the task's end time
+        //get current time and compare with the task's end time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
         Date currentDate = new Date();
         if (hasEndTime(task)) {
@@ -323,7 +323,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
 
-  //=========== Methods to help in filtering task list with given keywords ==============================
+    //=========== Methods to help in filtering task list with given keywords ==============================
 
     //@@author A0144240W
     /**
