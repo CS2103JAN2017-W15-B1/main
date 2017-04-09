@@ -1,4 +1,4 @@
-package seedu.todolist.model.task.parser;
+package seedu.todolist.logic.parser;
 
 import static seedu.todolist.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.todolist.logic.parser.CliSyntax.PREFIX_START;
@@ -9,8 +9,6 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 import seedu.todolist.commons.exceptions.IllegalValueException;
-import seedu.todolist.logic.parser.ArgumentTokenizer;
-import seedu.todolist.logic.parser.ParserUtil;
 import seedu.todolist.model.tag.Tag;
 import seedu.todolist.model.tag.UniqueTagList;
 import seedu.todolist.model.task.EndTask;

@@ -186,6 +186,8 @@ The `UI` component
 
 ### 3.3. Logic Component
 
+Author: Le Minh Phuc
+
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
@@ -195,8 +197,8 @@ The `Logic` component
 
 * Uses the `Parser` class to parse the user command.
 * Executes the `Command` object (returned from the `Parser` class) in `LogicManager`.
-* Affects the `Model` (e.g. adding a person) and/or raise events.
-* Returns the result of the command execution encapsulated as a `CommandResult` object, which is passed back to the `Ui`.
+* Affects the `Model` (e.g. adding a Task) and/or raise events.
+* Returns the result of the command execution encapsulated as a `CommandResult` object, which is passed back to the `UI`.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
  API call.<br>
@@ -214,7 +216,7 @@ The `Model` component
 
 * stores a `UserPref` object that represents the user's preferences.
 * stores the Address Book data.
-* exposes a `UnmodifiableObservableList<ReadOnlyPerson>` that can be 'observed' e.g. the UI can be bound to this list
+* exposes a `UnmodifiableObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * depends on none of the other three components.
 
@@ -690,7 +692,7 @@ Use case resumes at step 2.
 ### Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
 

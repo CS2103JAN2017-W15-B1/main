@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.todolist.commons.core.UnmodifiableObservableList;
 import seedu.todolist.commons.exceptions.DuplicateDataException;
 import seedu.todolist.commons.util.CollectionUtil;
-import seedu.todolist.model.task.parser.TaskParser;
+import seedu.todolist.logic.parser.TaskParser;
 
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls.

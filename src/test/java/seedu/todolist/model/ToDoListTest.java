@@ -14,9 +14,9 @@ import org.junit.rules.ExpectedException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.tag.Tag;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.testutil.TypicalTestTasks;
 
 public class ToDoListTest {
