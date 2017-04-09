@@ -3,6 +3,7 @@ package seedu.todolist.storage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 import java.io.IOException;
 
@@ -13,9 +14,9 @@ import org.junit.rules.TemporaryFolder;
 
 import seedu.todolist.commons.exceptions.DataConversionException;
 import seedu.todolist.commons.util.FileUtil;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.ReadOnlyToDoList;
 import seedu.todolist.model.ToDoList;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.testutil.TypicalTestTasks;
 
 public class XmlToDoListStorageTest {
@@ -100,6 +101,34 @@ public class XmlToDoListStorageTest {
     public void saveToDoList_nullFilePath_assertionFailure() throws IOException {
         thrown.expect(AssertionError.class);
         saveToDoList(new ToDoList(), null);
+    }
+
+    //@@author A0139633B
+    @Test
+    public void saveToDoList_newLocation() throws Exception {
+        String filePath = testFolder.getRoot().getPath() + "TempToDoList.xml";
+        TypicalTestTasks td = new TypicalTestTasks();
+        ToDoList original = td.getTypicalToDoList();
+        XmlToDoListStorage xmlToDoListStorage = new XmlToDoListStorage(filePath);
+        xmlToDoListStorage.saveToDoList(original, filePath);
+
+        //change the save location
+        String newStoragePath = testFolder.getRoot().getPath() + "anotherfolder/AnotherTempToDoList.xml";
+        xmlToDoListStorage.setStoragePath(newStoragePath);
+        xmlToDoListStorage.saveToDoList(original, newStoragePath);
+
+        //check if the file at the new location has the same data
+        ReadOnlyToDoList readBack = xmlToDoListStorage.readToDoList(newStoragePath).get();
+        assertEquals(original, new ToDoList(readBack));
+
+        //Modify data, overwrite exiting file, and read back
+        original.addTask(TaskParser.parseTask(td.changeUi));
+        original.removeTask(TaskParser.parseTask(td.bossEmail));
+        xmlToDoListStorage.saveToDoList(original, newStoragePath);
+        ReadOnlyToDoList changedPathReadBack = xmlToDoListStorage.readToDoList(newStoragePath).get();
+        ReadOnlyToDoList initialSaveReadBack = xmlToDoListStorage.readToDoList(filePath).get();
+        //Initial save file and the save file in the new location should contain different data
+        assertNotEquals(new ToDoList(initialSaveReadBack), new ToDoList(changedPathReadBack));
     }
 
 

@@ -38,7 +38,7 @@ public class ChangeStoragePathCommand extends Command {
             //TODO check if the file can be written to the path first (with the storage)
             config.setToDoListFilePath(this.path);
             ConfigUtil.saveConfig(config, Config.DEFAULT_CONFIG_FILE);
-            storage.changeToDoListFilePath(this.path);
+            storage.setStoragePath(this.path);
             storage.saveToDoList(model.getToDoList(), this.path);
             model.changeStoragePath(this.path);
             return new CommandResult(String.format(MESSAGE_SUCCESS, this.path));

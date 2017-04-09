@@ -2,9 +2,9 @@ package seedu.todolist.logic.commands;
 
 import seedu.todolist.commons.exceptions.IllegalValueException;
 import seedu.todolist.logic.commands.exceptions.CommandException;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.task.Task;
 import seedu.todolist.model.task.UniqueTaskList;
-import seedu.todolist.model.task.parser.TaskParser;
 
 /**
  * Adds a task to the todo list.

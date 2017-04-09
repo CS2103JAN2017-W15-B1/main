@@ -6,13 +6,13 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.todolist.commons.exceptions.IllegalValueException;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.tag.Tag;
 import seedu.todolist.model.tag.UniqueTagList;
 import seedu.todolist.model.task.EndTime;
 import seedu.todolist.model.task.Name;
 import seedu.todolist.model.task.StartTime;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 
 /**
  * JAXB-friendly version of the Task.

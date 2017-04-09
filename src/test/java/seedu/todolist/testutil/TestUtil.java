@@ -29,12 +29,12 @@ import seedu.todolist.TestApp;
 import seedu.todolist.commons.exceptions.IllegalValueException;
 import seedu.todolist.commons.util.FileUtil;
 import seedu.todolist.commons.util.XmlUtil;
+import seedu.todolist.logic.parser.TaskParser;
 import seedu.todolist.model.ToDoList;
 import seedu.todolist.model.tag.Tag;
 import seedu.todolist.model.tag.UniqueTagList;
 import seedu.todolist.model.task.Name;
 import seedu.todolist.model.task.Task;
-import seedu.todolist.model.task.parser.TaskParser;
 import seedu.todolist.storage.XmlSerializableToDoList;
 
 /**
