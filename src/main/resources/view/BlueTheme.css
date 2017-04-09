@@ -146,7 +146,6 @@
 #textForTaskDetails {
 	-fx-font-weight: bold;
 	-fx-font-style: italic;
-	
     -fx-font-size: 22px;
     -fx-text-fill: #eeeeee;
 }
