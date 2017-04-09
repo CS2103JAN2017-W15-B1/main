@@ -17,7 +17,7 @@ public class AddCommand extends Command {
             + "Parameters: NAME [t/TAG]...\n" + "Example: " + COMMAND_WORD
             + " Reply boss's email t/HighPriority t/Email";
 
-    public static final String MESSAGE_SUCCESS = "New task added: %1$s";
+    public static final String MESSAGE_ADD_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the todo list";
 
     private String commandResultText;
@@ -36,7 +36,7 @@ public class AddCommand extends Command {
         assert model != null;
         try {
             model.addTask(toAdd);
-            commandResultText = String.format(MESSAGE_SUCCESS, toAdd);
+            commandResultText = String.format(MESSAGE_ADD_SUCCESS, toAdd);
             return new CommandResult(commandResultText);
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);

@@ -44,6 +44,14 @@ public class TaskListCard extends UiPart<Region> {
     @FXML
     private ImageView taskIcon;
 
+    private Image end_type = new Image("/images/blue-theme/end-task-icon.png");
+    private Image start_end_type = new Image("/images/blue-theme/start-end-task-icon.png");
+    private Image start_type = new Image("/images/blue-theme/start-task-icon.png");
+    private Image floating_type = new Image("/images/blue-theme/floating-task-icon.png");
+    private Image completeIcon = new Image("/images/blue-theme/complete-icon.png");
+
+
+
     //@@author A0144240W
     public TaskListCard(Task task, int displayedIndex) {
         super(FXML);

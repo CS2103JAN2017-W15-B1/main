@@ -52,7 +52,7 @@ public class AddCommandTest extends ToDoListGuiTest {
                 "\nDo you mean: add?");
     }
 
-    private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
+    public void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
         commandBox.runCommand(taskToAdd.getAddCommand());
 
         //confirm the new card contains the right data
