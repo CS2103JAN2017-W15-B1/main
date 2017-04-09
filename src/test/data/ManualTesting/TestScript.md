@@ -17,7 +17,7 @@ The app is then ready for manual testing.
 * Input: add project meeting s/20-8-2017 12.00 PM e/20-8-2017 2.00 PM t/Work
 * Expected output: a task with title "project meeting" is added to the end of the `incomplete` panel. Under the title, the following will appear in order: tag `Work`, start time `20-8-2017 12.00 PM`, end time `20-8-2017 2.00 PM`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
-* Input: add Dinner with family s/11-02-2017 6.00 PM 
+* Input: add Dinner with family s/11-02-2017 6.00 PM
 * Expected output: a task with title "Dinner with family" is added to the end of the `incomplete` panel. Under the title, the start time is indicated as `11-02-2017 6.00 PM`. A confirmation message "New task added: ", following by the task's details is printed in the feedback box above the incomplete panel.
 
 * Input: add Read report e/20-04-2017 5.00 PM t/HighPriority t/Urgent
