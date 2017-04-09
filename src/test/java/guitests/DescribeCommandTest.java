@@ -72,12 +72,11 @@ public class DescribeCommandTest extends ToDoListGuiTest {
 
     }
 
-
-
     public void assertSameDetails(TestTask task, String descriptionAdded) {
         assertTrue(taskDetailsPanel.getDescription().equals(descriptionAdded));
         assertTrue(taskDetailsPanel.getName().equals(task.getName().toString()));
         assertTrue(taskDetailsPanel.getStartTime().equals(task.getStartTime().toString()));
         assertTrue(taskDetailsPanel.getEndTime().equals(task.getEndTime().toString()) );
     }
+
 }
