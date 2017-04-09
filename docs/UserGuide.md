@@ -210,11 +210,14 @@ _Format:_
 `changestorage PATH_TO_STORAGE_FILE`
 
 Examples:
-`changestorage StorageFile/StoreHereInstead/MyStorage.txt`
-The task manager will store its data in MyStorage.txt located at StorageFile/StoreHereInstead/MyStorage.txt, provided that this file exists before calling the command.
+* `changestorage StorageFile/StoreHereInstead/MyStorage.txt`<br>
+  The task manager will store its data in MyStorage.txt located at StorageFile/StoreHereInstead/MyStorage.txt, provided that this file exists before calling the command.
 
-`changestorage StorageFile/AnotherStorage.txt`
-The task manager will store its data in AnotherStorage.txt located under StorageFile instead of the default storage location, provided that this file exists before calling the command.
+* `changestorage StorageFile/AnotherStorage.txt`
+  The task manager will store its data in AnotherStorage.txt located under StorageFile instead of the default storage location, provided that this file exists before calling the command.
+  
+* `changestorage YourThumbDrive`<br>
+  Upon the invocation of this command, DoMe! will automatically creates a storage file called `todolist.xml` in `YourThumbDrive` folder and store data there instead! What an easy way to bring your To-do List with you home!
 
 #### 3.1.15 Copy data to new storage location: `exportsave`
 You can copy the data in the current to-do list to your own storage system with ease.
@@ -224,8 +227,11 @@ _Format:_
 `exportsave PATH_TO_STORAGE_FILE`
 
 Examples:
-`exportsave StorageFile/StoreHereInstead/MyStorage.txt`
-The task manager will copy its data in MyStorage.txt located at StorageFile/StoreHereInstead/MyStorage.txt, provided that this file exists before calling the command.
+* `exportsave StorageFile/StoreHereInstead/MyStorage.txt`<br>
+  The task manager will copy its data in MyStorage.txt located at StorageFile/StoreHereInstead/MyStorage.txt, provided that this file exists before calling the command.
+
+* `exportsave YourThumbDrive`<br>
+  Upon invocation of this command, DoMe! will copy your entire To-do List to `todolist.xml` in `YourThumbDrive` folder, allowing you to make a backup of all your data while still storing in the default location.
 
 ## 4. FAQ
 
@@ -239,37 +245,31 @@ The task manager will copy its data in MyStorage.txt located at StorageFile/Stor
 
 * **Help** : `help` 
 
-* **Add**  `add [Name-of-Task] s/(Start-Time) e/(End-Time) t/[Tag]...` 
-  e.g. `add attend seminar s/21-03-2017 9.00 AM e/23-03-2017 9.00 PM t/work`
+* **Add** : `add [Name-of-Task] (s/Start-Time) (e/End-Time) (t/Tag1) ...`
   
 * **Edit** : `edit [Task-Number] [Edited-Details] (t/Edited-Tag)`
 
 * **Delete** : `delete [Task-Number]`
-   e.g. `delete 3`
    
 * **Undo** : `undo`
+
+* **Redo** : `redo`
    
-* **Search** : `search [Keyword] (t/TagKeyword)...`
-  e.g. `find email t/urgent`
-  
-* **List** : `list`,`list incomplete`,`list complete`,`list overdue`
+* **Find** : `find [Keyword] (t/TagKeyword)...`
 
-* **Select** : `select [Task-Number]` 
-  e.g.`select 2`
+* **Describe** : `describe [Task-Number] (description)`
 
-* **Tag** : `tag [Task-Number] [t/newTag]`
- e.g. `tag 1 t/urgent`
+* **List** : `list all`, `list incomplete`, `list complete`, `list overdue`, `list upcoming`
 
-* **Repeat** : `repeat [Task-Number] [periodic-time]`
- e.g. `repeat 1 every friday`
- 
-* **Report** : `report`
+* **Sync** : `sync`
+
+* **Select** : `select [Task-Number]`
 
 * **Clear** : `clear`
 
-* **Store** : `store [PATH_TO_STORAGE_FILE]`
- e.g. `store StorageFile/StoreHereInstead/MyStorage.txt`
+* **Changestorage** : `changestorage [PATH_TO_STORAGE_FILE]`
 
+* **Exportsave** : `exportsave [PATH_TO_STORAGE_FILE]`
 
 ---
   
