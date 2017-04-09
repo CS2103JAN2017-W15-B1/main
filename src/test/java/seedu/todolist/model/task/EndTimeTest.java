@@ -17,7 +17,7 @@ public class EndTimeTest {
         assertFalse(isValidEndTime("")); //empty string not allowed
         assertFalse(isValidEndTime("      ")); //string of spaces not allowed
         assertFalse(isValidEndTime("12-12 6.00 PM")); //incorrect format - must be dd-mm-yyyy h.mm a
-        
+
         //valid EndTime
         assertTrue(isValidEndTime("12-12-2004 5.00 PM")); //both date and time given
         assertTrue(isValidEndTime("14-06-2014")); //only date given
@@ -26,9 +26,9 @@ public class EndTimeTest {
         assertTrue(isValidEndTime("30-06-2017 6:45 AM")); //. can be replaced with :
         assertTrue(isValidEndTime("4-5-2017 14:00 PM")); //single digit is allowed without the preceding 0
     }
-    
-    public boolean isValidEndTime(String startTime) {
-        Date temp = TimeUtil.parseTime(startTime);
+
+    public boolean isValidEndTime(String endTime) {
+        Date temp = TimeUtil.parseTime(endTime);
         if (temp == null) {
             return false;
         } else {
