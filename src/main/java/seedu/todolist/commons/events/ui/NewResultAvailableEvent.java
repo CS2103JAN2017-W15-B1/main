@@ -10,8 +10,6 @@ public class NewResultAvailableEvent extends BaseEvent {
     public final String message;
 
     public NewResultAvailableEvent(String message) {
-        System.out.println("Handling NewResultAvailableEvent");
-        System.out.println(message);
         this.message = message;
     }
 

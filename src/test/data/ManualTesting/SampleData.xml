@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<todolist>
+    <tasks>
+        <name>Send email to Maria</name>
+        <startTime></startTime>
+        <endTime>17-04-2017 5.00 PM</endTime>
+        <completed>false</completed>
+        <description>regarding the finance stuff</description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>Pick up groceries on the way home</name>
+        <startTime>10-04-2017 6.00 PM</startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description>mom is cooking lagsana</description>
+        <tagged>family</tagged>
+    </tasks>
+    <tasks>
+        <name>fetch bobby to school</name>
+        <startTime>13-06-2017 8.00 AM</startTime>
+        <endTime>13-06-2017 9.00 AM</endTime>
+        <completed>false</completed>
+        <description>he has a presentation on that day</description>
+        <tagged>kids</tagged>
+    </tasks>
+    <tasks>
+        <name>Do 30 pushups and situps daily</name>
+        <startTime></startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description>gotta keep fit</description>
+        <tagged>fit</tagged>
+        <tagged>6packs</tagged>
+    </tasks>
+    <tasks>
+        <name>send TPS report to Jim</name>
+        <startTime>03-12-2016 2.00 PM</startTime>
+        <endTime>03-12-2016 4.00 PM</endTime>
+        <completed>true</completed>
+        <description>that darn bugger and his coffeemug</description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>Meet mom and dad for dinner</name>
+        <startTime>11-04-2017 7.00 PM</startTime>
+        <endTime>11-04-2017 9.30 PM</endTime>
+        <completed>false</completed>
+        <description>meeting them at galbiati</description>
+        <tagged>family</tagged>
+        <tagged>dinner</tagged>
+    </tasks>
+    <tasks>
+        <name>watch star butterfly</name>
+        <startTime>15-11-2017 12.00 AM</startTime>
+        <endTime>15-11-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description>hands down the most adorable girl</description>
+    </tasks>
+    <tasks>
+        <name>have dinner with billy</name>
+        <startTime>11-11-2017 12.00 PM</startTime>
+        <endTime>11-11-2017 2.00 PM</endTime>
+        <completed>false</completed>
+        <description>probably going to be canceled</description>
+        <tagged>dinner</tagged>
+    </tasks>
+    <tasks>
+        <name>buy soccer balls</name>
+        <startTime>01-10-2017 12.00 PM</startTime>
+        <endTime>01-10-2017 2.00 PM</endTime>
+        <completed>false</completed>
+        <description>need to try those china websites too</description>
+        <tagged>soccer</tagged>
+        <tagged>balls</tagged>
+    </tasks>
+    <tasks>
+        <name>have lunch with bobby</name>
+        <startTime>20-11-2017 12.00 PM</startTime>
+        <endTime>20-11-2017 2.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>lunch</tagged>
+    </tasks>
+    <tasks>
+        <name>have lunch with sally</name>
+        <startTime>22-11-2017 12.00 PM</startTime>
+        <endTime>22-11-2017 2.00 PM</endTime>
+        <completed>false</completed>
+        <description>not sure if she is vegetarian</description>
+        <tagged>lunch</tagged>
+    </tasks>
+    <tasks>
+        <name>do rag</name>
+        <startTime>01-08-2017 10.00 AM</startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description>and flag</description>
+        <tagged>flag</tagged>
+        <tagged>rag</tagged>
+    </tasks>
+    <tasks>
+        <name>have lunch with dolly</name>
+        <startTime>23-11-2017 12.00 PM</startTime>
+        <endTime>23-11-2017 2.00 PM</endTime>
+        <completed>false</completed>
+        <description>gonna get some steaks</description>
+        <tagged>lunch</tagged>
+    </tasks>
+    <tasks>
+        <name>have lunch with rolly</name>
+        <startTime>26-11-2017 12.00 PM</startTime>
+        <endTime>26-11-2017 2.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>lunch</tagged>
+    </tasks>
+    <tasks>
+        <name>project meeting</name>
+        <startTime>01-12-2016 3.00 PM</startTime>
+        <endTime>01-12-2016 5.00 PM</endTime>
+        <completed>true</completed>
+        <description></description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>Donate blood</name>
+        <startTime>17-05-2017 12.00 AM</startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>project meeting</name>
+        <startTime>01-12-2017 3.00 PM</startTime>
+        <endTime>01-12-2017 5.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>watch star butterfly</name>
+        <startTime>12-11-2017 12.00 AM</startTime>
+        <endTime>12-11-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>fix ipod</name>
+        <startTime></startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description>time for a long awaited upgrade</description>
+        <tagged>broken</tagged>
+        <tagged>music</tagged>
+    </tasks>
+    <tasks>
+        <name>watch star butterfly</name>
+        <startTime>13-11-2017 12.00 AM</startTime>
+        <endTime>13-11-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>Project meeting with the management</name>
+        <startTime>20-04-2017 2.00 PM</startTime>
+        <endTime>20-04-2017 5.00 PM</endTime>
+        <completed>true</completed>
+        <description>need to remember to do slides</description>
+        <tagged>important</tagged>
+        <tagged>work</tagged>
+        <tagged>project</tagged>
+    </tasks>
+    <tasks>
+        <name>make star butterfly gifs</name>
+        <startTime></startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>collect car from the workshop</name>
+        <startTime></startTime>
+        <endTime>01-05-2017 5.00 PM</endTime>
+        <completed>false</completed>
+        <description>collect it BEFORE 5pm or else they will charge extra</description>
+        <tagged>family</tagged>
+    </tasks>
+    <tasks>
+        <name>Project meeting with the web commerce department</name>
+        <startTime>15-04-2017 2.00 PM</startTime>
+        <endTime>15-04-2017 5.00 PM</endTime>
+        <completed>true</completed>
+        <description></description>
+        <tagged>important</tagged>
+        <tagged>work</tagged>
+        <tagged>project</tagged>
+    </tasks>
+    <tasks>
+        <name>watch star butterfly</name>
+        <startTime>20-11-2017 12.00 AM</startTime>
+        <endTime>20-11-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description>space unicorn</description>
+    </tasks>
+    <tasks>
+        <name>watch soccer match with billy</name>
+        <startTime>21-12-2017 12.00 AM</startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description>gonna be boring</description>
+        <tagged>soccer</tagged>
+        <tagged>balls</tagged>
+    </tasks>
+    <tasks>
+        <name>shop for christmas presents</name>
+        <startTime>23-12-2017 11.00 AM</startTime>
+        <endTime>23-12-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>family</tagged>
+        <tagged>christmas</tagged>
+    </tasks>
+    <tasks>
+        <name>watch shao lin soccer match with bobby</name>
+        <startTime>21-12-2017 10.00 AM</startTime>
+        <endTime>21-12-2017 3.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>stefenchow</tagged>
+        <tagged>soccer</tagged>
+        <tagged>balls</tagged>
+    </tasks>
+    <tasks>
+        <name>watch star butterfly</name>
+        <startTime>16-11-2017 12.00 AM</startTime>
+        <endTime>16-11-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>fix laptop</name>
+        <startTime>08-09-2017 3.00 PM</startTime>
+        <endTime>08-09-2017 6.00 PM</endTime>
+        <completed>false</completed>
+        <description>have to remember to reply the support staff</description>
+        <tagged>broken</tagged>
+        <tagged>computers</tagged>
+    </tasks>
+    <tasks>
+        <name>change job</name>
+        <startTime>31-12-2017 5.00 PM</startTime>
+        <endTime>31-12-2017 6.00 PM</endTime>
+        <completed>false</completed>
+        <description>argh I can't stand my boss</description>
+        <tagged>quit</tagged>
+        <tagged>giveup</tagged>
+    </tasks>
+    <tasks>
+        <name>play pool</name>
+        <startTime>13-12-2017 12.00 PM</startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>watch boss baby</name>
+        <startTime>31-03-2017 5.00 PM</startTime>
+        <endTime>31-03-2017 8.00 PM</endTime>
+        <completed>true</completed>
+        <description></description>
+        <tagged>likeaboss</tagged>
+        <tagged>movie</tagged>
+    </tasks>
+    <tasks>
+        <name>watch natgeo</name>
+        <startTime>03-07-2017 10.00 AM</startTime>
+        <endTime>03-07-2017 12.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>tv</tagged>
+    </tasks>
+    <tasks>
+        <name>go to the gym</name>
+        <startTime>10-07-2017 8.00 PM</startTime>
+        <endTime>10-07-2017 10.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>fit</tagged>
+        <tagged>hotbod</tagged>
+    </tasks>
+    <tasks>
+        <name>read catcher in the rye</name>
+        <startTime>03-07-2017 10.00 PM</startTime>
+        <endTime></endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>books</tagged>
+    </tasks>
+    <tasks>
+        <name>make star butterfly gifs</name>
+        <startTime>19-11-2017 12.00 AM</startTime>
+        <endTime>19-11-2017 2.00 AM</endTime>
+        <completed>false</completed>
+        <description></description>
+    </tasks>
+    <tasks>
+        <name>achieve 1000 situps</name>
+        <startTime></startTime>
+        <endTime>21-10-2017 8.00 PM</endTime>
+        <completed>false</completed>
+        <description>getting there soon</description>
+        <tagged>fit</tagged>
+    </tasks>
+    <tasks>
+        <name>wash money</name>
+        <startTime>09-10-2017 10.00 AM</startTime>
+        <endTime>09-10-2017 12.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>money</tagged>
+    </tasks>
+    <tasks>
+        <name>watch natgeo</name>
+        <startTime>03-10-2017 10.00 AM</startTime>
+        <endTime>03-10-2017 12.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>tv</tagged>
+    </tasks>
+    <tasks>
+        <name>watch history channel documentaries</name>
+        <startTime>03-07-2017 10.00 AM</startTime>
+        <endTime>03-07-2017 12.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>tv</tagged>
+    </tasks>
+    <tasks>
+        <name>meet client for web design</name>
+        <startTime>04-05-2017 10.00 PM</startTime>
+        <endTime>04-05-2017 12.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>tv</tagged>
+    </tasks>
+    <tasks>
+        <name>project briefing with the client</name>
+        <startTime>01-08-2017 3.00 PM</startTime>
+        <endTime>01-08-2017 5.00 PM</endTime>
+        <completed>false</completed>
+        <description>need to think of who to bring along</description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>grocery shopping</name>
+        <startTime>12-10-2017 8.00 PM</startTime>
+        <endTime>12-10-2017 12.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>family</tagged>
+    </tasks>
+    <tasks>
+        <name>project meeting with the team</name>
+        <startTime>01-07-2017 3.00 PM</startTime>
+        <endTime>01-07-2017 5.00 PM</endTime>
+        <completed>false</completed>
+        <description>need to prepare slides</description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>Return books to the library</name>
+        <startTime></startTime>
+        <endTime>09-04-2017 12.00 AM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>important</tagged>
+        <tagged>library</tagged>
+    </tasks>
+    <tasks>
+        <name>Attend Jims homecoming party</name>
+        <startTime>22-05-2017 6.00 PM</startTime>
+        <endTime>22-05-2017 10.00 PM</endTime>
+        <completed>false</completed>
+        <description></description>
+        <tagged>bestie</tagged>
+        <tagged>fun</tagged>
+        <tagged>party</tagged>
+    </tasks>
+    <tasks>
+        <name>project meeting</name>
+        <startTime>01-11-2016 3.00 PM</startTime>
+        <endTime>01-11-2016 5.00 PM</endTime>
+        <completed>true</completed>
+        <description></description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>paint house</name>
+        <startTime>10-09-2016 3.00 PM</startTime>
+        <endTime>10-12-2016 5.00 PM</endTime>
+        <completed>true</completed>
+        <description>mean green and baby blue</description>
+        <tagged>work</tagged>
+    </tasks>
+    <tasks>
+        <name>meet boss regarding pay raise</name>
+        <startTime>03-03-2017 5.00 PM</startTime>
+        <endTime>03-03-2017 6.00 PM</endTime>
+        <completed>true</completed>
+        <description>i feel like i am being exploited</description>
+        <tagged>likeaboss</tagged>
+        <tagged>work</tagged>
+    </tasks>
+    <tags>work</tags>
+    <tags>urgent</tags>
+    <tags>kids</tags>
+    <tags>lunch</tags>
+    <tags>family</tags>
+    <tags>dinner</tags>
+    <tags>soccer</tags>
+    <tags>balls</tags>
+    <tags>rag</tags>
+    <tags>flag</tags>
+    <tags>music</tags>
+    <tags>broken</tags>
+    <tags>important</tags>
+    <tags>project</tags>
+    <tags>christmas</tags>
+    <tags>stefenchow</tags>
+    <tags>computers</tags>
+    <tags>quit</tags>
+    <tags>giveup</tags>
+    <tags>likeaboss</tags>
+    <tags>movie</tags>
+    <tags>tv</tags>
+    <tags>fit</tags>
+    <tags>hotbod</tags>
+    <tags>books</tags>
+    <tags>money</tags>
+    <tags>library</tags>
+    <tags>bestie</tags>
+    <tags>fun</tags>
+    <tags>party</tags>
+    <tags>6packs</tags>
+</todolist>
