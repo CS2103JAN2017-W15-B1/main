@@ -14,10 +14,12 @@ public class NameTest {
         assertFalse(Name.isValidName(" ")); // spaces only
         assertFalse(Name.isValidName("^")); // only non-alphanumeric characters
         assertFalse(Name.isValidName("laundry*")); // contains non-alphanumeric characters
+        assertFalse(Name.isValidName("'s")); //does not start with alphanumeric characters
 
         // valid task name
         assertTrue(Name.isValidName("buy milk")); // alphabets only
         assertTrue(Name.isValidName("20170727")); // numbers only
+        assertTrue(Name.isValidName("Reply boss's email")); //' character is allowed
         assertTrue(Name.isValidName("buy 2 loaves of bread")); // alphanumeric characters
         assertTrue(Name.isValidName("send email to Bill Cosby")); // with capital letters
         assertTrue(Name.isValidName("Pick up dinner and some fruits before going home")); // long task names
