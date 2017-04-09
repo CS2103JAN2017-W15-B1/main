@@ -10,7 +10,6 @@ import static seedu.todolist.logic.commands.UndoCommand.MESSAGE_UNDO_TASK_SUCCES
 
 import org.junit.Test;
 
-import seedu.todolist.testutil.TaskBuilder;
 import seedu.todolist.testutil.TestTask;
 import seedu.todolist.testutil.TestUtil;
 
