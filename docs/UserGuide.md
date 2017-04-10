@@ -7,7 +7,7 @@ By : `Team CS2103-W15-B1`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jan 2017`  &nbsp;&nb
 1. [Introduction](#1-introduction)
 2. [Quick Start](#2-quick-start)
 3. [Features](#3-features)
-4. [FAQ & Troubleshooting](#4-faq-troubleshooting)
+4. [FAQ & Troubleshooting](#4-faq--troubleshooting)
 5. [Commands Cheatsheet](#5-commands-cheatsheet)
 6. [Appendix](#6-appendix)
 
@@ -75,10 +75,10 @@ _Examples:_
 * `add Daily email check`<br>
   You can also do away with the time and the tags for your daily habits.
 
-> <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
+> <img src="images/UserGuideDiagrams/add-1.1.png" width="1000">
 > before adding the task
 
-> <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
+> <img src="images/UserGuideDiagrams/add-1.2.png" width="1000">
 > after adding the task
 
 #### 3.1.3 Edit task: `edit`
@@ -106,7 +106,7 @@ _Examples:_
   
 * `edit 2 s/08-04-2017 7.00 PM e/08-04-2017 10.00 PM`<br>
   Given that the task with index `2` on the current list is initially a floating task, by editing the time fields, 
-  you can change it to an event with the start time `08-04-2017 7.00 PM` and the end time `07-04-2017 10.00 PM`. 
+  you can change it to an event with the start time `08-04-2017 7.00 PM` and the end time `08-04-2017 10.00 PM`. 
   You can change a task from a floating task to a task with dates but you cannot change a task with dates into 
   a floating task. 
 
@@ -183,6 +183,7 @@ _Format:_
 _Examples:_
 * `find report`<br>
   Returns a list of tasks (if any) with the phrase `report` in its name.
+  
 * `find meeting t/work`<br>
   Returns a list of tasks (if any) with the phrase `meeting` in its name and any tags that are
   a full match with `work`. 
@@ -197,7 +198,7 @@ _Format:_
 `undo`
 
 _Example:_
-`undo`<br>
+* `undo`<br>
 Undo the previous command that changed the data, e.g. Undone: add send TPS report to Bill by Friday 6pm.
 
 
@@ -211,7 +212,7 @@ _Format:_
 `redo`
 
 _Example:_
-`redo`<br>
+* `redo`<br>
 Redo the previous command that changed the data, e.g. Redone: add send TPS report to Bill by Friday 6pm.
 
 #### 3.1.11 Select a task: `select`
@@ -275,17 +276,17 @@ Examples:
 
 ## 4. FAQ & Troubleshooting
 
-* **Q**: How do I transfer my data to another computer?<br>
+* **Q**: How do I transfer my data to another computer?
 * **A**: Copy the app to the other computer and overwrite the empty data file it creates with the file that contains the data of your previous *DoMe!* folder.
 
-* **Q**: I cannot access the Help document.<br>
+* **Q**: I cannot access the Help document.
 * **A**: Check your Internet access. Internet connection is required to access the help document.
 
-* **Q**: I cannot sync to Google Calendar.<br>
+* **Q**: I cannot sync to Google Calendar.
 * **A**: Check your Internet access. Internet connection is required to sync to Google Calendar. It might also take a 
 while so do be patient. 
 
-* **Q**: I accidentally cleared my data. What do I do?<br>
+* **Q**: I accidentally cleared my data. What do I do?
 * **A**: Try typing in undo to see if the data is restored. We suggest that you can type `exportsave` once in a while
 to have a backup of your to-do list.  
 
