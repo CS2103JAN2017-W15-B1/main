@@ -119,8 +119,7 @@ _Format:_
 
 _Example:_
 * `delete 2`<br>
-  Remove the task with index number `2` for good and never see it again! Maybe your meeting was cancelled, or adding the
-  task is simply a mistake.
+  Remove the task with index number `2`.
 
 #### 3.1.7 List: `list`
 You can view a specific type of the tasks you want to view in your to-do list.
@@ -151,7 +150,7 @@ _Format:_
 
 _Example:_
 `find report t/report`
-Returns a list of tasks (if any) with the phrase report in its name or tag
+Displays a list of tasks (if any) with the phrase report in its name or tag
 
 
 #### 3.1.9 Undo previous command: `undo`
@@ -165,7 +164,7 @@ _Format:_
 
 _Example:_
 `undo`
-Returns the undoing of the previous command that mutated the data, e.g. Undone: add send TPS report to Bill by Friday 6pm.
+Undo the previous command that changed the data, e.g. Undone: add send TPS report to Bill by Friday 6pm.
 
 #### 3.1.10 Redo previous command: `redo`
 
@@ -178,7 +177,7 @@ _Format:_
 
 _Example:_
 `redo`
-Redoes the previous command that mutated the data, e.g. Redone: add send TPS report to Bill by Friday 6pm.
+Redo the previous command that changed the data, e.g. Redone: add send TPS report to Bill by Friday 6pm.
 
 #### 3.1.11 Select a task: `select`
 You can select a task to view more details about it
@@ -244,31 +243,36 @@ The task manager will copy its data in MyStorage.txt located at StorageFile/Stor
   
 * **Edit** : `edit [Task-Number] [Edited-Details] (t/Edited-Tag)`
 
+* **Describe** : `describe [Task-Description]`
+   e.g. `describe 1 check for formatting before sending`
+
+* **Complete** : `complete [Task-Number]`
+   e.g. `complete 3`
+
 * **Delete** : `delete [Task-Number]`
    e.g. `delete 3`
-   
-* **Undo** : `undo`
-   
-* **Search** : `search [Keyword] (t/TagKeyword)...`
-  e.g. `find email t/urgent`
-  
+
 * **List** : `list`,`list incomplete`,`list complete`,`list overdue`
+
+* **Find** : `find [Keyword] (t/TagKeyword)...`
+  e.g. `find email t/urgent`
+
+* **Undo** : `undo`
+
+* **Redo** : `redo`
 
 * **Select** : `select [Task-Number]` 
   e.g.`select 2`
 
-* **Tag** : `tag [Task-Number] [t/newTag]`
- e.g. `tag 1 t/urgent`
-
-* **Repeat** : `repeat [Task-Number] [periodic-time]`
- e.g. `repeat 1 every friday`
- 
-* **Report** : `report`
+* **Sync** : `sync`
 
 * **Clear** : `clear`
 
-* **Store** : `store [PATH_TO_STORAGE_FILE]`
- e.g. `store StorageFile/StoreHereInstead/MyStorage.txt`
+* **Change Save Location** : `changestorage [PATH_TO_STORAGE]`
+ e.g. `changestorage MySavedFiles/StoreHereInstead`
+
+* **Export Save File** : `exportsave [PATH_TO_STORAGE]`
+ e.g. `exportsave Thumbdrive/CloneStorageHere`
 
 
 ---
