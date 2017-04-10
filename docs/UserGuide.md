@@ -21,7 +21,7 @@ Unlike other software, *DoMe!* is simple and intuitive. All you need is your key
 
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 > Please note that the app is incompatible with earlier versions of Java 8.
-2. Download the latest `taskmanager.jar` from the [releases](../../../releases) tab.
+2. Download the latest `DoMe.jar` from the [releases](../../../releases) tab.
 3. Copy the file to the folder you want to use as the home folder for your Address Book.
 4. Double-click the file to start the app. The GUI should appear in a few seconds.
 > <img src="images/UI.png" width="1000">
@@ -31,7 +31,7 @@ Unlike other software, *DoMe!* is simple and intuitive. All you need is your key
 > **Command Format**
 > 
 > * Items in `Square brackets [ ]` denote a required field.
-> * Iteams in `Curved brackets ( )` denote an optional field.
+> * Items in `Curved brackets ( )` denote an optional field.
 > * `...` denotes that you can have multiple instances.
 > * The `[Task-Number]` refers to the index number shown in the task listing that is currently on the screen.<br>
     The `[Task-Number]` **must be a positive integer** 1, 2, 3, ...
@@ -67,6 +67,10 @@ _Example:_
 * `add Daily email check`
 
 * `add Help John with Excel before his report due e/20-04-2017 t/Work t/Colleague`
+> <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
+> before adding the task
+> <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
+> after adding the task
 
 #### 3.1.3 Edit task: `edit`
 You can update the details of your task by editing it. In particular, you can organize your tasks by adding/removing their tags, changing starting and ending time or changing the task's name.
@@ -88,6 +92,10 @@ _Example:_
 * `edit 2 meet my mother s/07-04-2017 7.00 PM e/07-04-2017 10.00 PM t/mother`
   Change the name of the task with index `2` on the current list to `meet my mother`, the start time to
   `07-04-2017 7.00 PM`, the end time to `07-04-2017 10.00 PM`, and replace all the tags with `[mother]`.
+> <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
+> task before editing
+> <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
+> task after editing
 
 #### 3.1.4 Describe task: `describe`
 You can add in a task description for a specific task and the description will be reflected in the task details.
@@ -99,6 +107,10 @@ _Example:_
 * `describe 1 this determines my promotion`<br>
   Reminds yourself that the task with index `1` on the current list will determine your promotion and thus should be<br>
   attend to immediately.
+> <img src="images/UserGuideDiagrams/describe-1.1.png" width="1000">
+> task before description
+> <img src="images/UserGuideDiagrams/describe-1.2.png" width="1000">
+> task after description
 
 #### 3.1.5 Complete task: `complete`
 You can mark a task as completed to check it off your list of incomplete tasks.
