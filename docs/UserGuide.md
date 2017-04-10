@@ -68,9 +68,9 @@ _Example:_
 
 * `add Help John with Excel before his report due e/20-04-2017 t/Work t/Colleague`
 > <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
-> before adding the task
+> * before adding the task
 > <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
-> after adding the task
+> * after adding the task
 
 #### 3.1.3 Edit task: `edit`
 You can update the details of your task by editing it. In particular, you can organize your tasks by adding/removing their tags, changing starting and ending time or changing the task's name.
@@ -93,9 +93,9 @@ _Example:_
   Change the name of the task with index `2` on the current list to `meet my mother`, the start time to
   `07-04-2017 7.00 PM`, the end time to `07-04-2017 10.00 PM`, and replace all the tags with `[mother]`.
 > <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
-> task before editing
+> * task before editing
 > <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
-> task after editing
+> * task after editing
 
 #### 3.1.4 Describe task: `describe`
 You can add in a task description for a specific task and the description will be reflected in the task details.
@@ -108,9 +108,9 @@ _Example:_
   Reminds yourself that the task with index `1` on the current list will determine your promotion and thus should be<br>
   attend to immediately.
 > <img src="images/UserGuideDiagrams/describe-1.1.png" width="1000">
-> task before description
+> * task before description
 > <img src="images/UserGuideDiagrams/describe-1.2.png" width="1000">
-> task after description
+> * task after description
 
 #### 3.1.5 Complete task: `complete`
 You can mark a task as completed to check it off your list of incomplete tasks.
