@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import guitests.guihandles.TaskCardHandle;
 import seedu.todolist.commons.exceptions.IllegalValueException;
 import seedu.todolist.logic.commands.DescribeCommand;
 import seedu.todolist.testutil.TaskBuilder;
@@ -59,9 +58,9 @@ public class DescribeCommandTest extends ToDoListGuiTest {
             String description, TestTask describedTask) {
         commandBox.runCommand("describe " + filteredTaskListIndex + " " + description);
 
-        // confirm the new card contains the right data
-        TaskCardHandle describedCard = taskListPanel.navigateToTask(describedTask);
-        assertMatching(describedTask, describedCard);
+
+        // confirm the task details panel contains the same description
+        assertSameDetails(describedTask, description);
 
         // confirm the list now contains all previous tasks plus the task with updated details
         expectedTaskList[toDoListIndex - 1] = describedTask;
@@ -70,5 +69,14 @@ public class DescribeCommandTest extends ToDoListGuiTest {
         assertResultMessage(String.format(DescribeCommand.MESSAGE_DESCRIBE_TASK_SUCCESS,
                 describedTask.getDescription(),
                 describedTask.getName().fullName));
+
     }
+
+    public void assertSameDetails(TestTask task, String descriptionAdded) {
+        assertTrue(taskDetailsPanel.getDescription().equals(descriptionAdded));
+        assertTrue(taskDetailsPanel.getName().equals(task.getName().toString()));
+        assertTrue(taskDetailsPanel.getStartTime().equals(task.getStartTime().toString()));
+        assertTrue(taskDetailsPanel.getEndTime().equals(task.getEndTime().toString()) );
+    }
+
 }

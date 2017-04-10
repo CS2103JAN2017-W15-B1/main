@@ -6,6 +6,10 @@ import java.security.GeneralSecurityException;
 import seedu.todolist.integration.GoogleIntegration;
 import seedu.todolist.logic.commands.exceptions.CommandException;
 
+//@@author A0141647E
+/*
+ * Handles syncing with google calendar.
+ */
 public class SyncCommand extends Command {
 
     public static final String COMMAND_WORD = "sync";
