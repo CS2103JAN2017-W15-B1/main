@@ -44,7 +44,8 @@ public class ModelManager extends ComponentManager implements Model {
     private static final String CHANGESTORAGE = "changestorage";
 
     private static final int ERROR_VALUE = 0;
-    private static final int NO_SWAP = 1;
+    private static final int NO_SWAP = -1;
+    private static final int SWAP = 1;
 
 
 
@@ -218,7 +219,7 @@ public class ModelManager extends ComponentManager implements Model {
         //get tasks that are not overdue and are incomplete
         //and arrange them in ascending order by start then end time
         filteredTasks.setPredicate((Predicate<? super Task>) task -> {
-            return !isOverdue(task);
+            return !task.isComplete() && !isOverdue(task);
         });
         indicateViewListChanged(ListCommand.TYPE_UPCOMING);
         return new UnmodifiableObservableList<>(filteredTasks);
@@ -272,7 +273,11 @@ public class ModelManager extends ComponentManager implements Model {
     Comparator<? super Task> dateComparator = new Comparator<Task>() {
         @Override
         public int compare(Task firstTask, Task secondTask) {
-            if (hasStartTime(firstTask) && hasStartTime(secondTask)) {
+            if (isFloatingTask(firstTask) && !isFloatingTask(secondTask)) {
+                return SWAP; //to place floating tasks at the very back of the list
+            } else if (isDeadlineTask(firstTask) && (!isFloatingTask(secondTask) && !isDeadlineTask(secondTask))) {
+                return SWAP;
+            } else if (hasStartTime(firstTask) && hasStartTime(secondTask)) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h.mm a");
                 String firstTaskStartDateString = firstTask.getStartTime().toString();
                 String secondTaskStartDateString = secondTask.getStartTime().toString();
@@ -301,6 +306,16 @@ public class ModelManager extends ComponentManager implements Model {
             }
         }
     };
+
+    //@@author A0139633B
+    private boolean isFloatingTask(Task task) {
+        return !hasStartTime(task) && !hasEndTime(task);
+    }
+
+    //@@author A0139633B
+    private boolean isDeadlineTask(Task task) {
+        return !hasStartTime(task) && hasEndTime(task);
+    }
 
     //@@author A0139633B
     private boolean hasStartTime(Task task) {

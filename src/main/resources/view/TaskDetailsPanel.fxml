@@ -27,7 +27,7 @@
                     <Insets right = "5"/>
                 </padding>
                 </HBox>
-                <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="300.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
+                <Label fx:id="nameLabel" styleClass="cell_bigger_label" prefWidth="270.0" wrapText="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
                 </children>
             </HBox>
             <Label fx:id="tagsHeader" styleClass="cell_small_label"></Label>
@@ -36,8 +36,8 @@
             <Label fx:id="startText" styleClass="cell_big_label"></Label>
             <Label fx:id="endLabel" styleClass="cell_small_label"></Label>
             <Label fx:id="endText" styleClass="cell_big_label"></Label>
-            <Label fx:id="descriptionLabel" styleClass="cell_small_label" prefWidth="300.0" > </Label>
-            <Label fx:id="descriptionText" styleClass="cell_big_label" wrapText="true" ></Label>
+            <Label fx:id="descriptionLabel" styleClass="cell_small_label" prefWidth="270.0" > </Label>
+            <Label fx:id="descriptionText" styleClass="cell_big_label" wrapText="true" prefWidth="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"></Label>
         </children>
     </VBox>
 </AnchorPane>
