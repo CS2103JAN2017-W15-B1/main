@@ -21,7 +21,7 @@ Unlike other software, *DoMe!* is simple and intuitive. All you need is your key
 
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 > Please note that the app is incompatible with earlier versions of Java 8.
-2. Download the latest `taskmanager.jar` from the [releases](../../../releases) tab.
+2. Download the latest `DoMe.jar` from the [releases](../../../releases) tab.
 3. Copy the file to the folder you want to use as the home folder for your Address Book.
 4. Double-click the file to start the app. The GUI should appear in a few seconds.
 > <img src="images/UI.png" width="1000">
@@ -75,6 +75,11 @@ _Examples:_
 * `add Daily email check`<br>
   You can also do away with the time and the tags for your daily habits.
 
+> <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
+> * before adding the task
+> <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
+> * after adding the task
+
 #### 3.1.3 Edit task: `edit`
 You can update the details of your task by editing it. In particular, you can organize your tasks by adding/removing their tags, changing starting and ending time or changing the task's name.
 > Add tags to the task at the specified index. The index refers to the index number shown in the last person listing.
@@ -104,6 +109,11 @@ _Examples:_
   You can change a task from a floating task to a task with dates but you cannot change a task with dates into 
   a floating task. 
 
+> <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
+> * task before editing
+> <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
+> * task after editing
+
 #### 3.1.4 Describe task: `describe`
 You can add in a task description for a specific task and the description will be reflected in the task details.
 
@@ -112,8 +122,12 @@ _Format:_
 
 _Example:_
 * `describe 1 this determines my promotion`<br>
-  Reminds yourself that the task with index `1` on the current list will determine your promotion and thus should be<br>
-  attended to immediately.
+  Reminds yourself that the task with index `1` on the current list will determine your promotion and thus should be attended to immediately.
+
+> <img src="images/UserGuideDiagrams/describe-1.1.png" width="1000">
+> * task before description
+> <img src="images/UserGuideDiagrams/describe-1.2.png" width="1000">
+> * task after description
 
 #### 3.1.5 Complete task: `complete`
 You can mark a task as completed to check it off your list of incomplete tasks.
@@ -134,8 +148,7 @@ _Format:_
 
 _Example:_
 * `delete 2`<br>
-  Remove the task with index number `2` for good and never see it again! Maybe your meeting was cancelled, or adding the
-  task was simply a mistake.
+Remove the task with index number `2`.
 
 #### 3.1.7 List: `list`
 You can view a specific type of the tasks you want to view in your to-do list.
@@ -171,7 +184,6 @@ _Examples:_
   Returns a list of tasks (if any) with the phrase `meeting` in its name and any tags that are
   a full match with `work`. 
 
-
 #### 3.1.9 Undo previous command: `undo`
 
 You can easily undo your previous command.
@@ -182,8 +194,9 @@ _Format:_
 `undo`
 
 _Example:_
-* `undo`<br>
-Your most previous command that mutated the data will be undone, e.g. Undone - add send TPS report to Bill by Friday 6pm.
+`undo`<br>
+Undo the previous command that changed the data, e.g. Undone: add send TPS report to Bill by Friday 6pm.
+
 
 #### 3.1.10 Redo previous command: `redo`
 
@@ -195,8 +208,8 @@ _Format:_
 `redo`
 
 _Example:_
-* `redo`<br>
-Redoes your previous command that mutated the data, e.g. Redone - add send TPS report to Bill by Friday 6pm.
+`redo`<br>
+Redo the previous command that changed the data, e.g. Redone: add send TPS report to Bill by Friday 6pm.
 
 #### 3.1.11 Select a task: `select`
 You can select a task to view more details about it
@@ -291,22 +304,34 @@ to have a backup of your to-do list.
 
 * **Edit** : `edit [Task-Number] [Edited-Details] (t/Edited-Tag)`
 
-* **Exportsave** : `exportsave [PATH_TO_STORAGE_FILE]`
+* **Describe** : `describe [Task-Description]`
+   e.g. `describe 1 check for formatting before sending`
+
+* **Complete** : `complete [Task-Number]`
+   e.g. `complete 3`
+
+* **Delete** : `delete [Task-Number]`
+   e.g. `delete 3`
+
+* **List** : `list`,`list incomplete`,`list complete`,`list overdue`
 
 * **Find** : `find [Keyword] (t/TagKeyword)...`
+  e.g. `find email t/urgent`
 
-* **Help** : `help` 
+* **Undo** : `undo`
 
-* **List** : `list all`, `list incomplete`, `list complete`, `list overdue`, `list upcoming`
+* **Redo** : `redo`
 
-* **Select** : `select [Task-Number]`
+* **Select** : `select [Task-Number]` 
+  e.g.`select 2`
 
 * **Sync** : `sync`
 
-* **Redo** : `redo`
-   
-* **Undo** : `undo`
+* **Change Save Location** : `changestorage [PATH_TO_STORAGE]`
+ e.g. `changestorage MySavedFiles/StoreHereInstead`
 
+* **Export Save File** : `exportsave [PATH_TO_STORAGE]`
+ e.g. `exportsave Thumbdrive/CloneStorageHere`
 
 ---
   
