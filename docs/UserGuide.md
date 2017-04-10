@@ -76,9 +76,10 @@ _Examples:_
   You can also do away with the time and the tags for your daily habits.
 
 > <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
-> * before adding the task
+> before adding the task
+
 > <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
-> * after adding the task
+> after adding the task
 
 #### 3.1.3 Edit task: `edit`
 You can update the details of your task by editing it. In particular, you can organize your tasks by adding/removing their tags, changing starting and ending time or changing the task's name.
@@ -110,9 +111,10 @@ _Examples:_
   a floating task. 
 
 > <img src="images/UserGuideDiagrams/edit-1.1.png" width="1000">
-> * task before editing
+> task before editing
+
 > <img src="images/UserGuideDiagrams/edit-1.2.png" width="1000">
-> * task after editing
+> task after editing
 
 #### 3.1.4 Describe task: `describe`
 You can add in a task description for a specific task and the description will be reflected in the task details.
@@ -125,9 +127,10 @@ _Example:_
   Reminds yourself that the task with index `1` on the current list will determine your promotion and thus should be attended to immediately.
 
 > <img src="images/UserGuideDiagrams/describe-1.1.png" width="1000">
-> * task before description
+> task before description
+
 > <img src="images/UserGuideDiagrams/describe-1.2.png" width="1000">
-> * task after description
+> task after description
 
 #### 3.1.5 Complete task: `complete`
 You can mark a task as completed to check it off your list of incomplete tasks.
@@ -276,10 +279,10 @@ Examples:
 * **A**: Copy the app to the other computer and overwrite the empty data file it creates with the file that contains the data of your previous *DoMe!* folder.
 
 * **Q**: I cannot access the Help document.<br>
-* **A**: Check your internet access. Internet connection is required to access the help document.
+* **A**: Check your Internet access. Internet connection is required to access the help document.
 
 * **Q**: I cannot sync to Google Calendar.<br>
-* **A**: Check your internet access. Internet connection is required to sync to Google Calendar. It might also take a 
+* **A**: Check your Internet access. Internet connection is required to sync to Google Calendar. It might also take a 
 while so do be patient. 
 
 * **Q**: I accidentally cleared my data. What do I do?<br>
@@ -291,16 +294,6 @@ to have a backup of your to-do list.
 ## 5. Commands Cheatsheet
 
 * **Add** : `add [Name-of-Task] (s/Start-Time) (e/End-Time) (t/Tag1) ...`
-
-* **Changestorage** : `changestorage [PATH_TO_STORAGE_FILE]`
-
-* **Clear** : `clear`
-
-* **Complete** : `complete [Task-Number]`
-  
-* **Delete** : `delete [Task-Number]`
-
-* **Describe** : `describe [Task-Number] (description)`
 
 * **Edit** : `edit [Task-Number] [Edited-Details] (t/Edited-Tag)`
 
@@ -326,6 +319,8 @@ to have a backup of your to-do list.
   e.g.`select 2`
 
 * **Sync** : `sync`
+
+* **Clear** : `clear`
 
 * **Change Save Location** : `changestorage [PATH_TO_STORAGE]`
  e.g. `changestorage MySavedFiles/StoreHereInstead`
